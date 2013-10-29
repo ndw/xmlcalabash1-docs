@@ -1,0 +1,97 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:id="cx-until-unchanged">
+<refnamediv>
+  <refname>cx:until-unchanged</refname>
+  <refpurpose>Iterates to a fixed point</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <programlisting role="nopygments">&lt;cx:until-unchanged
+  name? = NCName>
+    (p:output?,
+     p:log?,
+     <emphasis>subpipeline</emphasis>)
+&lt;/cx:until-unchanged>></programlisting>
+</refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
+
+<para>The <tag>cx:until-unchanged</tag> step is an extension <emphasis>compound</emphasis>
+step. There's no provision in the language for defining these steps, but that
+doesn't mean implementors can't.</para>
+
+<para>On the first iteration, the <tag>cx:until-unchanged</tag> step
+provides (on the <code>#current</code> port) the document that it
+reads from the default readable port<footnote><para>Yes, it's a bug
+that there's no equivalent of <tag>p:iteration-source</tag> for this
+step.</para></footnote> to the subpipeline it contains.</para>
+
+<para>The subpipeline must produce exactly one output document on
+<tag>cx:until-unchanged</tag>’s single output port.</para>
+
+<para>On the second and subsequent iterations, the result of the preceding
+iteration is provided on the <code>#current</code> port.</para>
+
+<para>Iteration continues until the document produce is
+<function>deep-equal</function> to the document produced on the
+previous iteration.</para>
+
+<para>Here's a trivial example:</para>
+
+<programlisting><![CDATA[<p:declare-step xmlns:p="http://www.w3.org/ns/xproc"
+                xmlns:cx="http://xmlcalabash.com/ns/extensions"
+                name="main" version="1.0">
+  <p:input port="parameters" kind="parameter"/>
+  <p:output port="result" sequence="true" primary="true"/>
+
+  <p:identity name="id">
+    <p:input port="source">
+      <p:inline><doc>1</doc></p:inline>
+    </p:input>
+  </p:identity>
+
+  <cx:until-unchanged>
+    <p:output port="result"/>
+    <p:xslt>
+      <p:input port="stylesheet">
+        <p:inline>
+          <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                          exclude-result-prefixes="xs"
+                          version="2.0">
+
+            <xsl:template match="doc">
+              <xsl:variable name="count" select="xs:integer(.)"/>
+              <xsl:choose>
+                <xsl:when test="$count &lt; 5">
+                  <doc><xsl:value-of select="$count+1"/></doc>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:sequence select="."/>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:template>
+          </xsl:stylesheet>
+        </p:inline>
+      </p:input>
+    </p:xslt>
+  </cx:until-unchanged>
+
+</p:declare-step>]]></programlisting>
+
+<para>The stylesheet adds one to the integer value of the document that it
+is styling as long as the value is less than 5.</para>
+
+<para>The result of running this pipeline is that the stylesheet is run
+five times, producing documents with the “values” 2, 3, 4, 5, 5. At that
+point the loop terminates and the last document,</para>
+
+<programlisting>&lt;doc>5&lt;/doc></programlisting>
+
+<para>is returned.</para>
+
+</refsection>
+</refentry>

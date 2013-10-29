@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="docs" default="default" basedir=".">
+  <description>Builds the XML Calabash documentation</description>
+
+  <!-- build is hardcoded in here because it's also in the pipeline -->
+
+  <path id="build.classpath">
+    <fileset dir="../calabash/lib">
+      <include name="*.jar"/>
+    </fileset>
+    <pathelement location="lib/docbook-xsl-java-saxon.jar"/>
+    <pathelement location="lib/jython.jar"/>
+    <pathelement location="lib/jython"/>
+  </path>
+
+  <target name="default" depends="init,docs"/>
+
+  <target name="init">
+    <mkdir dir="build"/>
+    <mkdir dir="build/css"/>
+    <mkdir dir="build/js"/>
+    <mkdir dir="build/img"/>
+    <delete>
+      <fileset dir="build" includes="**/*.html"/>
+    </delete>
+  </target>
+
+  <target name="format" depends="init">
+    <java fork="true" classname="com.xmlcalabash.drivers.Main">
+      <classpath>
+        <pathelement location="../calabash/calabash.jar"/>
+        <path refid="build.classpath"/>
+        <pathelement location="/Users/ndw/java"/>
+      </classpath>
+      <jvmarg value="-Xmx1024m"/>
+      <arg value="-D"/>
+      <arg value="-Xxpointer-on-text"/>
+      <arg value="-isource=src/ref.xml"/>
+      <arg value="style/format.xpl"/>
+    </java>
+  </target>
+
+  <target name="docs" depends="format">
+    <copy todir="build/css">
+      <fileset dir="css"/>
+    </copy>
+    <copy todir="build/img">
+      <fileset dir="img"/>
+    </copy>
+    <copy todir="build/js">
+      <fileset dir="js"/>
+    </copy>
+  </target>
+
+  <target name="clean" depends="init">
+    <delete dir="build"/>
+  </target>
+</project>
