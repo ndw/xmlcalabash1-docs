@@ -189,7 +189,10 @@ is enabled, then PSVIs are passed between steps.</para>
   <entry>Command line (short):</entry>
   <entry><literal>-S</literal></entry>
 </row>
-<!-- why isn't there a system property for safe-mode? -->
+<row>
+  <entry>Java system property:</entry>
+  <entry><property>com.xmlcalabash.safe-mode</property>=<replaceable>boolean</replaceable></entry>
+</row>
 <row>
   <entry>XML configuration:</entry>
   <entry><tag class="starttag">cc:safe-mode</tag><replaceable>boolean</replaceable><tag class="endtag">cc:safe-mode</tag></entry>
@@ -253,8 +256,14 @@ access the local filesystem will result in a dynamic error.</para>
   <entry>Command line (short):</entry>
   <entry><literal>-G</literal><replaceable>style</replaceable></entry>
 </row>
-<!-- why isn't there a system property for log-style? -->
-<!-- why isn't there an XML configuration for log-style? -->
+<row>
+  <entry>Java system property:</entry>
+  <entry><property>com.xmlcalabash.log-style</property>=<replaceable>style</replaceable></entry>
+</row>
+<row>
+  <entry>XML configuration:</entry>
+  <entry><tag class="starttag">cc:log-style</tag><replaceable>style</replaceable><tag class="endtag">cc:log-style</tag></entry>
+</row>
 <row>
   <entry>Ant task:</entry>
   <entry><tag class="emptytag">calabash <tag class="attribute">logStyle</tag>="<tag class="attvalue"><replaceable>style</replaceable></tag>"</tag></entry>
