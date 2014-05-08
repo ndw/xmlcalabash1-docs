@@ -374,7 +374,7 @@ for all URIs accessed.</para>
   <entry><literal>-X</literal><replaceable>extname</replaceable></entry>
 </row>
 <row>
-  <entry morerows="4" valign="top">Java system properties:</entry>
+  <entry morerows="5" valign="top">Java system properties:</entry>
   <entry><property>com.xmlcalabash.general-values</property>=<replaceable>boolean</replaceable></entry>
 </row>
 <row>
@@ -390,8 +390,11 @@ for all URIs accessed.</para>
   <entry><property>com.xmlcalabash.use-xslt-10</property>=<replaceable>boolean</replaceable></entry>
 </row>
 <row>
+  <entry><property>com.xmlcalabash.html-serializer</property>=<replaceable>boolean</replaceable></entry>
+</row>
+<row>
   <entry>XML configuration:</entry>
-  <entry><tag class="emptytag">cc:extension <tag class="attribute">name</tag>="<tag class="attvalue"><replaceable>extensions-names</replaceable></tag>" <tag class="attribute">value</tag>="<tag class="attvalue"><replaceable>boolean</replaceable></tag>"</tag></entry>
+  <entry><tag class="emptytag">cc:extension <tag class="attribute">name</tag>="<tag class="attvalue"><replaceable>extensions-name</replaceable></tag>" <tag class="attribute">value</tag>="<tag class="attvalue"><replaceable>boolean</replaceable></tag>"</tag></entry>
 </row>
 <row>
   <entry>Ant task:</entry>
@@ -412,7 +415,9 @@ for all URIs accessed.</para>
 “<literal><link linkend="ext.xpointer-on-text">xpointer-on-text</link></literal>”,
 “<literal><link linkend="ext.transparent-json">transparent-json</link></literal>”,
 “<literal>json-flavor</literal>”,
-and “<literal><link linkend="ext.use-xslt-10">use-xslt-10</link></literal>”.</para>
+“<literal><link linkend="ext.use-xslt-10">use-xslt-10</link></literal>”,
+and
+“<literal><link linkend="ext.html-serializer">html-serializer</link></literal>”.</para>
 
 </section>
 

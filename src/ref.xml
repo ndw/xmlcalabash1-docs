@@ -21,11 +21,12 @@
       <firstname>Norman</firstname><surname>Walsh</surname>
     </personname>
   </author>
-  <releaseinfo>0.11</releaseinfo>
+  <releaseinfo>0.12</releaseinfo>
   <copyright>
     <year>2011</year>
     <year>2012</year>
     <year>2013</year>
+    <year>2014</year>
     <holder>Norman Walsh</holder>
   </copyright>
 </info>

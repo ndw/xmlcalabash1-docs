@@ -9,8 +9,6 @@
       <include name="*.jar"/>
     </fileset>
     <pathelement location="lib/docbook-xsl-java-saxon.jar"/>
-    <pathelement location="lib/jython.jar"/>
-    <pathelement location="lib/jython"/>
   </path>
 
   <target name="default" depends="init,docs"/>
