@@ -323,6 +323,21 @@ configuration option.</para>
 <para>The “use XSLT 1.0” extension enables processing of XSLT 1.0 stylesheets
 with an XSLT 1.0 processor. See <xref linkend="p-xslt-ext"/> in
 <xref linkend="p-xslt"/>.</para>
+
+<para>The XSLT 1.0 extension can be enabled in three ways:</para>
+
+<orderedlist>
+<listitem>
+<para>With the <literal>-Xuse-xslt-10</literal> command-line option.</para>
+</listitem>
+<listitem>
+<para>With the <literal>com.xmlcalabash.use-xslt-10</literal> Java system property.</para>
+</listitem>
+<listitem>
+<para>Or with the <literal>&lt;extension name="use-xslt-10" value="true"/&gt;</literal>
+configuration option.</para>
+</listitem>
+</orderedlist>
 </section>
 
 <section xml:id="ext.html-serializer">
@@ -332,6 +347,21 @@ with an XSLT 1.0 processor. See <xref linkend="p-xslt-ext"/> in
 that are serialized with the “html” method will be serialized with the
 <link xlink:href="http://about.validator.nu/">Validator.nu</link>
 HTML serializer.</para>
+
+<para>The HTML serializer extension can be enabled in three ways:</para>
+
+<orderedlist>
+<listitem>
+<para>With the <literal>-Xhtml-serializer</literal> command-line option.</para>
+</listitem>
+<listitem>
+<para>With the <literal>com.xmlcalabash.html-serializer</literal> Java system property.</para>
+</listitem>
+<listitem>
+<para>Or with the <literal>&lt;extension name="html-serializer" value="true"/&gt;</literal>
+configuration option.</para>
+</listitem>
+</orderedlist>
 
 <para>A few points:</para>
 
