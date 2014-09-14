@@ -265,7 +265,25 @@ pipeline, setting options, setting parameters, and running the pipeline. However
 for the very common case where a pipeline has a single input port, you can post
 directly to the pipeline URI.</para>
 
-<para>POSTing to <uri>/pipelines/{id}</uri> has the following effects:</para>
+<para>POSTing <code>multipart/form-data</code> according to RFC 2388
+to <uri>/pipelines/{id}</uri> has the following effects:</para>
+
+<orderedlist>
+<listitem>
+<para>Each uploaded document is delievered to the named input port.
+It is an error if the pipeline has no such port.</para>
+</listitem>
+<listitem>
+<para>Any POSTed data that isn't an uploaded document is treated as
+the name of an option.
+(Use fields of the form
+<code>xmlns:<replaceable>prefix</replaceable></code> to specify namespace bindings,
+if necessary.)</para>
+</listitem>
+</orderedlist>
+
+<para>POSTing a single document to <uri>/pipelines/{id}</uri> has the
+following effects:</para>
 
 <orderedlist>
 <listitem>
@@ -278,17 +296,22 @@ as the values of named options. (Use parameters of the form
 <code>xmlns:<replaceable>prefix</replaceable></code> to specify namespace bindings,
 if necessary.)</para>
 </listitem>
-<listitem>
-<para>The pipeline is run.</para>
-</listitem>
-<listitem>
+</orderedlist>
+
+<para>After the POSTed data is processed, the pipeline is run.</para>
+
 <para>If the pipeline runs successfully, the first document on the pipeline's
 primary output port is returned. If the pipeline has no primary output port,
 nothing is returned.</para>
-</listitem>
-</orderedlist>
 
-<screen><prompt>$ </prompt><userinput>curl -X POST -H "Content-type: application/xml" -d @doc.xml http://localhost:8088/pipelines/mypipe</userinput>
+<para>For example:</para>
+
+<screen><prompt>$ </prompt><userinput>curl -X POST -F "source=@doc.xml;type=application/xml" -F "opt1=somevalue" http://localhost:8088/pipelines/mypipe</userinput>
+<computeroutput><![CDATA[<doc/>]]></computeroutput></screen>
+
+<para>Or</para>
+
+<screen><prompt>$ </prompt><userinput>curl -X POST -H "Content-type: application/xml" -d @doc.xml "http://localhost:8088/pipelines/mypipe&opt1=somevalue"</userinput>
 <computeroutput><![CDATA[<doc/>]]></computeroutput></screen>
 </section>
 
