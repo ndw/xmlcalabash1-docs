@@ -34,7 +34,7 @@
   </p:input>
 </p:insert>
 
-<p:xinclude/>
+<p:xinclude cx:trim="true"/>
 
 <!-- write custom schema that includes p:* elements!
 <p:validate-with-relax-ng>
