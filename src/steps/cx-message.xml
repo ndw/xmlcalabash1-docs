@@ -21,5 +21,10 @@
 <para>This step is mostly for debugging. It performs the identity step
 with the side-effect of writing a message to the console.</para>
 
-   </refsection>
+<para>If you specify a value for the <tag class="attribute">log</tag>
+option, the message is written to the log with the specified logging level
+instead of to the console.
+</para>
+
+</refsection>
 </refentry>
