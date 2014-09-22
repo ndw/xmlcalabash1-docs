@@ -409,6 +409,17 @@
       <p:output port="result"/>
    </p:declare-step>
 
+   <p:declare-step type="cx:ditaa">
+     <p:input port="source" sequence="true"/>
+     <p:output port="result" sequence="true"/>
+     <p:option name="shadows" select="true()" e:type="xsd:boolean"/>
+     <p:option name="antialias" select="true()" e:type="xsd:boolean"/>
+     <p:option name="corners" select="'square'" e:type="rounded|square"/>
+     <p:option name="separation" select="true()" e:type="xsd:boolean"/>
+     <p:option name="scale" e:type="xsd:float"/>
+     <p:option name="html" select="false()" e:type="xsd:boolean"/>
+   </p:declare-step>
+
    <p:declare-step type="cx:java-properties">
      <p:output port="result"/>
      <p:option name="href" e:type="xsd:anyURI"/>
@@ -437,6 +448,13 @@
    <p:declare-step type="cx:send-mail">
      <p:input port="source" sequence="true"/>
      <p:output port="result"/>
+   </p:declare-step>
+
+   <p:declare-step type="cx:plantuml">
+     <p:input port="source" sequence="true"/>
+     <p:output port="result" sequence="true"/>
+     <p:option name="format" select="'png'" e:type="png|svg"/>
+     <p:option name="html" select="false()" e:type="xsd:boolean"/>
    </p:declare-step>
 
     <p:declare-step type="cx:pretty-print">

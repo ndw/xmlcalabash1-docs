@@ -1,6 +1,7 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" version="1.0" name="main"
                 xmlns:c="http://www.w3.org/ns/xproc-step"
                 xmlns:cx="http://xmlcalabash.com/ns/extensions"
+                xmlns:h="http://www.w3.org/1999/xhtml"
                 xmlns:l="http://xproc.org/library">
 <p:input port="source"/>
 <p:input port="parameters" kind="parameter"/>
@@ -63,6 +64,14 @@
     <p:with-option name="message" select="base-uri(/)"/>
   </cx:message>
 -->
+
+  <p:viewport match="h:pre[contains(@class,'ditaa')]">
+    <cx:ditaa html="true"/>
+  </p:viewport>
+
+  <p:viewport match="h:pre[contains(@class,'plantuml')]">
+    <cx:plantuml html="true" format="png"/>
+  </p:viewport>
 
   <p:store method="xhtml" indent="true">
     <p:with-option name="href" select="base-uri(/)"/>

@@ -1,0 +1,57 @@
+<refentry xmlns:p="http://www.w3.org/ns/xproc"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns="http://docbook.org/ns/docbook"
+          xml:id="cx-plantuml">
+   <refnamediv>
+      <refname>cx:plantuml</refname>
+      <refpurpose>Convert an ASCII “PlantUML” diagram into an image</refpurpose>
+   </refnamediv>
+   <refsynopsisdiv>
+      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:plantuml'])"/>
+   </refsynopsisdiv>
+   <refsection>
+      <title>Description</title>
+
+<para>This step converts
+<link xlink:href="http://plantuml.sourceforge.net/">PlantUML</link> diagrams
+into PNG or SVG images. For PNG, the step returns a base64 encoded
+<literal>data:</literal> URI; for SVG it returns the SVG.</para>
+
+<para>If the <option>html</option> option is true, an HTML
+<tag>img</tag> is returned, otherwise a <tag>c:data</tag> element that
+contains the URI is returned. At the moment, the HTML option has no
+effect in the SVG case; in the future it might do something with
+namespaces or something.
+</para>
+
+<para>Here's an example from the <citetitle>PlantUML</citetitle>
+site:</para>
+
+<programlisting>
+<xi:include href="plantuml-example1.txt" parse="text"/>
+</programlisting>
+
+<para>Run through the <tag>cx:plantuml</tag> step, you get:</para>
+
+<programlisting role="plantuml">
+<xi:include href="plantuml-example1.txt" parse="text"/>
+</programlisting>
+
+<para>Here's another example:</para>
+
+<programlisting>
+<xi:include href="plantuml-example2.txt" parse="text"/>
+</programlisting>
+
+<para>And what it produces:</para>
+
+<programlisting role="plantuml">
+<xi:include href="plantuml-example2.txt" parse="text"/>
+</programlisting>
+
+<para>PlantUML can make lots of different quites of diagrams of quite
+considerable complexity.</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,43 @@
+<refentry xmlns:p="http://www.w3.org/ns/xproc"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns="http://docbook.org/ns/docbook"
+          xml:id="cx-ditaa">
+   <refnamediv>
+      <refname>cx:ditaa</refname>
+      <refpurpose>Convert a “DIagrams Through ASCII Art” diagram into an image</refpurpose>
+   </refnamediv>
+   <refsynopsisdiv>
+      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:ditaa'])"/>
+   </refsynopsisdiv>
+   <refsection>
+      <title>Description</title>
+
+<para>This step converts
+<link xlink:href="http://ditaa.sourceforge.net/">ditaa</link> diagrams
+into PNG images. The step returns a base64 encoded
+<literal>data:</literal> URI.</para>
+
+<para>If the <option>html</option> option is true, an HTML <tag>img</tag>
+is returned, otherwise a <tag>c:data</tag> element that contains the
+URI is returned.
+</para>
+
+<para>Here's an example from the <citetitle>ditaa</citetitle>
+site:</para>
+
+<programlisting>
+<xi:include href="ditaa-example.txt" parse="text"/>
+</programlisting>
+
+<para>Run through the <tag>cx:ditaa</tag> step, you get:</para>
+
+<programlisting role="ditaa">
+<xi:include href="ditaa-example.txt" parse="text"/>
+</programlisting>
+
+<para>There are lots of other examples on the <citetitle>ditaa</citetitle>
+site.</para>
+
+</refsection>
+</refentry>
