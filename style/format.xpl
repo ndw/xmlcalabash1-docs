@@ -11,7 +11,7 @@
 <p:import href="../build/docbook/xslt/base/pipelines/docbook.xpl"/>
 
 <cx:java-properties name="props"
-                    href="../../calabash/resources/etc/version.properties"/>
+                    href="../resources/etc/version.properties"/>
 
 <p:template name="templ">
   <p:input port="template">
