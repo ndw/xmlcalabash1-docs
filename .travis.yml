@@ -1,6 +1,9 @@
 language: java
 script: ant dist
 before_install:
-  - sudo apt-get update
+- sudo apt-get update
 install:
-  - sudo apt-get install graphviz
+- sudo apt-get install graphviz
+env:
+  global:
+    secure: iYKkhT/vj2z4u4xE59XkFTQMsCsdOp6EsblzL/L9HGgwcyJOUO0gJVIcLNBEJ/DkZdlALQB6UIU/TjIlIqU1G7+7M6dPoWSkalta7rmVNjbCUgiDQ+1PA/U9/rXwQ/q5lGDKbonisuVwjLtQL+u96JzocAv9LDVn61bgPpOZcUc=
