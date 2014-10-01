@@ -15,8 +15,10 @@
        or options.
   -->
 
-  <!-- Chicken-and-egg; I have to get the version I'm building docs *for* -->
-  <property file="../calabash/resources/etc/version.properties"/>
+  <!-- Chicken-and-egg. Ideally this would come from the XML Calabash
+       repository but it has to be local so that Travis can find it.
+  -->
+  <property file="resources/etc/version.properties"/>
 
   <property name="version"
             value="${version.major}.${version.minor}.${version.release}"/>
