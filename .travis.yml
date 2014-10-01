@@ -7,3 +7,5 @@ install:
 env:
   global:
     secure: iYKkhT/vj2z4u4xE59XkFTQMsCsdOp6EsblzL/L9HGgwcyJOUO0gJVIcLNBEJ/DkZdlALQB6UIU/TjIlIqU1G7+7M6dPoWSkalta7rmVNjbCUgiDQ+1PA/U9/rXwQ/q5lGDKbonisuVwjLtQL+u96JzocAv9LDVn61bgPpOZcUc=
+after_success:
+- .travis/publish-docs.sh
