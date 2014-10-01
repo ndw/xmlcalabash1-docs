@@ -16,10 +16,10 @@ if [ "$TRAVIS_REPO_SLUG" == "$GIT_PUB_REPO" ]; then
         ROOT=/home/travis/build/ndw/xmlcalabash1-docs
 
         cd gh-pages
-        rsync -var --delete $ROOT/build/ref/ ./ref/
+        rsync -ar --delete $ROOT/build/ref/ ./ref/
         cp $ROOT/dist/*.zip ./download/
 
-        git add -f .
+        git add --all .
         git commit -m "Successful travis build $TRAVIS_BUILD_NUMBER"
         git push -fq origin gh-pages
 
