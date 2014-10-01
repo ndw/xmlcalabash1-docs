@@ -10,6 +10,22 @@
   <property name="docbook-xslt"
             value="${docbook-xslt-baseuri}/release/${docbook-xslt-version}/docbook-xslt2-${docbook-xslt-version}.zip"/>
 
+  <!-- This probably looks a bit weird. Here's what's going on. We need
+       XML Calabash to build the docs. But we're trying to build the
+       docs to publish a release of XML Calabash. So what we do is rely
+       on some previous version of the distribution, plus a recent copy
+       of the calabash.jar file checked into the lib directory.
+       It's a hacky mess, but there you go.
+  -->
+
+  <property name="calabash-baseuri"
+            value="http://xmlcalabash.com/download"/>
+
+  <property name="calabash-version" value="1.0.20-95"/>
+
+  <property name="calabash"
+            value="${calabash-baseuri}/calabash-${calabash-version}.zip"/>
+
   <!-- build location is hardcoded in here because it's also in the pipeline
        and I've been too lazy to pass it all into the pipeline as parameters
        or options.
@@ -24,7 +40,8 @@
             value="${version.major}.${version.minor}.${version.release}"/>
 
   <path id="build.classpath">
-    <fileset dir="../calabash/lib">
+    <pathelement location="build/calabash/calabash.jar"/>
+    <fileset dir="build/calabash/lib">
       <include name="*.jar"/>
     </fileset>
     <pathelement location="lib/docbook-xsl-java-saxon.jar"/>
@@ -55,10 +72,25 @@
     <delete file="build/docbook-xslt2-${docbook-xslt-version}.zip"/>
   </target>
 
-  <target name="format" depends="init,docbook">
+  <target name="check-calabash">
+    <available file="build/calabash/README" property="calabash.present"/>
+  </target>
+
+  <target name="calabash" depends="init,check-calabash" unless="calabash.present">
+    <get src="${calabash}" dest="build"/>
+    <unzip src="build/calabash-${calabash-version}.zip"
+           dest="build/"/>
+    <move file="build/calabash-${calabash-version}"
+          tofile="build/calabash"/>
+    <delete file="build/calabash-${calabash-version}.zip"/>
+    <delete file="build/calabash/calabash.jar"/>
+    <copy file="lib/calabash.jar" todir="build/calabash"/>
+  </target>
+
+  <target name="format" depends="init,docbook,calabash">
     <java fork="true" classname="com.xmlcalabash.drivers.Main">
       <classpath>
-        <pathelement location="../calabash/calabash.jar"/>
+        <pathelement location="build/calabash/calabash.jar"/>
         <path refid="build.classpath"/>
         <pathelement location="/Users/ndw/java"/>
       </classpath>
@@ -94,5 +126,9 @@
 
   <target name="clean">
     <delete dir="build/ref"/>
+  </target>
+
+  <target name="realclean">
+    <delete dir="build"/>
   </target>
 </project>
