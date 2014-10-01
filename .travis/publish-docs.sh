@@ -19,9 +19,9 @@ if [ "$TRAVIS_REPO_SLUG" == "$GIT_PUB_REPO" ]; then
         rsync -var --delete $ROOT/build/ref/ ./ref/
         cp $ROOT/dist/*.zip ./download/
 
-        #git add -f .
-        #git commit -m "Successful travis build $TRAVIS_BUILD_NUMBER"
-        #git push -fq origin gh-pages > /dev/null
+        git add -f .
+        git commit -m "Successful travis build $TRAVIS_BUILD_NUMBER"
+        git push -fq origin gh-pages
 
         echo -e "Published specification to gh-pages.\n"
     else
