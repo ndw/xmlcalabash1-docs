@@ -2,7 +2,24 @@
 <project name="docs" default="default" basedir=".">
   <description>Builds the XML Calabash documentation</description>
 
-  <!-- build is hardcoded in here because it's also in the pipeline -->
+  <property name="docbook-xslt-baseuri"
+            value="https://docbook.github.io"/>
+
+  <property name="docbook-xslt-version" value="2.0.6"/>
+
+  <property name="docbook-xslt"
+            value="${docbook-xslt-baseuri}/release/${docbook-xslt-version}/docbook-xslt2-${docbook-xslt-version}.zip"/>
+
+  <!-- build location is hardcoded in here because it's also in the pipeline
+       and I've been too lazy to pass it all into the pipeline as parameters
+       or options.
+  -->
+
+  <!-- Chicken-and-egg; I have to get the version I'm building docs *for* -->
+  <property file="../calabash/resources/etc/version.properties"/>
+
+  <property name="version"
+            value="${version.major}.${version.minor}.${version.release}"/>
 
   <path id="build.classpath">
     <fileset dir="../calabash/lib">
@@ -15,15 +32,28 @@
 
   <target name="init">
     <mkdir dir="build"/>
-    <mkdir dir="build/css"/>
-    <mkdir dir="build/js"/>
-    <mkdir dir="build/img"/>
+    <mkdir dir="build/ref/css"/>
+    <mkdir dir="build/ref/js"/>
+    <mkdir dir="build/ref/img"/>
     <delete>
-      <fileset dir="build" includes="**/*.html"/>
+      <fileset dir="build/ref" includes="**/*.html"/>
     </delete>
   </target>
 
-  <target name="format" depends="init">
+  <target name="check-docbook">
+    <available file="build/docbook/README.md" property="docbook.present"/>
+  </target>
+
+  <target name="docbook" depends="init,check-docbook" unless="docbook.present">
+    <get src="${docbook-xslt}" dest="build"/>
+    <unzip src="build/docbook-xslt2-${docbook-xslt-version}.zip"
+           dest="build/"/>
+    <move file="build/docbook-xslt2-${docbook-xslt-version}"
+          tofile="build/docbook"/>
+    <delete file="build/docbook-xslt2-${docbook-xslt-version}.zip"/>
+  </target>
+
+  <target name="format" depends="init,docbook">
     <java fork="true" classname="com.xmlcalabash.drivers.Main">
       <classpath>
         <pathelement location="../calabash/calabash.jar"/>
@@ -39,18 +69,28 @@
   </target>
 
   <target name="docs" depends="format">
-    <copy todir="build/css">
+    <copy todir="build/ref/css">
       <fileset dir="css"/>
     </copy>
-    <copy todir="build/img">
+    <copy todir="build/ref/img">
       <fileset dir="img"/>
     </copy>
-    <copy todir="build/js">
+    <copy todir="build/ref/js">
       <fileset dir="js"/>
     </copy>
   </target>
 
-  <target name="clean" depends="init">
-    <delete dir="build"/>
+  <target name="dist" depends="init,docs">
+    <mkdir dir="dist/xmlcalabash-ref-${version}"/>
+    <copy todir="dist/xmlcalabash-ref-${version}">
+      <fileset dir="build/ref/"/>
+    </copy>
+    <zip destfile="dist/xmlcalabash-ref-${version}.zip"
+         basedir="dist"
+         includes="xmlcalabash-ref-${version}/**"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="build/ref"/>
   </target>
 </project>

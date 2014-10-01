@@ -1,14 +1,17 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" version="1.0" name="main"
                 xmlns:c="http://www.w3.org/ns/xproc-step"
                 xmlns:cx="http://xmlcalabash.com/ns/extensions"
+                xmlns:dbp="http://docbook.github.com/ns/pipeline"
                 xmlns:h="http://www.w3.org/1999/xhtml"
                 xmlns:l="http://xproc.org/library">
 <p:input port="source"/>
 <p:input port="parameters" kind="parameter"/>
 
 <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
+<p:import href="../build/docbook/xslt/base/pipelines/docbook.xpl"/>
 
-<cx:java-properties name="props" href="../../calabash/resources/etc/version.properties"/>
+<cx:java-properties name="props"
+                    href="../../calabash/resources/etc/version.properties"/>
 
 <p:template name="templ">
   <p:input port="template">
@@ -35,7 +38,7 @@
   </p:input>
 </p:insert>
 
-<p:xinclude cx:trim="true"/>
+<p:xinclude cx:trim="true" fixup-xml-base="true"/>
 
 <!-- write custom schema that includes p:* elements!
 <p:validate-with-relax-ng>
@@ -45,18 +48,16 @@
 </p:validate-with-relax-ng>
 -->
 
-<p:xslt name="xslt">
-  <p:input port="stylesheet">
-    <p:document href="refhtml.xsl"/>
-  </p:input>
-  <p:with-param name="base.dir" select="'build/'"/>
-</p:xslt>
+<dbp:docbook name="format-docbook" format="html" style="style/refhtml.xsl"
+             return-secondary="true">
+  <p:with-param name="base.dir" select="'build/ref/'"/>
+</dbp:docbook>
 
 <p:sink/>
 
 <p:for-each>
   <p:iteration-source>
-    <p:pipe step="xslt" port="secondary"/>
+    <p:pipe step="format-docbook" port="secondary"/>
   </p:iteration-source>
 
 <!--
