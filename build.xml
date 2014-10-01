@@ -44,7 +44,10 @@
     <fileset dir="build/calabash/lib">
       <include name="*.jar"/>
     </fileset>
-    <pathelement location="lib/docbook-xsl-java-saxon.jar"/>
+    <fileset dir="lib">
+      <include name="*.jar"/>
+      <exclude name="calabash.jar"/>
+    </fileset>
   </path>
 
   <target name="default" depends="init,docs"/>
@@ -88,7 +91,8 @@
   </target>
 
   <target name="format" depends="init,docbook,calabash">
-    <java fork="true" classname="com.xmlcalabash.drivers.Main">
+    <java fork="true" classname="com.xmlcalabash.drivers.Main"
+          failonerror="true">
       <classpath>
         <pathelement location="build/calabash/calabash.jar"/>
         <path refid="build.classpath"/>
