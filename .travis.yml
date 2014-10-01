@@ -6,6 +6,7 @@ install:
 - sudo apt-get install graphviz
 env:
   global:
-    secure: iYKkhT/vj2z4u4xE59XkFTQMsCsdOp6EsblzL/L9HGgwcyJOUO0gJVIcLNBEJ/DkZdlALQB6UIU/TjIlIqU1G7+7M6dPoWSkalta7rmVNjbCUgiDQ+1PA/U9/rXwQ/q5lGDKbonisuVwjLtQL+u96JzocAv9LDVn61bgPpOZcUc=
+  - secure: iYKkhT/vj2z4u4xE59XkFTQMsCsdOp6EsblzL/L9HGgwcyJOUO0gJVIcLNBEJ/DkZdlALQB6UIU/TjIlIqU1G7+7M6dPoWSkalta7rmVNjbCUgiDQ+1PA/U9/rXwQ/q5lGDKbonisuVwjLtQL+u96JzocAv9LDVn61bgPpOZcUc=
+  - secure: iPut2K6dmQ+JJ+9uAjwrfwgxRWyutFax0avuldb4qFxPZ6ySpDIgqCqQDOYXQDTfum/OcLQc0Vt4SttSAfwfY6GjXCCYT7FHb9InkckhM5WXrgUgMS6HDvpxWyirl/AN/mjjCReTZ8Ge3rZMYtCrROV1wuKhECKDjOcxvFNbNt0=
 after_success:
 - .travis/publish-docs.sh
