@@ -27,7 +27,7 @@ Calabash</citetitle> from Apache Ant using the
 </project>]]></programlisting>
 </section>
 
-<section>
+<section xml:id="antdesc">
 <title>Description</title>
 <para>Runs Calabash.  You can use this task to process:<itemizedlist>
                                     <listitem>
@@ -205,7 +205,7 @@ Calabash</citetitle> from Apache Ant using the
                   </section>
 </section>
 
-<section>
+<section xml:id="antparam">
 <title>Parameters</title>
                   <informaltable frame="border">
                            <thead>
@@ -427,7 +427,7 @@ Calabash</citetitle> from Apache Ant using the
                            </tbody>
                   </informaltable>
 </section>
-         <section>
+         <section xml:id="antparamnest">
                   <title>Parameters specified as nested elements</title>
                   <section xml:id="ant.input">
                            <title>input</title>
@@ -1065,7 +1065,7 @@ Calabash</citetitle> from Apache Ant using the
                            </section>
                   </section>
          </section>
-         <section>
+         <section xml:id="antexamples">
                   <title>Examples</title>
                   <section>
                            <title>Single input, single output</title>
@@ -1118,7 +1118,7 @@ Calabash</citetitle> from Apache Ant using the
                                     namespace URI.</para>
                   </section>
          </section>
-         <section>
+         <section xml:id="antjustdont">
                   <title>What not to do</title>
                   <variablelist>
                            <varlistentry>
