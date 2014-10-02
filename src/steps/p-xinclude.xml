@@ -6,17 +6,32 @@
           xmlns:cxu="http://xmlcalabash.com/ns/extensions/xmlunit"
           xmlns="http://docbook.org/ns/docbook"
           xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
           xmlns:pos="http://exproc.org/proposed/steps/os"
           xml:id="p-xinclude">
-   <refnamediv>
-      <refname>p:xinclude</refname>
-      <refpurpose>The standard p:xinclude step</refpurpose>
-   </refnamediv>
-   <refsynopsisdiv>
-      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='p:xinclude'])"/>
-   </refsynopsisdiv>
-   <refsection>
-      <title>Description</title>
-      <para>TBD.</para>
-   </refsection>
+<refnamediv>
+  <refname>p:xinclude</refname>
+  <refpurpose>The standard p:xinclude step</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <xi:include href="../declarations.xml"
+              xpointer="xpath(/*/*[@type='p:xinclude'])"/>
+</refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
+
+<para>Performs
+<link xlink:href="http://www.w3.org/TR/xinclude/">XInclude</link> processing
+on the source document. <citetitle>XML Calabash</citetitle> supports
+<link xlink:href="http://www.w3.org/TR/xinclude-11/">XInclude 1.1</link>.
+</para>
+
+<para>If the <tag class="attribute">cx:trim</tag> extension attribute
+on the <tag>p:xinclude</tag> step has the value “<literal>true</literal>”,
+leading and trailing whitespace will be removed from any documents
+included with parse=text.</para>
+
+</refsection>
 </refentry>
