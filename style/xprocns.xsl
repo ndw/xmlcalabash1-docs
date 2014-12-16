@@ -16,7 +16,7 @@
 
     <span class="decl">
       <code>&lt;p:<xsl:value-of select="local-name(.)"/></code>
-      <xsl:for-each select="@*">
+      <xsl:for-each select="@* except @xml:base">
 	<xsl:call-template name="doAttr"/>
       </xsl:for-each>
 
