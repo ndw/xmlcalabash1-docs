@@ -274,4 +274,38 @@
   </div>
 </xsl:template>
 
+<xsl:template match="db:refsynopsisdiv">
+  <div>
+    <xsl:sequence select="f:html-attributes(.)"/>
+
+    <h2>
+      <xsl:choose>
+	<xsl:when test="db:info/db:title">
+	  <xsl:apply-templates select="db:info/db:title"
+			       mode="m:titlepage-mode"/>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:call-template name="gentext">
+            <xsl:with-param name="key" select="'RefSynopsisDiv'"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+    </h2>
+    <xsl:apply-templates/>
+
+    <xsl:apply-templates
+        select="../db:refmeta/db:refmiscinfo[@class='version']"/>
+  </div>
+</xsl:template>
+
+<xsl:template match="db:refmiscinfo[@class='version']">
+  <p>
+    <xsl:text>Introduced in </xsl:text>
+    <productname>XML Calabash</productname>
+    <xsl:text> version </xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text>.</xsl:text>
+  </p>
+</xsl:template>
+
 </xsl:stylesheet>

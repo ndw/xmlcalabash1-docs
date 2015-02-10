@@ -87,18 +87,21 @@
           tofile="build/calabash"/>
     <delete file="build/calabash-${calabash-version}.zip"/>
     <delete file="build/calabash/calabash.jar"/>
-    <copy file="lib/calabash.jar" todir="build/calabash"/>
+    <copy todir="build/calabash/lib">
+      <fileset dir="lib">
+        <include name="*.jar"/>
+      </fileset>
+    </copy>
   </target>
 
   <target name="format" depends="init,docbook,calabash">
     <java fork="true" classname="com.xmlcalabash.drivers.Main"
           failonerror="true">
       <classpath>
-        <pathelement location="build/calabash/calabash.jar"/>
         <path refid="build.classpath"/>
-        <pathelement location="/Users/ndw/java"/>
       </classpath>
       <jvmarg value="-Xmx1024m"/>
+      <jvmarg value="-Dlog4j.configurationFile=/home/ndw/java/log4j2.xml"/>
       <arg value="-D"/>
       <arg value="-Xxpointer-on-text"/>
       <arg value="-isource=src/ref.xml"/>

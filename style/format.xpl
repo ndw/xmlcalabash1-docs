@@ -2,6 +2,7 @@
                 xmlns:c="http://www.w3.org/ns/xproc-step"
                 xmlns:cx="http://xmlcalabash.com/ns/extensions"
                 xmlns:dbp="http://docbook.github.com/ns/pipeline"
+                xmlns:mml="http://www.w3.org/1998/Math/MathML"
                 xmlns:h="http://www.w3.org/1999/xhtml"
                 xmlns:l="http://xproc.org/library">
 <p:input port="source"/>
@@ -68,6 +69,12 @@
 
   <p:viewport match="h:pre[contains(@class,'ditaa')]">
     <cx:ditaa html="true"/>
+  </p:viewport>
+
+  <p:viewport match="mml:*">
+    <cx:mathml-to-svg>
+      <p:with-param name="mathsize" select="'25f'"/>
+    </cx:mathml-to-svg>
   </p:viewport>
 
   <p:viewport match="h:pre[contains(@class,'plantuml')]">

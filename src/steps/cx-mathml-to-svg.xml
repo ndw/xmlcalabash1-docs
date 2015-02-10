@@ -1,0 +1,106 @@
+<refentry xmlns:p="http://www.w3.org/ns/xproc"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns="http://docbook.org/ns/docbook"
+          xml:id="cx-mathml-to-svg">
+<refmeta>
+<refentrytitle>cx:mathml-to-svg</refentrytitle>
+<refmiscinfo class="version">1.0.25</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+  <refname>cx:mathml-to-svg</refname>
+  <refpurpose>Convert MathML to SVG</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <xi:include href="../declarations.xml"
+              xpointer="xpath(/*/*[@type='cx:mathml-to-svg'])"/>
+</refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
+
+<para>This step is a wrapper for the
+<link xlink:href="http://jeuclid.sourceforge.net/">JEuclid</link>
+library. It converts MathML markup to SVG.</para>
+
+<para>The following parameters are recognized:
+antialias,
+antialias-minsize,
+debug,
+display,
+fonts-doublestruck,
+fonts-fraktur,
+fonts-monospaced,
+fonts-sansserif,
+fonts-script,
+fonts-serif,
+mathbackground,
+mathcolor,
+mathsize,
+mfrac-keep-scriptlevel,
+scriptlevel,
+scriptminsize,
+and
+scriptsizemultiplier. They map to the underlying JEuclid parameters
+in the obvious way. The string value specified for each parameter is
+interpreted directly by JEuclid through the
+<methodname>fromString</methodname> method.
+</para>
+
+<para>Here's an example:</para>
+
+<programlisting><![CDATA[<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+  <int/>
+  <bvar>
+    <ci>x</ci>
+  </bvar>
+  <interval>
+    <ci>a</ci>
+    <ci>b</ci>
+  </interval>
+  <apply><cos/>
+    <ci>x</ci>
+  </apply>
+</apply>
+</math>]]></programlisting>
+
+<para>Running this through <tag>cx:mathml-to-svg</tag> with a
+“mathsize” parameter of “25f” produces:</para>
+
+<equation>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+<apply>
+  <int/>
+  <bvar>
+    <ci>x</ci>
+  </bvar>
+  <interval>
+    <ci>a</ci>
+    <ci>b</ci>
+  </interval>
+  <apply><cos/>
+    <ci>x</ci>
+  </apply>
+</apply>
+</math>
+</equation>
+
+<para>(Assuming your user agent can display SVG.)</para>
+
+<para>The <tag>cx:mathml-to-svg</tag> step is often used in
+a <tag>p:viewport</tag>, for example:</para>
+
+<programlisting><![CDATA[<p:viewport match="mml:*">
+  <cx:mathml-to-svg>
+    <p:input port="parameters">
+      <p:empty/>
+    </p:input>
+    <p:with-param name="mathsize" select="'25f'"/>
+  </cx:mathml-to-svg>
+</p:viewport>]]></programlisting>
+
+</refsection>
+</refentry>
