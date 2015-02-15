@@ -28,10 +28,27 @@ on the source document. <citetitle>XML Calabash</citetitle> supports
 <link xlink:href="http://www.w3.org/TR/xinclude-11/">XInclude 1.1</link>.
 </para>
 
-<para>If the <tag class="attribute">cx:trim</tag> extension attribute
-on the <tag>p:xinclude</tag> step has the value “<literal>true</literal>”,
-leading and trailing whitespace will be removed from any documents
-included with parse=text.</para>
+<para>The <tag>p:xinclude</tag> step supports two extension attributes:</para>
 
+<variablelist>
+<varlistentry>
+<term><tag class="attribute">cx:trim</tag>: <type>boolean</type></term>
+<listitem>
+<para>If the <tag class="attribute">cx:trim</tag> extension attribute
+has the value “<literal>true</literal>”, leading and trailing
+whitespace will be removed from any documents included with
+<literal>parse="text"</literal>.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><tag class="attribute">cx:read-limit</tag>: <type>integer</type></term>
+<listitem>
+<para>In the course of evaluating a fragment identifier, the XInclude
+processor may need to parse a document more than once. The
+<code>read-limit</code> specifies how much data (how many bytes)
+may be buffered to support this reparsing. The default is 100Mb.</para>
+</listitem>
+</varlistentry>
+</variablelist>
 </refsection>
 </refentry>
