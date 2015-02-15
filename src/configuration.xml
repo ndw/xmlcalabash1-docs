@@ -102,6 +102,31 @@ This option will cause <citetitle>XML Calabash</citetitle> to throw an error
 if you are using “home edition”.</para>
 </section>
 
+<section xml:id="cfg.implementation">
+<title>Implementation classes</title>
+
+<para>In order to run an atomic step (implemented in the JVM), the processor
+must know what class provides its implementation.</para>
+
+<para>There is only one way to specify an implementation class.</para>
+
+<informaltable frame="none" role="cfgprop">
+<tgroup cols="2" colsep="0" rowsep="0">
+<tbody>
+<row>
+  <entry>XML configuration:</entry>
+  <entry><tag class="emptytag">cc:implementation <tag class="attribute">type</tag>="<tag class="attvalue"><replaceable>QName</replaceable></tag>" <tag class="attribute">class-name</tag>="<tag class="attvalue"><replaceable>class-name</replaceable>"</tag></tag></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+<para>The <tag class="attribute">type</tag> attribute may be a space-separated
+list of QNames. The <tag class="attribute">class-name</tag> must be a fully
+qualified class name, such as <literal>com.xmlcalabash.library.Identity</literal>.
+</para>
+</section>
+
 <section xml:id="cfg.schema-aware">
 <title>Schema aware processing</title>
 
