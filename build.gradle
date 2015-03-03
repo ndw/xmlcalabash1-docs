@@ -1,0 +1,105 @@
+buildscript {
+  repositories {
+    mavenCentral()
+    maven { url "http://maven.restlet.org" }
+    maven { url "http://developer.marklogic.com/maven2" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+  }
+
+  dependencies {
+    classpath fileTree(dir: 'lib').include("*.jar")
+    classpath 'com.xmlcalabash:xmlcalabash:1.0.30-96'
+    classpath 'net.sf.saxon:Saxon-HE:9.6.0-4'
+  }
+}
+
+plugins {
+  id "java"
+  id "de.undercouch.download" version "1.2"
+}
+
+repositories {
+  mavenCentral()
+  maven { url "http://maven.restlet.org" }
+  maven { url "http://developer.marklogic.com/maven2" }
+  maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
+dependencies {
+  compile fileTree(dir: 'lib').include("*.jar")
+  compile (
+    [group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.0.30-96'],
+    [group: 'net.sf.saxon', name: 'Saxon-HE', version: '9.6.0-4']
+  )
+}
+
+import de.undercouch.gradle.tasks.download.Download
+import com.xmlcalabash.drivers.Main
+
+project.ext.docbookXslt = "docbook-xslt2-$docbookXsltVersion"
+
+task downloadDocBook(type: Download) {
+  src docbookXsltBaseUri + '/release/' + docbookXsltVersion + '/' + docbookXslt + '.zip'
+  dest new File(buildDir, docbookXslt + '.zip')
+}
+downloadDocBook.onlyIf { !file("$buildDir/${docbookXslt}.zip").exists() }
+
+task setupDocBook(dependsOn: downloadDocBook, type: Copy) {
+  from zipTree(downloadDocBook.dest)
+  into { "build" }
+  doLast {
+    copy {
+      from "build/$docbookXslt"
+      into 'build/docbook'
+    }
+  }
+}
+setupDocBook.onlyIf { !file("$buildDir/docbook").exists() }
+
+class CalabashFormatBookTask extends DefaultTask {
+  @TaskAction
+  def calabashAction() {
+    def args = [
+        '-D',
+        '-Xxpointer-on-text',
+        '-isource=src/ref.xml',
+        'style/format.xpl'
+    ]
+
+    Main.main(args as String[])
+  }
+}
+
+task formatBook(dependsOn: setupDocBook, type: CalabashFormatBookTask) {
+  // nop
+}
+formatBook.onlyIf { !file("$buildDir/ref/index.html").exists() }
+
+task copyCSS(type: Copy) {
+  from 'css'
+  into 'build/ref/css'
+}
+
+task copyJS(type: Copy) {
+  from 'js'
+  into 'build/ref/js'
+}
+
+task copyImages(type: Copy) {
+  from 'img'
+  into 'build/ref/img'
+}
+
+task makeReference(dependsOn: [formatBook,copyCSS,copyJS,copyImages]) {
+  // nop
+}
+
+task zipDist(dependsOn: makeReference, type: Zip) {
+  from('build/ref')
+  into 'xmlcalabash-ref-' + version
+  archiveName 'xmlcalabash-ref-' + version + ".zip"
+}
+
+task dist(dependsOn: zipDist) {
+  // nop
+}
