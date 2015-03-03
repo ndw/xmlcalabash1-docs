@@ -25,16 +25,25 @@ repositories {
   maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
+configurations.all {
+  resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+    if (details.requested.name == 'slf4j-log4j12') {
+      details.useTarget "org.apache.logging.log4j:log4j-slf4j-impl:2.1"
+    }
+  }
+}
+
 dependencies {
   compile fileTree(dir: 'lib').include("*.jar")
   compile (
     [group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.0.30-96'],
-    [group: 'net.sf.saxon', name: 'Saxon-HE', version: '9.6.0-4']
+    [group: 'net.sf.saxon', name: 'Saxon-HE', version: '9.6.0-4'],
+    [group: 'org.docbook', name: 'docbook-xsl-java-saxon', version: '1.2.0-96'],
   )
 }
 
 import de.undercouch.gradle.tasks.download.Download
-import com.xmlcalabash.drivers.Main
+// import com.xmlcalabash.drivers.Main
 
 project.ext.docbookXslt = "docbook-xslt2-$docbookXsltVersion"
 
@@ -56,6 +65,7 @@ task setupDocBook(dependsOn: downloadDocBook, type: Copy) {
 }
 setupDocBook.onlyIf { !file("$buildDir/docbook").exists() }
 
+/*
 class CalabashFormatBookTask extends DefaultTask {
   @TaskAction
   def calabashAction() {
@@ -71,7 +81,15 @@ class CalabashFormatBookTask extends DefaultTask {
 }
 
 task formatBook(dependsOn: setupDocBook, type: CalabashFormatBookTask) {
-  // nop
+*/
+
+task formatBook(dependsOn: setupDocBook, type: JavaExec) {
+  classpath = configurations.compile
+  main = 'com.xmlcalabash.drivers.Main'
+  args('-D',
+       '-Xxpointer-on-text',
+       '-isource=src/ref.xml',
+       'style/format.xpl')
 }
 formatBook.onlyIf { !file("$buildDir/ref/index.html").exists() }
 
@@ -100,6 +118,6 @@ task zipDist(dependsOn: makeReference, type: Zip) {
   archiveName 'xmlcalabash-ref-' + version + ".zip"
 }
 
-task dist(dependsOn: zipDist) {
+task dist(dependsOn: zipDist) << {
   // nop
 }
