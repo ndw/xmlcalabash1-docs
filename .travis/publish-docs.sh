@@ -17,7 +17,7 @@ if [ "$TRAVIS_REPO_SLUG" == "$GIT_PUB_REPO" ]; then
 
         cd gh-pages
         rsync -ar --delete $ROOT/build/ref/ ./ref/
-        cp $ROOT/dist/*.zip ./download/
+        cp $ROOT/distributions/*.zip ./download/
 
         git add --all .
         git commit -m "Successful travis build $TRAVIS_BUILD_NUMBER"
