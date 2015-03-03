@@ -22,10 +22,14 @@
 <para>The <tag>ml:adhoc-query</tag> step performs an adhoc query on a 
 <link xlink:href="http://www.marklogic.com">Mark Logic</link> Server.
 </para>
+</refsection>
 
-<para>To use this step you must have a Mark Logic Server and the
-<link xlink:href="http://xqzone.marklogic.com/download/default.xqy#XCC">Java
-XCC</link> libraries.</para>
+<refsection>
+<title>Implementation</title>
+<para>To use this step you must have MarkLogic Server and the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-xcc">xmlcalabash1-xcc</link>
+project. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
 
-   </refsection>
 </refentry>

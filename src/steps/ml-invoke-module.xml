@@ -24,13 +24,17 @@
 as its name implies.
 </para>
 
-<para>To use this step you must have a Mark Logic Server and the
-<link xlink:href="http://xqzone.marklogic.com/download/default.xqy#XCC">Java
-XCC</link> libraries.</para>
-
 <para>Because the results of a module invocation may not be a single,
 well formed XML document (for example, it could be a single atomic value),
 the results are wrapped in the specified wrapper element.</para>
+</refsection>
 
-   </refsection>
+<refsection>
+<title>Implementation</title>
+<para>To use this step you must have MarkLogic Server and the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-xcc">xmlcalabash1-xcc</link>
+project. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
+
 </refentry>

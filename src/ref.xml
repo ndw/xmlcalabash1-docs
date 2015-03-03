@@ -21,7 +21,7 @@
       <firstname>Norman</firstname><surname>Walsh</surname>
     </personname>
   </author>
-  <releaseinfo>0.14</releaseinfo>
+  <releaseinfo>0.15</releaseinfo>
   <copyright>
     <year>2011</year>
     <year>2012</year>
@@ -126,9 +126,12 @@
 <xi:include href="steps/cx-plantuml.xml"/>
 <xi:include href="steps/cx-pretty-print.xml"/>
 <xi:include href="steps/cx-rdfa.xml"/>
+<xi:include href="steps/cx-rdf-load.xml"/>
+<xi:include href="steps/cx-rdf-store.xml"/>
 <xi:include href="steps/cx-report-errors.xml"/>
 <xi:include href="steps/cx-send-mail.xml"/>
 <xi:include href="steps/cx-set-cookies.xml"/>
+<xi:include href="steps/cx-sparql.xml"/>
 <xi:include href="steps/cx-until-unchanged.xml"/>
 <xi:include href="steps/cx-uri-info.xml"/>
 <xi:include href="steps/cx-wait-for-update.xml"/>

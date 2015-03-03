@@ -1,0 +1,61 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:cxu="http://xmlcalabash.com/ns/extensions/xmlunit"
+          xmlns:e="http://www.w3.org/1999/XSL/Spec/ElementSyntax"
+          xmlns:ml="http://xmlcalabash.com/ns/extensions/marklogic"
+          xmlns:p="http://www.w3.org/ns/xproc"
+          xmlns:pos="http://exproc.org/proposed/steps/os"
+          xmlns:pxf="http://exproc.org/proposed/steps/file"
+          xmlns:pxp="http://exproc.org/proposed/steps"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:id="cx-rdf-load">
+   <refnamediv>
+      <refname>cx:rdf-load</refname>
+      <refpurpose>Load RDF triples from semantic web data sources</refpurpose>
+   </refnamediv>
+   <refsynopsisdiv>
+      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:rdf-load'])"/>
+   </refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
+
+<para>This step uses the <link
+xlink:href="https://jena.apache.org/">Jena</link> project libraries to
+extract RDF triples from semantic web data sources. The results are
+returned in a sequence of XML documents that encode the triples
+directly.</para>
+
+<para>The format of <code>sem:triples</code> files is straightforward,
+it contains a set of one or more <tag>sem:triple</tag> elements. Each
+<tag>sem:triple</tag> in turn contains a <tag>sem:subject</tag>, a
+<tag>sem:predicate</tag>, and a <tag>sem:object</tag>.</para>
+
+<para>The subject and predicate are always IRIs, the object is either
+an IRI or a literal value. The object is an IRI unless it has a <tag
+class="attribute">datatype</tag> or <tag
+class="attribute">xml:lang</tag> attribute, in which case it is a
+literal.</para>
+
+<para>If any IRI begins with
+“<literal>http://marklogic.com/semantics/blank/</literal>”,
+it represents a blank node.</para>
+
+<note>
+<title>What the heck is this format?</title>
+<para>This format is a serialization of the internal format that
+<link xlink:href="http://www.marklogic.com/">MarkLogic</link> uses to represent
+semantics data. It's convenient for me and easy to convert into other formats.
+Eventually, I'll add serialization options to produce more common formats.</para>
+</note>
+</refsection>
+
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-rdf">xmlcalabash1-rdf</link>
+project. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
+
+</refentry>

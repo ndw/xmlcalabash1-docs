@@ -16,8 +16,9 @@
    <refsynopsisdiv>
       <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:rdfa'])"/>
    </refsynopsisdiv>
-   <refsection>
-      <title>Description</title>
+
+<refsection>
+<title>Description</title>
 
 <para>This step uses the <link xlink:href="http://semarglproject.org/">Semargl</link>
 project libraries to extract RDF triples from RDFa encoded documents. The results
@@ -96,6 +97,14 @@ it represents a blank node.</para>
 semantics data. It's convenient for me and easy to convert into other formats.
 Eventually, I'll add serialization options to produce more common formats.</para>
 </note>
+</refsection>
 
-   </refsection>
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-rdf">xmlcalabash1-rdf</link>
+project. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
+
 </refentry>

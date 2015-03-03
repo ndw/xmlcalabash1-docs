@@ -106,9 +106,33 @@ if you are using “home edition”.</para>
 <title>Implementation classes</title>
 
 <para>In order to run an atomic step (implemented in the JVM), the processor
-must know what class provides its implementation.</para>
+must know what class provides its implementation. The preferred way to
+identify implementation classes is with the
+<interfacename>XMLCalabash</interfacename> annotation:</para>
 
-<para>There is only one way to specify an implementation class.</para>
+<programlisting>package com.example.package;
+
+import com.xmlcalabash.core.XMLCalabash;
+import com.xmlcalabash.library.DefaultStep;
+
+@XMLCalabash(
+        name = "ex:step-name",
+        type = "{http://example.com/ns/extensions}step-name")
+
+public class StepName extends DefaultStep {
+   …
+}</programlisting>
+
+<para>The <methodname>name</methodname> annotation might be used in
+messages, but it's the <methodname>type</methodname> annotation that's important.
+It must be the namespace URI and local name of the step type in “Clark
+notation.” If there are multiple steps that share an implementation the
+<methodname>type</methodname> annotation may be a space-separated list
+of tokens.</para>
+
+<para>If for some reason it isn't possible to use the annotation, the
+<tag class="element">cc:implementation</tag> element in the XML Configuration
+file can be used instead:</para>
 
 <informaltable frame="none" role="cfgprop">
 <tgroup cols="2" colsep="0" rowsep="0">
