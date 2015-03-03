@@ -15,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="p-www-form-urlencode.html" title="p:www-form-urlencode"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Standard XProc Steps" href="p-steps.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="p:xquery" href="p-xquery.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.14)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.15)
                      </td>
                   </tr>
                </table>
@@ -45,12 +45,30 @@
                      </p>
                      
                      
-                     <p>If the <code class="tag-attribute">cx:trim</code> extension attribute
-                        on the <code class="tag-element">p:xinclude</code> step has the value “<code class="literal">true</code>”,
-                        leading and trailing whitespace will be removed from any documents
-                        included with parse=text.
+                     <p>The <code class="tag-element">p:xinclude</code> step supports two extension attributes:
                      </p>
                      
+                     
+                     <div class="variablelist">
+                        <dl>
+                           <dt><span class="term"><code class="tag-attribute">cx:trim</code>: <span class="type">boolean</span></span></dt>
+                           <dd>
+                              <p>If the <code class="tag-attribute">cx:trim</code> extension attribute
+                                 has the value “<code class="literal">true</code>”, leading and trailing
+                                 whitespace will be removed from any documents included with
+                                 <code class="literal">parse="text"</code>.
+                              </p>
+                           </dd>
+                           <dt><span class="term"><code class="tag-attribute">cx:read-limit</code>: <span class="type">integer</span></span></dt>
+                           <dd>
+                              <p>In the course of evaluating a fragment identifier, the XInclude
+                                 processor may need to parse a document more than once. The
+                                 <code class="code">read-limit</code> specifies how much data (how many bytes)
+                                 may be buffered to support this reparsing. The default is 100Mb.
+                              </p>
+                           </dd>
+                        </dl>
+                     </div>
                      
                   </div>
                </article>
