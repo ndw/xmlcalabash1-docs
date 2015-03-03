@@ -448,18 +448,18 @@
 <p:declare-step type="cx:rdf-load">
   <p:input port="source" sequence="true"/>
   <p:output port="result" sequence="true"/>
-  <p:option name="href" required="true"/>
-  <p:option name="language"/>
-  <p:option name="graph"/>
+  <p:option name="href" required="true" e:type="xsd:anyURI"/>
+  <p:option name="language" e:type="xsd:string"/>
+  <p:option name="graph" e:type="xsd:string"/>
   <p:option name="max-triples-per-document" select="100" e:type="xsd:long"/>
 </p:declare-step>
 
 <p:declare-step type="cx:rdf-store">
   <p:input port="source" sequence="true"/>
   <p:output port="result" primary="false"/>
-  <p:option name="href"/>
-  <p:option name="language"/>
-  <p:option name="graph"/>
+  <p:option name="href" e:type="xsd:anyURI"/>
+  <p:option name="language" e:type="xsd:string"/>
+  <p:option name="graph" e:type="xsd:string"/>
 </p:declare-step>
 
 <p:declare-step type="cx:sparql">
