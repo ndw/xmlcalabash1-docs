@@ -8,7 +8,7 @@ buildscript {
 
   dependencies {
     classpath fileTree(dir: 'lib').include("*.jar")
-    classpath 'com.xmlcalabash:xmlcalabash:1.0.30-96'
+    classpath 'com.xmlcalabash:xmlcalabash:1.0.31-96'
     classpath 'net.sf.saxon:Saxon-HE:9.6.0-4'
   }
 }
