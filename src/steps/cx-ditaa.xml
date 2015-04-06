@@ -3,15 +3,18 @@
           xmlns:xi="http://www.w3.org/2001/XInclude"
           xmlns="http://docbook.org/ns/docbook"
           xml:id="cx-ditaa">
-   <refnamediv>
-      <refname>cx:ditaa</refname>
-      <refpurpose>Convert a “DIagrams Through ASCII Art” diagram into an image</refpurpose>
-   </refnamediv>
-   <refsynopsisdiv>
-      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:ditaa'])"/>
-   </refsynopsisdiv>
-   <refsection>
-      <title>Description</title>
+<refnamediv>
+  <refname>cx:ditaa</refname>
+  <refpurpose>Convert a “DIagrams Through ASCII Art” diagram into an image</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+
+<xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:ditaa'])"/>
+
+</refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
 
 <para>This step converts
 <link xlink:href="http://ditaa.sourceforge.net/">ditaa</link> diagrams
@@ -38,6 +41,14 @@ site:</para>
 
 <para>There are lots of other examples on the <citetitle>ditaa</citetitle>
 site.</para>
+
+<refsection>
+<title>Implementation</title>
+<para>To use this step you must have the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-ditaa">xmlcalabash1-ditaa</link>
+project. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
 
 </refsection>
 </refentry>
