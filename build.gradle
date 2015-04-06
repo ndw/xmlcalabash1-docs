@@ -8,7 +8,8 @@ buildscript {
 
   dependencies {
     classpath fileTree(dir: 'lib').include("*.jar")
-    classpath 'com.xmlcalabash:xmlcalabash:1.0.31-96'
+    classpath 'com.xmlcalabash:xmlcalabash:1.0.32-96'
+    classpath 'com.xmlcalabash:xmlcalabash1-ditaa:1.0.1'
     classpath 'net.sf.saxon:Saxon-HE:9.6.0-4'
   }
 }
@@ -36,7 +37,8 @@ configurations.all {
 dependencies {
   compile fileTree(dir: 'lib').include("*.jar")
   compile (
-    [group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.0.30-96'],
+    [group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.0.32-96'],
+    [group: 'com.xmlcalabash', name: 'xmlcalabash1-ditaa', version: '1.0.1'],
     [group: 'net.sf.saxon', name: 'Saxon-HE', version: '9.6.0-4'],
     [group: 'org.docbook', name: 'docbook-xsl-java-saxon', version: '1.2.0-96'],
   )
