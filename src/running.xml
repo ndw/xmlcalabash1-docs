@@ -13,146 +13,143 @@ control it.</para>
 <section xml:id="javasetup">
 <title>Setting up the environment</title>
 
-<para>You must have Java 1.6 installed in order to run <citetitle>XML Calabash</citetitle>.
-(You can probably run it with Java 1.5, but you'll have to compile it yourself.)</para>
+<para>You must have Java 1.7 or later installed in order to run
+<citetitle>XML Calabash</citetitle>.</para>
 
-<para>In addition to Java, you need a set of jar files on your classpath. At a minimum, you need
-to include the <filename>calabash.jar</filename> file and the jar files in the
-<filename class="directory">lib</filename> directory of the distribution. Some steps
-need various other libraries:</para>
+<para>In addition to Java, you need a set of jar files on your
+classpath. At a minimum, you need to include the
+<filename>calabash.jar</filename> file and the jar files in the
+<filename class="directory">lib</filename> directory of the
+distribution.</para>
+
+<para>Starting with version 1.1.0, <citetitle>XML Calabash</citetitle>
+has been broken into several modules:</para>
 
 <variablelist>
-<varlistentry>
-<term><tag>p:xsl-formatter</tag></term>
+<varlistentry><term>deltaxml</term>
 <listitem>
-<para>Three formatters are supported:</para>
-<variablelist>
-<varlistentry>
-<term><link xlink:href="http://antennahouse.com/">Antenna House</link></term>
-<listitem>
-<para>To use the Antenna House formatter, you must have
-<filename>Alternate_XfoJavaCtl.jar</filename>.
+<para>Supports the <link xlink:href="http://www.deltaxml.com/">Delta XML</link>
+comparison step. You'll also need the commercial <citetitle>Delta XML</citetitle>
+jars and a license.</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-deltaxml"/>.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><link xlink:href="http://xmlgraphics.apache.org/fop/">Apache FOP</link></term>
+<varlistentry><term>ditaa</term>
 <listitem>
-<para>To use the Apache FOP formatter, you must have
-<filename>avalon-framework-4.2.0.jar</filename>,
-<filename>batik-all-1.7.jar</filename>,
-<filename>fop.jar</filename>,
-<filename>serializer-2.7.0.jar</filename>
-<filename>xalan-2.7.0.jar</filename>,
-<filename>xercesImpl-2.7.1.jar</filename>,
-<filename>xml-apis-1.3.04.jar</filename>,
-<filename>xml-apis-ext-1.3.04.jar</filename>, and
-<filename>xmlgraphics-commons-1.4.jar</filename>.
+<para>Supports the
+<link xlink:href="http://sourceforge.net/projects/ditaa/">ditaa</link>
+drawing step.
+</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-ditaa"/>.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><link xlink:href="http://renderx.com/">Render X</link></term>
+<varlistentry><term>mathml-to-svg</term>
 <listitem>
-<para>To use the Render X formatter, you must have
-<filename>xep.jar</filename>.
+<para>Supports MathML to SVG conversions with the
+<link xlink:href="http://sourceforge.net/projects/jeuclid/">JEuclid</link>
+renderer.
+</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-mathml-to-svg"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>metadata-extractor</term>
+<listitem>
+<para>Supports the image metadata extractions step with the
+<link xlink:href="https://drewnoakes.com/code/exif/">Metadata Extractor</link>
+library.
+</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-metadata-extractor"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>plantuml</term>
+<listitem>
+<para>Supports the
+<link xlink:href="http://sourceforge.net/projects/plantuml/">PlantUML</link>
+drawing step.
+</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-plantuml"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>print</term>
+<listitem>
+<para>Supports printing with
+<link xlink:href="http://www.w3.org/standards/techs/xsl#w3c_all">XSL
+Formatting Objects</link>
+or
+<link xlink:href="http://www.w3.org/Style/CSS/">CSS</link>.
+Support is included for XSL FO processing with
+<link xlink:href="https://xmlgraphics.apache.org/fop/">FOP</link>,
+<link xlink:href="http://www.antennahouse.com/antenna1/xsl-specification/">AntennaHouse</link>,
+or
+<link xlink:href="http://www.renderx.com/">RenderX</link>
+and CSS processing with
+<link xlink:href="http://www.antennahouse.com/antenna1/css/">AntennaHouse</link>,
+or
+<link xlink:href="http://www.princexml.com/">PrinceXML</link>.
+</para>
+<para>Printing with XML Calabash requires the libraries in this module
+in addition to any commercial libraries and licences required. (No
+additional libraries are required for FOP.)</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-print"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>rdf</term>
+<listitem>
+<para>Supports the extension steps that can read, write, and query
+<link xlink:href="http://www.w3.org/RDF/">RDF</link>.
+</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-rdf"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>sendmail</term>
+<listitem>
+<para>Supports the step that sends email.
+</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-sendmail"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>xcc</term>
+<listitem>
+<para>Supports the
+<link xlink:href="http://www.marklogic.com/">MarkLogic</link>
+XCC steps.
+</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-xcc"/>.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry><term>xmlunit</term>
+<listitem>
+<para>Supports XML comparison with the
+<link xlink:href="http://www.xmlunit.org/">XMLUnit</link> library.
+</para>
+<para>Available from <link xlink:href="http://github.com/ndw/xmlcalabash1-xmlunit"/>.
 </para>
 </listitem>
 </varlistentry>
 </variablelist>
-</listitem>
-</varlistentry>
 
-<varlistentry>
-<term><tag>cx:delta-xml</tag></term>
-<listitem>
-<para>The <link xlink:href="http://deltaxml.com/">Delta XML</link> step
-requires <filename>command.jar</filename>,
-<filename>deltawing.jar</filename>, and
-<filename>deltaxml.jar</filename>.</para>
-</listitem>
-</varlistentry>
+<para>To use any of these modules, simply download them (or get them
+<link xlink:href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.xmlcalabash%22">through Maven</link>) and place them on your classpath. No other
+configuration is necessary.</para>
 
-<varlistentry>
-<term><tag>p:validate-with-relax-ng</tag></term>
-<listitem>
-<para>To use <link xlink:href="http://code.google.com/p/jing-trang/">Jing</link>,
-you must have <filename>jing.jar</filename> and
-<filename>isorelax.jar</filename>.</para>
-<para>To use the <link xlink:href="http://java.net/projects/msv">Multi-Schema Validator</link>,
-you must have <filename>msv.jar</filename>,
-<filename>isorelax.jar</filename>,
-<filename>relaxngDatatype.jar</filename>, and
-<filename>xsdlib.jar</filename>.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><tag>cxu:compare</tag></term>
-<listitem>
-<para>To use the <link xlink:href="http://xmlunit.sourceforge.net/">&lt;xml-unit/&gt;</link>
-XML comparison step, you must have
-<filename>junit-4.8.1.jar</filename> and
-<filename>xmlunit-1.3.jar</filename>.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><tag>cx:send-mail</tag></term>
-<listitem>
-<para>The send mail step requires <filename>mail.jar</filename>.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><tag>cx:metadata-extractor</tag></term>
-<listitem>
-<para>The <link xlink:href="http://drewnoakes.com/code/exif/">Metadata Extractor</link>
-requires <filename>metadata-extractor-2.3.1.jar</filename>.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><tag>p:validate-with-xml-schema</tag></term>
-<listitem>
-<para>Using W3C XML Schema validation requires the Saxon EE product,
-<filename>saxon9ee.jar</filename>.</para>
-<para>If you don't have Saxon EE, the XML Schema validation step can
-fall-back to Xerces validation, but that's not as complete or flexible
-at this time.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><tag>ml:adhoc-query</tag>, <tag>ml:insert-document</tag>, and
-<tag>ml:invoke-module</tag></term>
-<listitem>
-<para>The <link xlink:href="http://www.marklogic.com/">MarkLogic</link> steps
-require <filename>xcc.jar</filename>.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term>Parsing HTML</term>
-<listitem>
-<para>Parsing HTML into well-formed XML with
-<link xlink:href="http://ccil.org/~cowan/XML/tagsoup/">TagSoup</link>
-requires <filename>tagsoup-1.2.jar</filename>. Parsing with
-the <link xlink:href="http://about.validator.nu/htmlparser/">Validator.nu HTML
-Parser</link> requires <filename>htmlparser-1.3.1.jar</filename>.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term>Resource management</term>
-<listitem>
-<para>Resource management features (catalogs, URI caching, etc.) require
-<filename>xmlresolver.jar</filename>.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
+<para>With the introduction of modules, <citetitle>XML Calabash</citetitle>
+version numbers move somewhat in the direction of
+<emphasis>semantic versioning</emphasis>. Modules with version numbers
+of the form 1.1.<replaceable>x</replaceable> are designed to work with
+<citetitle>XML Calabash</citetitle> version 1.1.<replaceable>x</replaceable>,
+modules with version numbers
+of the form 1.2.<replaceable>x</replaceable> with
+<citetitle>XML Calabash</citetitle> version 1.2.<replaceable>x</replaceable>,
+etc.</para>
 
 <para>Assuming you have the appropriate jar files on your classpath, you can run
 <citetitle>XML Calabash</citetitle> like this:</para>

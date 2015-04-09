@@ -140,5 +140,12 @@ might return results such as those shown in <xref linkend="ex.png"/>.</para>
 
 <para>The “Exif Version” of “0” is returned to identify this case.</para>
 
-   </refsection>
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-metadata-extractor">xmlcalabash1-metadata-extractor</link>
+module. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
+</refsection>
 </refentry>

@@ -31,9 +31,10 @@ the results are wrapped in the specified wrapper element.</para>
 
 <refsection>
 <title>Implementation</title>
-<para>To use this step you must have MarkLogic Server and the
+<para>To use this step you must have
+<link xlink:href="http://www.marklogic.com/">MarkLogic Server</link> and the
 <link xlink:href="https://github.com/ndw/xmlcalabash1-xcc">xmlcalabash1-xcc</link>
-project. The jar file from that project must be in the class path in order
+module. The jar file from that project must be in the class path in order
 to use this step.</para>
 </refsection>
 

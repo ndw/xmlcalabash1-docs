@@ -46,7 +46,7 @@ site.</para>
 <title>Implementation</title>
 <para>To use this step you must have the
 <link xlink:href="https://github.com/ndw/xmlcalabash1-ditaa">xmlcalabash1-ditaa</link>
-project. The jar file from that project must be in the class path in order
+module. The jar file from that project must be in the class path in order
 to use this step.</para>
 </refsection>
 

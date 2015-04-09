@@ -25,6 +25,13 @@ library.</para>
 
 <para>To use this step, you must have a valid license for the Delta XML
 product and the Delta XML jar files.</para>
-   </refsection>
+</refsection>
 
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-deltaxml">xmlcalabash1-deltaxml</link>
+module. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
 </refentry>

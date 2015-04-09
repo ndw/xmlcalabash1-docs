@@ -24,4 +24,12 @@ the first message body, you must leave the <tag>em:content</tag> element out of 
 document and supply the body as a second document.</para>
 
 </refsection>
+
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-sendmail">xmlcalabash1-sendmail</link>
+module. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
 </refentry>

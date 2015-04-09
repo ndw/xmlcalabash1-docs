@@ -1,12 +1,7 @@
 <refentry xmlns:p="http://www.w3.org/ns/xproc"
-          xmlns:e="http://www.w3.org/1999/XSL/Spec/ElementSyntax"
-          xmlns:pxp="http://exproc.org/proposed/steps"
-          xmlns:pxf="http://exproc.org/proposed/steps/file"
-          xmlns:ml="http://xmlcalabash.com/ns/extensions/marklogic"
-          xmlns:cxu="http://xmlcalabash.com/ns/extensions/xmlunit"
           xmlns="http://docbook.org/ns/docbook"
           xmlns:xi="http://www.w3.org/2001/XInclude"
-          xmlns:pos="http://exproc.org/proposed/steps/os"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
           xml:id="p-xsl-formatter">
 <refnamediv>
    <refname>p:xsl-formatter</refname>
@@ -112,8 +107,14 @@ parameters accepted, and their meanings, are implementation dependent.</para>
 
 <para>The RenderX formatter uses its own system property,
 <property>com.renderx.xep.CONFIG</property> to specify the formatter properties.</para>
-
+</refsection>
 </refsection>
 
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-print">xmlcalabash1-print</link>
+module. The jar file from that project must be in the class path in order
+to use this step.</para>
 </refsection>
 </refentry>
