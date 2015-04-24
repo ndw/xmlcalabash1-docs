@@ -5,7 +5,9 @@
 <title>Building XML Calabash</title>
 
 <para>This chapter describes how to build <citetitle>XML
-Calabash</citetitle>.</para>
+Calabash</citetitle>. Most users can just skip this chapter and
+move on to <xref linkend="running"/>; you're only likely care about building
+it if you want to make changes to the source code.</para>
 
 <section xml:id="requirements">
 <title>Requirements</title>
@@ -22,6 +24,14 @@ Calabash</citetitle>.</para>
 </itemizedlist>
 <para>Building the <citetitle>XML Calabash</citetitle> documentation also requires
 GraphViz.</para>
+</section>
+
+<section xml:id="gradle">
+<title>Running Gradle</title>
+
+<para>The relevant <application>Gradle</application> task is
+“<literal>dist</literal>”, which constructs a distribution archive.
+</para>
 </section>
 
 </chapter>
