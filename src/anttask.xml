@@ -270,13 +270,13 @@ Calabash</citetitle> from Apache Ant using the
                                              <td>Where to find the source XML when the implicit
                                                   fileset or input mappers are used</td>
                                              <td>No; default is the Ant project's
-                                                  <tag class="attriute">basedir</tag></td>
+                                                  <tag class="attribute">basedir</tag></td>
                                     </tr>
                                     <tr>
                                              <td>destdir</td>
                                              <td>Where to store the results when the implicit
                                                   fileset or output mappers are used</td>
-                                             <td>No; default is the <tag class="attriute">basedir</tag></td>
+                                             <td>No; default is the <tag class="attribute">basedir</tag></td>
                                     </tr>
                                     <tr>
                                              <td>extension</td>
@@ -703,7 +703,7 @@ Calabash</citetitle> from Apache Ant using the
                                                                <td>name</td>
                                                                <td>Option name, which must be
                                                   unique amongst the ones that are going to be used
-                                                  according to their <tag class="attriute">if</tag> and
+                                                  according to their <tag class="attribute">if</tag> and
                                                   <tag class="attribute">unless</tag> attributes.
                                                   QNames have their prefix matched against
                                                   bindings specified in <tag class="element"
@@ -759,7 +759,7 @@ Calabash</citetitle> from Apache Ant using the
                                                                <td>name</td>
                                                                <td>Parameter name, which must
                                                   be unique amongst the ones that are going to be used
-                                                  according to their <tag class="attriute">if</tag> and
+                                                  according to their <tag class="attribute">if</tag> and
                                                   <tag class="attribute">unless</tag> attributes.
                                                   QNames have their prefix matched
                                                   against bindings specified in <tag class="element"
