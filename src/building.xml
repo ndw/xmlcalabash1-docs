@@ -1,0 +1,27 @@
+<chapter xmlns="http://docbook.org/ns/docbook"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xml:id="building" version="5.0">
+<title>Building XML Calabash</title>
+
+<para>This chapter describes how to build <citetitle>XML
+Calabash</citetitle>.</para>
+
+<section xml:id="requirements">
+<title>Requirements</title>
+
+<para>In order to build
+<citetitle>XML Calabash</citetitle>, you must have installed:</para>
+<itemizedlist>
+<listitem>
+<para>Java 1.7 or later</para>
+</listitem>
+<listitem>
+<para>Gradle 2.3 or later</para>
+</listitem>
+</itemizedlist>
+<para>Building the <citetitle>XML Calabash</citetitle> documentation also requires
+GraphViz.</para>
+</section>
+
+</chapter>
