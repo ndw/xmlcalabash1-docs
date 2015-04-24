@@ -1,0 +1,112 @@
+<refentry xmlns:p="http://www.w3.org/ns/xproc"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns="http://docbook.org/ns/docbook"
+          xml:id="cx-asciidoctor">
+   <refnamediv>
+      <refname>cx:asciidoctor</refname>
+      <refpurpose>Convert AsciiDoc text to XML</refpurpose>
+   </refnamediv>
+   <refsynopsisdiv>
+      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:asciidoctor'])"/>
+   </refsynopsisdiv>
+   <refsection>
+      <title>Description</title>
+
+<para>This step converts
+<link xlink:href="http://www.methods.co.nz/asciidoc/">AsciiDoc</link> documents
+into XML or HTML.</para>
+
+<para>The <tag>cx:asciidoctor</tag> step defines a rather startling number
+of options. The list is intended to be comprehensive with respect to the
+attributes and options that can be passed to the
+<application>asciidoctorj</application> formatter. The names reflect the
+names used by the project, as far as I can tell. They are:
+<simplelist type="inline">
+<member>allow-read-uri</member>
+<member>appendix-caption</member>
+<member>attribute-missing</member>
+<member>attribute-undefined</member>
+<member>backend</member>
+<member>base-dir</member>
+<member>cache-uri</member>
+<member>compact</member>
+<member>compat-mode</member>
+<member>copycss</member>
+<member>data-uri</member>
+<member>docdate</member>
+<member>doctime</member>
+<member>doctype</member>
+<member>eruby</member>
+<member>experimental</member>
+<member>hardbreaks</member>
+<member>header-footer</member>
+<member>hide-uri-scheme</member>
+<member>iconfont-cdn</member>
+<member>iconfont-name</member>
+<member>iconfont-remote</member>
+<member>icons</member>
+<member>iconsdir</member>
+<member>ignore-undefined</member>
+<member>imagesdir</member>
+<member>linkattrs</member>
+<member>linkcss</member>
+<member>localdate</member>
+<member>localtime</member>
+<member>math</member>
+<member>max-include-depth</member>
+<member>nofooter</member>
+<member>numbered</member>
+<member>parse-header-only</member>
+<member>safe</member>
+<member>sectnumlevels</member>
+<member>setanchors</member>
+<member>showtitle</member>
+<member>skip-front-matter</member>
+<member>source-highlighter</member>
+<member>source-language</member>
+<member>stylesdir</member>
+<member>stylesheet</member>
+<member>template-cache</member>
+<member>template-dirs</member>
+<member>template-engine</member>
+<member>title</member>
+<member>toc</member>
+<member>toc-placement</member>
+<member>toc2-placement</member>
+<member>untitled-label</member>
+</simplelist>
+</para>
+
+<para>This step sets the “<literal>header-footer</literal>”
+option to “true” by default because otherwise the resulting XML is often not
+well-formed.</para>
+
+<para>It's quite possible that some of the options are non-sensical in
+this context. You can't, for example, parse and then interrogate the resulting
+Java object that represents document so options designed for that purpose
+aren't going to do anything useful. Options that don't make sense may
+be removed in the future. Once I've figured out which ones they are.</para>
+
+</refsection>
+
+<refsection>
+<title>Usage</title>
+
+<para>To use this step, you must include its declaration in your pipeline.
+You can copy the declaration above or import a library that defines
+this step, such as</para>
+
+<informalfigure>
+<programlisting>http://xmlcalabash.com/extension/steps/asciidoctor.xpl</programlisting>
+</informalfigure>
+
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-asciidoctor">xmlcalabash1-asciidoctor</link>
+module. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
+</refsection>
+</refentry>

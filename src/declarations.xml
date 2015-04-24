@@ -397,6 +397,63 @@
       <p:output port="result"/>
    </p:declare-step>
 
+<p:declare-step type="cx:asciidoctor">
+   <p:input port="source"/>
+   <p:output port="result"/>
+   <p:option name="allow-read-uri" e:type="xsd:boolean"/>
+   <p:option name="attribute-missing" e:type="xsd:string"/>
+   <p:option name="attribute-undefined" e:type="xsd:string"/>
+   <p:option name="backend" e:type="xsd:string"/>
+   <p:option name="title" e:type="xsd:string"/>
+   <p:option name="doctype" e:type="xsd:string"/>
+   <p:option name="imagesdir" e:type="xsd:string"/>
+   <p:option name="source-language" e:type="xsd:string"/>
+   <p:option name="source-highlighter" e:type="xsd:string"/>
+   <p:option name="max-include-depth" e:type="xsd:integer"/>
+   <p:option name="sectnumlevels" e:type="xsd:integer"/>
+   <p:option name="hardbreaks" e:type="xsd:boolean"/>
+   <p:option name="cache-uri" e:type="xsd:boolean"/>
+   <p:option name="hide-uri-scheme" e:type="xsd:boolean"/>
+   <p:option name="appendix-caption" e:type="xsd:string"/>
+   <p:option name="math" e:type="xsd:string"/>
+   <p:option name="skip-front-matter" e:type="xsd:boolean"/>
+   <p:option name="setanchors" e:type="xsd:boolean"/>
+   <p:option name="untitled-label" e:type="xsd:string"/>
+   <p:option name="ignore-undefined" e:type="xsd:boolean"/>
+   <p:option name="toc-placement" e:type="xsd:string"/>
+   <p:option name="toc2-placement" e:type="xsd:string"/>
+   <p:option name="showtitle" e:type="xsd:boolean"/>
+   <p:option name="toc" e:type="xsd:boolean"/>
+   <p:option name="localdate" e:type="xsd:dateTime"/>
+   <p:option name="localtime" e:type="xsd:dateTime"/>
+   <p:option name="docdate" e:type="xsd:dateTime"/>
+   <p:option name="doctime" e:type="xsd:dateTime"/>
+   <p:option name="stylesheet" e:type="xsd:string"/>
+   <p:option name="stylesdir" e:type="xsd:string"/>
+   <p:option name="linkcss" e:type="xsd:boolean"/>
+   <p:option name="copycss" e:type="xsd:boolean"/>
+   <p:option name="icons" e:type="xsd:string"/>
+   <p:option name="iconfont-remote" e:type="xsd:boolean"/>
+   <p:option name="iconfont-cdn" e:type="xsd:anyURI"/>
+   <p:option name="iconfont-name" e:type="xsd:string"/>
+   <p:option name="data-uri" e:type="xsd:boolean"/>
+   <p:option name="iconsdir" e:type="xsd:string"/>
+   <p:option name="numbered" e:type="xsd:boolean"/>
+   <p:option name="linkattrs" e:type="xsd:boolean"/>
+   <p:option name="experimental" e:type="xsd:boolean"/>
+   <p:option name="nofooter" e:type="xsd:boolean"/>
+   <p:option name="compat-mode" e:type="xsd:string"/>
+   <p:option name="header-footer" e:type="xsd:boolean" select="'true'"/>
+   <p:option name="template-dirs" e:type="xsd:string"/>
+   <p:option name="template-engine" e:type="xsd:string"/>
+   <p:option name="safe" e:type="xsd:string"/>
+   <p:option name="eruby" e:type="xsd:string"/>
+   <p:option name="compact" e:type="xsd:boolean"/>
+   <p:option name="base-dir" e:type="xsd:string"/>
+   <p:option name="template-cache" e:type="xsd:boolean"/>
+   <p:option name="parse-header-only" e:type="xsd:boolean"/>
+</p:declare-step>
+
     <p:declare-step type="cx:collection-manager">
       <p:input port="source" sequence="true"/>
       <p:output port="result" sequence="true" primary="false"/>

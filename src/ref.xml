@@ -112,6 +112,7 @@
 <reference xml:id="cx-steps">
 <title>XML Calabash Extension Steps</title>
 
+<xi:include href="steps/cx-asciidoctor.xml"/>
 <xi:include href="steps/cx-collection-manager.xml"/>
 <xi:include href="steps/cx-css-formatter.xml"/>
 <xi:include href="steps/cx-delta-xml.xml"/>
