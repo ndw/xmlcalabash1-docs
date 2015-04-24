@@ -110,4 +110,11 @@ a <tag>p:viewport</tag>, for example:</para>
 module. The jar file from that project must be in the class path in order
 to use this step.</para>
 </refsection>
+
+<refsection>
+<title>Notices</title>
+<para>This product includes software developed by 
+JEulid (<link xlink:href="http://www.sourceforge.net/projects/jeuclid/"/>).
+</para>
+</refsection>
 </refentry>
