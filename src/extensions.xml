@@ -12,21 +12,15 @@ property names in <function>p:system-property</function>:
 </para>
 
 <variablelist>
-<varlistentry><term>cx:transparent-json</term>
+<varlistentry><term>cx:allow-text-results</term>
 <listitem>
 <para>Returns “<literal>true</literal>” if the
-<link linkend="ext.transparent-json">transparent JSON</link> extension
+<link linkend="ext.allow-text-results">allow text results</link> extension
 is enabled, “<literal>false</literal>” otherwise.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>cx:json-flavor</term>
-<listitem>
-<para>Returns the flavor of JSON returned by the transparent JSON extension,
-if it's enabled.
-</para>
-</listitem>
-</varlistentry>
+
 <varlistentry><term>cx:general-values</term>
 <listitem>
 <para>Returns “<literal>true</literal>” if the
@@ -35,22 +29,7 @@ is enabled, “<literal>false</literal>” otherwise.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>cx:xpointer-on-text</term>
-<listitem>
-<para>Returns “<literal>true</literal>” if the
-<link linkend="ext.xpointer-on-text">XPointer on text</link> extension
-is enabled, “<literal>false</literal>” otherwise.
-</para>
-</listitem>
-</varlistentry>
-<varlistentry><term>cx:use-xslt-1.0</term>
-<listitem>
-<para>Returns “<literal>true</literal>” if the
-<link linkend="ext.use-xslt-10">Use XSLT 1.0</link> extension
-is enabled, “<literal>false</literal>” otherwise.
-</para>
-</listitem>
-</varlistentry>
+
 <varlistentry><term>cx:html-serializer</term>
 <listitem>
 <para>Returns “<literal>true</literal>” if the
@@ -59,15 +38,52 @@ is enabled, “<literal>false</literal>” otherwise.
 </para>
 </listitem>
 </varlistentry>
+
+<varlistentry><term>cx:json-flavor</term>
+<listitem>
+<para>Returns the flavor of JSON returned by the transparent JSON extension,
+if it's enabled.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>cx:saxon-edition</term>
+<listitem>
+<para>Returns the edition of the underlying Saxon processor (“he”, “pe”, or “ee”).
+</para>
+</listitem>
+</varlistentry>
+
 <varlistentry><term>cx:saxon-version</term>
 <listitem>
 <para>Returns the version of the underlying Saxon processor.
 </para>
 </listitem>
 </varlistentry>
-<varlistentry><term>cx:saxon-edition</term>
+
+<varlistentry><term>cx:transparent-json</term>
 <listitem>
-<para>Returns the edition of the underlying Saxon processor (“he”, “pe”, or “ee”).
+<para>Returns “<literal>true</literal>” if the
+<link linkend="ext.transparent-json">transparent JSON</link> extension
+is enabled, “<literal>false</literal>” otherwise.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>cx:use-xslt-1.0</term>
+<listitem>
+<para>Returns “<literal>true</literal>” if the
+<link linkend="ext.use-xslt-10">Use XSLT 1.0</link> extension
+is enabled, “<literal>false</literal>” otherwise.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>cx:xpointer-on-text</term>
+<listitem>
+<para>Returns “<literal>true</literal>” if the
+<link linkend="ext.xpointer-on-text">XPointer on text</link> extension
+is enabled, “<literal>false</literal>” otherwise.
 </para>
 </listitem>
 </varlistentry>
@@ -381,6 +397,23 @@ this way, but maybe if you're playing in the APIs…)</para>
 effect when the HTML serializer is used.</para>
 </listitem>
 </orderedlist>
+</section>
+
+<section xml:id="ext.allow-text-results">
+<title>Allow text results extension</title>
+
+<para>If the allow text results extension is enabled,
+<tag>p:xquery</tag> and
+<tag>p:xslt</tag>
+steps may return atomic values and text documents (documents that
+aren't XML). These documents will be encoded in XML as
+<tag>c:result</tag> documents with a
+<tag class="attribute">content-type</tag> attribute that identifies
+them as being of type
+“<literal>text/plain</literal>” and a
+<tag class="attribute">cx:decode</tag> attribute with the value
+“<literal>true</literal>”. The <tag>p:store</tag> step will serialize
+them as text.</para>
 </section>
 </section>
 

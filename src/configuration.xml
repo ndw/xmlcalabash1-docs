@@ -423,31 +423,17 @@ for all URIs accessed.</para>
   <entry><literal>-X</literal><replaceable>extname</replaceable></entry>
 </row>
 <row>
-  <entry morerows="5" valign="top">Java system properties:</entry>
-  <entry><property>com.xmlcalabash.general-values</property>=<replaceable>boolean</replaceable></entry>
-</row>
-<row>
-  <entry><property>com.xmlcalabash.xpointer-on-text</property>=<replaceable>boolean</replaceable></entry>
-</row>
-<row>
-  <entry><property>com.xmlcalabash.transparent-json</property>=<replaceable>boolean</replaceable></entry>
-</row>
-<row>
-  <entry><property>com.xmlcalabash.json-flavor</property>=<replaceable>flavor</replaceable></entry>
-</row>
-<row>
-  <entry><property>com.xmlcalabash.use-xslt-10</property>=<replaceable>boolean</replaceable></entry>
-</row>
-<row>
-  <entry><property>com.xmlcalabash.html-serializer</property>=<replaceable>boolean</replaceable></entry>
+  <entry valign="top">Java system properties:</entry>
+  <entry><property>com.xmlcalabash.<replaceable>extname</replaceable></property>=<replaceable>value</replaceable></entry>
 </row>
 <row>
   <entry>XML configuration:</entry>
-  <entry><tag class="emptytag">cc:extension <tag class="attribute">name</tag>="<tag class="attvalue"><replaceable>extensions-name</replaceable></tag>" <tag class="attribute">value</tag>="<tag class="attvalue"><replaceable>boolean</replaceable></tag>"</tag></entry>
+  <entry><tag class="emptytag">cc:extension <tag class="attribute">name</tag>="<tag class="attvalue"><replaceable>extensions-name</replaceable></tag>" <tag class="attribute">value</tag>="<tag class="attvalue"><replaceable>value</replaceable></tag>"</tag></entry>
 </row>
 <row>
   <entry>Ant task:</entry>
   <entry><tag class="emptytag">calabash
+           <tag class="attribute">allowTextResults</tag>="<tag class="attvalue"><replaceable>Ant boolean</replaceable></tag>"
            <tag class="attribute">generalValues</tag>="<tag class="attvalue"><replaceable>Ant boolean</replaceable></tag>"
            <tag class="attribute">xPointerOnText</tag>="<tag class="attvalue"><replaceable>Ant boolean</replaceable></tag>"
            <tag class="attribute">transparentJSON</tag>="<tag class="attvalue"><replaceable>Ant boolean</replaceable></tag>"
@@ -460,14 +446,23 @@ for all URIs accessed.</para>
 </informaltable>
 
 <para>Valid extension names are
+“<literal><link linkend="ext.allow-text-results">allow-text-results</link></literal>”,
 “<literal><link linkend="ext.general-values">general-values</link></literal>”,
-“<literal><link linkend="ext.xpointer-on-text">xpointer-on-text</link></literal>”,
+“<literal><link linkend="ext.html-serializer">html-serializer</link></literal>”,
+“<literal><link linkend="ext.transparent-json">json-flavor</link></literal>”,
 “<literal><link linkend="ext.transparent-json">transparent-json</link></literal>”,
-“<literal>json-flavor</literal>”,
-“<literal><link linkend="ext.use-xslt-10">use-xslt-10</link></literal>”,
-and
-“<literal><link linkend="ext.html-serializer">html-serializer</link></literal>”.</para>
+“<literal><link linkend="ext.use-xslt-10">use-xslt-10</link></literal>”, and
+“<literal><link linkend="ext.xpointer-on-text">xpointer-on-text</link></literal>”.
+</para>
 
+<note>
+<para>The <literal>json-flavor</literal> extension uses a special command-line
+syntax:
+<literal>--extension=json-flavor=<replaceable>flavor</replaceable></literal>
+or
+<literal>-Xjson-flavor=<replaceable>flavor</replaceable></literal>.
+</para>
+</note>
 </section>
 
 <section xml:id="cfg.binding">
