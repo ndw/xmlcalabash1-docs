@@ -3,7 +3,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>11. Extension</title>
       <meta charset="utf-8" />
-      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.6" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.8" />
       <link rel="stylesheet" type="text/css" href="css/default.css" />
       <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" />
       <link href="css/db-prism.css" rel="stylesheet" />
@@ -44,30 +44,16 @@
                               </tr>
                               <tr>
                                  <td valign="top">Java system properties:</td>
-                                 <td><span class="property">com.xmlcalabash.general-values</span>=<em class="replaceable"><code>boolean</code></em></td>
-                              </tr>
-                              <tr>
-                                 <td><span class="property">com.xmlcalabash.xpointer-on-text</span>=<em class="replaceable"><code>boolean</code></em></td>
-                              </tr>
-                              <tr>
-                                 <td><span class="property">com.xmlcalabash.transparent-json</span>=<em class="replaceable"><code>boolean</code></em></td>
-                              </tr>
-                              <tr>
-                                 <td><span class="property">com.xmlcalabash.json-flavor</span>=<em class="replaceable"><code>flavor</code></em></td>
-                              </tr>
-                              <tr>
-                                 <td><span class="property">com.xmlcalabash.use-xslt-10</span>=<em class="replaceable"><code>boolean</code></em></td>
-                              </tr>
-                              <tr>
-                                 <td><span class="property">com.xmlcalabash.html-serializer</span>=<em class="replaceable"><code>boolean</code></em></td>
+                                 <td><span class="property">com.xmlcalabash.<em class="replaceable"><code>extname</code></em></span>=<em class="replaceable"><code>value</code></em></td>
                               </tr>
                               <tr>
                                  <td>XML configuration:</td>
-                                 <td><code class="tag-emptytag">&lt;cc:extension name="<em class="replaceable"><code>extensions-name</code></em>" value="<em class="replaceable"><code>boolean</code></em>"/&gt;</code></td>
+                                 <td><code class="tag-emptytag">&lt;cc:extension name="<em class="replaceable"><code>extensions-name</code></em>" value="<em class="replaceable"><code>value</code></em>"/&gt;</code></td>
                               </tr>
                               <tr>
                                  <td>Ant task:</td>
                                  <td><code class="tag-emptytag">&lt;calabash
+                                       allowTextResults="<em class="replaceable"><code>Ant boolean</code></em>"
                                        generalValues="<em class="replaceable"><code>Ant boolean</code></em>"
                                        xPointerOnText="<em class="replaceable"><code>Ant boolean</code></em>"
                                        transparentJSON="<em class="replaceable"><code>Ant boolean</code></em>"
@@ -80,14 +66,25 @@
                      </div>
                   </figure>
                   <p>Valid extension names are
+                     “<code class="literal"><a href="langext.html#ext.allow-text-results">allow-text-results</a></code>”,
                      “<code class="literal"><a href="langext.html#ext.general-values">general-values</a></code>”,
-                     “<code class="literal"><a href="langext.html#ext.xpointer-on-text">xpointer-on-text</a></code>”,
+                     “<code class="literal"><a href="langext.html#ext.html-serializer">html-serializer</a></code>”,
+                     “<code class="literal"><a href="langext.html#ext.transparent-json">json-flavor</a></code>”,
                      “<code class="literal"><a href="langext.html#ext.transparent-json">transparent-json</a></code>”,
-                     “<code class="literal">json-flavor</code>”,
-                     “<code class="literal"><a href="langext.html#ext.use-xslt-10">use-xslt-10</a></code>”,
-                     and
-                     “<code class="literal"><a href="langext.html#ext.html-serializer">html-serializer</a></code>”.
+                     “<code class="literal"><a href="langext.html#ext.use-xslt-10">use-xslt-10</a></code>”, and
+                     “<code class="literal"><a href="langext.html#ext.xpointer-on-text">xpointer-on-text</a></code>”.
+                     
                   </p>
+                  <div class="note admonition">
+                     <h3>Note</h3>
+                     <p>The <code class="literal">json-flavor</code> extension uses a special command-line
+                        syntax:
+                        <code class="literal">--extension=json-flavor=<em class="replaceable"><code>flavor</code></em></code>
+                        or
+                        <code class="literal">-Xjson-flavor=<em class="replaceable"><code>flavor</code></em></code>.
+                        
+                     </p>
+                  </div>
                </section>
             </div>
          </div>

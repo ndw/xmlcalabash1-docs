@@ -3,7 +3,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>3. Language Extensions</title>
       <meta charset="utf-8" />
-      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.6" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.8" />
       <link rel="stylesheet" type="text/css" href="css/default.css" />
       <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script><link href="css/prism.css" rel="stylesheet" />
       <link href="css/db-prism.css" rel="stylesheet" />
@@ -491,6 +491,24 @@
                            </li>
                         </ol>
                      </div>
+                  </section>
+                  <section id="ext.allow-text-results" class="section">
+                     <div class="section-titlepage">
+                        <h3>3.6. Allow text results extension</h3>
+                     </div>
+                     <p>If the allow text results extension is enabled,
+                        <code class="tag-element">p:xquery</code> and
+                        <code class="tag-element">p:xslt</code>
+                        steps may return atomic values and text documents (documents that
+                        aren't XML). These documents will be encoded in XML as
+                        <code class="tag-element">c:result</code> documents with a
+                        <code class="tag-attribute">content-type</code> attribute that identifies
+                        them as being of type
+                        “<code class="literal">text/plain</code>” and a
+                        <code class="tag-attribute">cx:decode</code> attribute with the value
+                        “<code class="literal">true</code>”. The <code class="tag-element">p:store</code> step will serialize
+                        them as text.
+                     </p>
                   </section>
                </section>
             </div>
