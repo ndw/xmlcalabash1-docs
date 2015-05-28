@@ -175,27 +175,6 @@
                      <em class="citetitle">XML Calabash</em> version 1.2.<em class="replaceable"><code>x</code></em>,
                      etc.
                   </p>
-                  <p>Assuming you have the appropriate jar files on your classpath, you can run
-                     <em class="citetitle">XML Calabash</em> like this:
-                  </p><pre class="screen line-numbers">java <em class="replaceable"><code>java-options</code></em> com.xmlcalabash.drivers.Main <em class="replaceable"><code>xml-calabash-options</code></em> <em class="replaceable"><code>pipeline.xpl</code></em></pre><p>For example:</p><pre class="screen line-numbers"><code class="prompt">$</code> <strong class="userinput"><code>cd calabash-<em class="replaceable"><code>version</code></em></code></strong>
-<code class="prompt">$</code> <strong class="userinput"><code>java -jar calabash.jar xpl/pipe.xpl</code></strong>
-<code class="computeroutput">&lt;doc xmlns:p="http://www.w3.org/ns/xproc"&gt;
-Congratulations! You've run your first pipeline!
-&lt;/doc&gt;</code></pre><p>You can use
-                     <code class="option">-i <em class="replaceable"><code>port</code></em>=<em class="replaceable"><code>uri</code></em></code>
-                     to change the inputs and
-                     <code class="option">-o <em class="replaceable"><code>port</code></em>=<em class="replaceable"><code>file</code></em></code>
-                     to change the output location.
-                  </p>
-                  <p>For example:</p><pre class="screen line-numbers"><code class="prompt">$</code> <strong class="userinput"><code>java -jar calabash.jar -i source=xpl/pipe.xpl -o result=/tmp/out.xml xpl/pipe.xpl</code></strong></pre><p>That will run <code class="filename">xpl/pipe.xpl</code> using <code class="filename">xpl/pipe.xpl</code>
-                     as the input and writing the result to <code class="filename">/tmp/out.xml</code>.
-                  </p>
-                  <p>If you run java -jar calabash.jar with no options, it will
-                     print a short usage summary.
-                  </p>
-                  <p>Throughout this book, we assume that the command <em class="replaceable"><code>calabash</code></em>
-                     will run Java with the correct class path and other arguments.
-                  </p>
                </section>
             </div>
          </div>

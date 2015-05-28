@@ -14,7 +14,7 @@
             <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="navheader">
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
-                     <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="javasetup.html" title="1 .  Setting up the environment"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  2 .  Running XML Calabash" href="running.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="3 .  What do I do if it all goes wrong?" href="help.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
+                     <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="javasetup.html" title="1 .  Setting up the environment"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  2 .  Running XML Calabash" href="running.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="3 .  Setting up logging" href="logging.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
                      <td align="right"><i>XML Calabash Reference</i> (Version 0.19)
                      </td>
                   </tr>
@@ -25,7 +25,31 @@
                   <div class="section-titlepage">
                      <h2>2. The command line</h2>
                   </div>
-                  <p>The following synopsis describes the <em class="citetitle">XML Calabash</em> command line:
+                  <p>Assuming you have the appropriate jar files on your classpath, you can run
+                     <em class="citetitle">XML Calabash</em> like this:
+                  </p><pre class="screen line-numbers">java <em class="replaceable"><code>java-options</code></em> com.xmlcalabash.drivers.Main <em class="replaceable"><code>xml-calabash-options</code></em> <em class="replaceable"><code>pipeline.xpl</code></em></pre><p>For example:</p><pre class="screen line-numbers"><code class="prompt">$</code> <strong class="userinput"><code>cd xmlcalabash-1.1.3</code></strong>
+<code class="prompt">$</code> <strong class="userinput"><code>java -jar xmlcalabash-1.1.3.jar xpl/pipe.xpl</code></strong>
+<code class="computeroutput">&lt;doc&gt;
+Congratulations! You've run your first pipeline!
+&lt;/doc&gt;</code></pre><p>You can use
+                     <code class="option">-i <em class="replaceable"><code>port</code></em>=<em class="replaceable"><code>uri</code></em></code>
+                     to change the inputs and
+                     <code class="option">-o <em class="replaceable"><code>port</code></em>=<em class="replaceable"><code>file</code></em></code>
+                     to change the output location.
+                  </p>
+                  <p>For example:</p><pre class="screen line-numbers"><code class="prompt">$</code> <strong class="userinput"><code>java -jar xmlcalabash-1.1.3.jar -i source=xpl/pipe.xpl -o result=/tmp/out.xml xpl/pipe.xpl</code></strong></pre><p>That will run <code class="filename">xpl/pipe.xpl</code> using <code class="filename">xpl/pipe.xpl</code>
+                     as the input and writing the result to <code class="filename">/tmp/out.xml</code>.
+                  </p>
+                  <p>If you run
+                     <strong class="userinput"><code>java -jar xmlcalabash-1.1.3.jar</code></strong> with no options, it will
+                     print a short usage summary.
+                  </p>
+                  <p>Throughout this book, we assume that the command
+                     <em class="replaceable"><code>calabash</code></em> will run Java with the correct
+                     class path and other arguments.
+                  </p>
+                  <p>In all its gory detail, the following synopsis describes the
+                     <em class="citetitle">XML Calabash</em> command line:
                   </p>
                   <div class="cmdsynopsis" style="margin-top: 1em; text-indent: -0.66in; margin-left: 0.66in;"><code class="command"><em class="replaceable"><code>calabash</code></em></code>  [
                      { -P  |   --saxon-processor }
@@ -117,12 +141,12 @@
                   <td width="40%" align="left"><a title="1 .  Setting up the environment" href="javasetup.html"><img src="img/prev.png" alt="Prev" border="0" /></a> 
                   </td>
                   <td width="20%" align="center"><a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a></td>
-                  <td width="40%" align="right"> <a title="3 .  What do I do if it all goes wrong?" href="help.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
+                  <td width="40%" align="right"> <a title="3 .  Setting up logging" href="logging.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
                </tr>
                <tr>
                   <td width="40%" align="left">1 .  Setting up the environment </td>
                   <td width="20%" align="center"><a title="Chapter  2 .  Running XML Calabash" href="running.html"><img src="img/up.png" alt="Up" border="0" /></a></td>
-                  <td width="40%" align="right"> 3 .  What do I do if it all goes wrong?</td>
+                  <td width="40%" align="right"> 3 .  Setting up logging</td>
                </tr>
             </table>
          </div>
