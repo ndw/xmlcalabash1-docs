@@ -11,22 +11,22 @@
 <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 <p:import href="../build/docbook/xslt/base/pipelines/docbook.xpl"/>
 
-<cx:java-properties name="props"
-                    href="../resources/etc/version.properties"/>
+<cx:java-properties name="props" href="../gradle.properties"/>
 
 <p:template name="templ">
   <p:input port="template">
     <p:inline exclude-inline-prefixes="c cx l">
       <wrapper xmlns="http://docbook.org/ns/docbook">
-        <releaseinfo role="xml-calabash-version">{$ver}</releaseinfo>
+        <releaseinfo>{$version}</releaseinfo>
+        <releaseinfo role="xml-calabash-version">{$xmlcalabash.version}</releaseinfo>
         <pubdate>{current-date()}</pubdate>
       </wrapper>
     </p:inline>
   </p:input>
-  <p:with-param name="ver"
-                select="concat(c:param-set/c:param[@name='version.major']/@value,'.',
-                               c:param-set/c:param[@name='version.minor']/@value,'.',
-                               c:param-set/c:param[@name='version.release']/@value)"/>
+  <p:with-param name="version"
+                select="c:param-set/c:param[@name='version']/@value"/>
+  <p:with-param name="xmlcalabash.version"
+                select="c:param-set/c:param[@name='xmlcalabash.version']/@value"/>
 </p:template>
 
 <p:insert match="/db:book/db:info" position="last-child"
@@ -37,6 +37,7 @@
   <p:input port="insertion" select="/*/*">
     <p:pipe step="templ" port="result"/>
   </p:input>
+  <p:log port="result" href="/tmp/book.xml"/>
 </p:insert>
 
 <p:xinclude cx:trim="true" fixup-xml-base="true"/>
@@ -52,6 +53,10 @@
 <dbp:docbook name="format-docbook" format="html" style="style/refhtml.xsl"
              return-secondary="true">
   <p:with-param name="base.dir" select="'build/ref/'"/>
+  <p:with-param name="xmlcalabash.version"
+       select="string(c:param-set/c:param[@name='xmlcalabash.version']/@value)">
+    <p:pipe step="props" port="result"/>
+  </p:with-param>
 </dbp:docbook>
 
 <p:sink/>

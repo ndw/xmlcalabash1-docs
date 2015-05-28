@@ -18,6 +18,7 @@
 <xsl:param name="html.stylesheets" select="'css/xproc.css'"/>
 <xsl:param name="default.table.column.widths" select="0"/>
 <xsl:param name="syntax-highlighter" select="'1'"/>
+<xsl:param name="xmlcalabash.version" required="yes"/>
 
 <xsl:param name="linenumbering" as="element()*">
 <ln path="literallayout" everyNth="2" width="3" separator=" " padchar=" " minlines="3"/>
@@ -306,6 +307,10 @@
     <xsl:apply-templates/>
     <xsl:text>.</xsl:text>
   </p>
+</xsl:template>
+
+<xsl:template match="processing-instruction('ver')">
+  <xsl:value-of select="$xmlcalabash.version"/>
 </xsl:template>
 
 </xsl:stylesheet>

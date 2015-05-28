@@ -8,20 +8,22 @@
       version="5.0">
 <?dbhtml filename="index.html"?>
 <info>
+  <!-- N.B. Several info elements are injected by the processing pipeline.
+       You cannot tell from this file what version this book is or what
+       version of XML Calabash it covers.
+  -->
   <mediaobject>
     <alt>[Cover]</alt>
     <imageobject>
       <imagedata fileref="../img/cover.png" align="left"/>
     </imageobject>
   </mediaobject>
-
   <title>XML Calabash Reference</title>
   <author>
     <personname>
       <firstname>Norman</firstname><surname>Walsh</surname>
     </personname>
   </author>
-  <releaseinfo>0.19</releaseinfo>
   <copyright>
     <year>2011</year>
     <year>2012</year>
