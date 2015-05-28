@@ -24,7 +24,7 @@
     </p:inline>
   </p:input>
   <p:with-param name="version"
-                select="c:param-set/c:param[@name='version']/@value"/>
+                select="c:param-set/c:param[@name='release.version']/@value"/>
   <p:with-param name="xmlcalabash.version"
                 select="c:param-set/c:param[@name='xmlcalabash.version']/@value"/>
 </p:template>
