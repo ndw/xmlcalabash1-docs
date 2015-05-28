@@ -150,6 +150,10 @@ modules with version numbers
 of the form 1.2.<replaceable>x</replaceable> with
 <citetitle>XML Calabash</citetitle> version 1.2.<replaceable>x</replaceable>,
 etc.</para>
+</section>
+
+<section xml:id="cmdline">
+<title>The command line</title>
 
 <para>Assuming you have the appropriate jar files on your classpath, you can run
 <citetitle>XML Calabash</citetitle> like this:</para>
@@ -158,9 +162,9 @@ etc.</para>
 
 <para>For example:</para>
 
-<screen><prompt>$</prompt> <userinput>cd calabash-<replaceable>version</replaceable></userinput>
-<prompt>$</prompt> <userinput>java -jar calabash.jar xpl/pipe.xpl</userinput>
-<computeroutput>&lt;doc xmlns:p="http://www.w3.org/ns/xproc"&gt;
+<screen><prompt>$</prompt> <userinput>cd xmlcalabash-<?ver?></userinput>
+<prompt>$</prompt> <userinput>java -jar xmlcalabash-<?ver?>.jar xpl/pipe.xpl</userinput>
+<computeroutput>&lt;doc&gt;
 Congratulations! You've run your first pipeline!
 &lt;/doc&gt;</computeroutput></screen>
 
@@ -172,22 +176,21 @@ to change the output location.</para>
 
 <para>For example:</para>
 
-<screen><prompt>$</prompt> <userinput>java -jar calabash.jar -i source=xpl/pipe.xpl -o result=/tmp/out.xml xpl/pipe.xpl</userinput></screen>
+<screen><prompt>$</prompt> <userinput>java -jar xmlcalabash-<?ver?>.jar -i source=xpl/pipe.xpl -o result=/tmp/out.xml xpl/pipe.xpl</userinput></screen>
 
 <para>That will run <filename>xpl/pipe.xpl</filename> using <filename>xpl/pipe.xpl</filename>
 as the input and writing the result to <filename>/tmp/out.xml</filename>.</para>
 
-<para>If you run java -jar calabash.jar with no options, it will
+<para>If you run
+<userinput>java -jar xmlcalabash-<?ver?>.jar</userinput> with no options, it will
 print a short usage summary.</para>
 
-<para>Throughout this book, we assume that the command <replaceable>calabash</replaceable>
-will run Java with the correct class path and other arguments.</para>
-</section>
+<para>Throughout this book, we assume that the command
+<replaceable>calabash</replaceable> will run Java with the correct
+class path and other arguments.</para>
 
-<section xml:id="cmdline">
-<title>The command line</title>
-
-<para>The following synopsis describes the <citetitle>XML Calabash</citetitle> command line:</para>
+<para>In all its gory detail, the following synopsis describes the
+<citetitle>XML Calabash</citetitle> command line:</para>
 
 <cmdsynopsis>
   <command><replaceable>calabash</replaceable></command>
@@ -373,6 +376,64 @@ mean.</para>
 <para>There are three different ways to select the pipeline to run: you can specify the URI of
 the pipeline document on the commandline, you can specify one or more step types on the commandline,
 or you can specify the URI of the pipeline document in the configfile.</para>
+</section>
+
+<section xml:id="logging">
+<title>Setting up logging</title>
+
+<para>If you're running <citetitle>XML Calabash</citetitle> on the
+command line, or through a shell script or batch file,
+it's possible to get it to print a lot of additional information as it
+runs. If you're running in an embedded environment like an editor, it's
+less clear to me how (or if) logging messages are available, but it's
+possible.</para>
+
+<para>To start off with, let me come clean, the Java logging ecosystem
+is messy. There are a bunch of different API standards and a bunch of
+different implementations and a bunch of bunches of other bunches of
+things. As far as I can tell.</para>
+
+<para>I believe that I've configured <citetitle>XML Calabash</citetitle>
+in such a way that those familiar with the dark arts of Java logging can
+swap out my logging implementation for one of their own choosing. If I'm
+wrong, I'd be happy if you tell me. I don't know, I can't tell, and
+I'm not even going to try to explain it. I think it's just a matter
+of swapping some implementation jar files. Maybe.</para>
+
+<para>I ship <citetitle>XML Calabash</citetitle> with the
+<link xlink:href="http://slf4j.org/">SLF4J</link> facade and
+the
+<link xlink:href="https://logging.apache.org/log4j/2.x/">Apache Log4j 2</link>
+implementation.</para>
+
+<para>What this means to you is that you can change the logging messages
+by putting a Log4j
+<link xlink:href="https://logging.apache.org/log4j/2.x/manual/configuration.html">configuration file</link> on the classpath <emphasis>before</emphasis>
+<filename>xmlcalabash-<?ver?>.jar</filename>.</para>
+
+<para>Here's the one that I use:</para>
+
+<programlisting><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_ERR">
+      <PatternLayout pattern="%-5level: %msg%n" />
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Logger name="com.xmlcalabash" level="debug" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger>
+    <Root level="warn">
+      <AppenderRef ref="Console" />
+    </Root>
+  </Loggers>
+</Configuration>]]></programlisting>
+
+<para>In order to keep the logger happy if you <emphasis>don't</emphasis>
+have a logger configuration file on your classpath,
+<citetitle>XML Calabash</citetitle> ships with a default one that
+only logs “info” messages.</para>
 </section>
 
 <section xml:id="help">
