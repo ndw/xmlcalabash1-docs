@@ -26,24 +26,25 @@
 library. It converts MathML markup to SVG.</para>
 
 <para>The following parameters are recognized:
-antialias,
-antialias-minsize,
-debug,
-display,
-fonts-doublestruck,
-fonts-fraktur,
-fonts-monospaced,
-fonts-sansserif,
-fonts-script,
-fonts-serif,
-mathbackground,
-mathcolor,
-mathsize,
-mfrac-keep-scriptlevel,
-scriptlevel,
-scriptminsize,
-and
-scriptsizemultiplier. They map to the underlying JEuclid parameters
+<simplelist type="inline">
+<member>antialias</member>
+<member>antialias-minsize</member>
+<member>debug</member>
+<member>display</member>
+<member>fonts-doublestruck</member>
+<member>fonts-fraktur</member>
+<member>fonts-monospaced</member>
+<member>fonts-sansserif</member>
+<member>fonts-script</member>
+<member>fonts-serif</member>
+<member>mathbackground</member>
+<member>mathcolor</member>
+<member>mathsize</member>
+<member>mfrac-keep-scriptlevel</member>
+<member>scriptlevel</member>
+<member>scriptminsize</member>
+<member>scriptsizemultiplie</member>
+</simplelist>. They map to the underlying JEuclid parameters
 in the obvious way. The string value specified for each parameter is
 interpreted directly by JEuclid through the
 <methodname>fromString</methodname> method.
