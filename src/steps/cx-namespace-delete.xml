@@ -8,15 +8,67 @@
           xmlns:xi="http://www.w3.org/2001/XInclude"
           xmlns:pos="http://exproc.org/proposed/steps/os"
           xml:id="cx-namespace-delete">
-   <refnamediv>
-      <refname>cx:namespace-delete</refname>
-      <refpurpose>Delete namespace declarations</refpurpose>
-   </refnamediv>
-   <refsynopsisdiv>
-      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:namespace-delete'])"/>
-   </refsynopsisdiv>
-   <refsection>
-      <title>Description</title>
-      <para>TBD.</para>
-   </refsection>
+<refnamediv>
+  <refname>cx:namespace-delete</refname>
+  <refpurpose>Delete namespace declarations</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:namespace-delete'])"/>
+</refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
+
+<para>This step <emphasis>aggressively</emphasis> removes all of the
+namespaces identified by the specified prefixes from the document. The
+prefixes must be in-scope at the point where the
+<tag>cx:namespace-delete</tag> element occurs.</para>
+
+<para>Consider this document:</para>
+
+<programlisting><![CDATA[<doc xmlns:ns1="http://example.com/ns1"
+     xmlns:ns2="http://example.com/ns2">
+  <para ns1:attr="value">This document has
+unspecified semantics with respect to
+<ns1:item>{ns1:foo}</ns1:item> and
+<ns2:item>{ns2:bar}</ns2:item>.</para>
+</doc>]]></programlisting>
+
+<para>If the following step is used to remove the
+<quote><literal>ns1</literal></quote> prefix,</para>
+
+<programlisting><![CDATA[<cx:namespace-delete xmlns:ns1="http://example.com/ns1"
+                     prefixes="ns1"/>]]></programlisting>
+
+<para>the resulting document will be:</para>
+
+<programlisting><![CDATA[<doc xmlns:ns2="http://example.com/ns2">
+  <para attr="value">This document has
+unspecified semantics with respect to
+<item>{ns1:foo}</item> and
+<ns2:item>{ns2:bar}</ns2:item>.</para>
+</doc>]]></programlisting>
+
+<para>Observe that the namespace declaration has been stripped off both
+elements and attributes. If prefixes occur in places, such as attribute
+values or text content, not “visible” to the XML specification,
+they are not changed.</para>
+
+<note><para>Removing namespace declarations from attributes can
+introduce well-formedness problems. For example, if the
+<quote><literal>para</literal></quote> element in the example had
+an <tag class="attribute">attr</tag> attribute in no namespace, deleting
+<quote><literal>ns1</literal></quote> would leave two attributes with the
+same name on the element. This is not well-formed and the step would fail.
+</para>
+
+<para>This problem can be addressed by first deleting the offending attributes,
+perhaps like so:</para>
+
+<programlisting><![CDATA[<p:delete xmlns:ns1="http://example.com/ns1"
+          match="*[@ns1:attr]/@attr"/>]]></programlisting>
+</note>
+
+</refsection>
 </refentry>

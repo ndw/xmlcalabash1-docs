@@ -8,15 +8,106 @@
           xmlns:xi="http://www.w3.org/2001/XInclude"
           xmlns:pos="http://exproc.org/proposed/steps/os"
           xml:id="cx-pretty-print">
-   <refnamediv>
-      <refname>cx:pretty-print</refname>
-      <refpurpose>Reformat whitespace in a document</refpurpose>
-   </refnamediv>
-   <refsynopsisdiv>
-      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:pretty-print'])"/>
-   </refsynopsisdiv>
-   <refsection>
-      <title>Description</title>
-      <para>TBD.</para>
-   </refsection>
+<refnamediv>
+  <refname>cx:pretty-print</refname>
+  <refpurpose>Reformat whitespace in a document</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:pretty-print'])"/>
+</refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
+
+<para>The <tag>cx:pretty-print</tag> step reformats an XML document by
+passing it through the following XSLT stylesheet, serializing the result,
+and then reparsing it<footnote><para>Technically, the stylesheet used
+is <filename>/etc/prettyprint.xsl</filename> in the <citetitle>XML
+Calabash</citetitle> jar file.</para></footnote>.</para>
+
+<programlisting><![CDATA[<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+                xmlns:saxon='http://icl.com/saxon'
+                exclude-result-prefixes='saxon'
+                version='2.0'>
+
+  <xsl:output method='xml' indent='yes' saxon:indent-spaces='2'/>
+
+  <xsl:strip-space elements='*'/>
+
+  <xsl:template match='*'>
+    <xsl:copy>
+      <xsl:copy-of select='@*'/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match='comment()'>
+    <xsl:choose>
+      <xsl:when test="preceding-sibling::node()[1]/self::text()
+                      and contains(preceding-sibling::text()[1], '&#10;')">
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>&#10;</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+
+    <xsl:copy/>
+
+    <xsl:choose>
+      <xsl:when test="following-sibling::node()[1]/self::text()
+                      and contains(following-sibling::text()[1], '&#10;')">
+      </xsl:when>
+      <xsl:when test="following-sibling::node()[1]/self::comment()
+                      or following-sibling::node()[1]/self::processing-instruction()">
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>&#10;</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match='processing-instruction()'>
+    <xsl:choose>
+      <xsl:when test="preceding-sibling::node()[1]/self::text()
+                      and contains(preceding-sibling::text()[1], '&#10;')">
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>&#10;</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+
+    <xsl:copy/>
+
+    <xsl:choose>
+      <xsl:when test="following-sibling::node()[1]/self::text()
+                      and contains(following-sibling::text()[1], '&#10;')">
+      </xsl:when>
+      <xsl:when test="following-sibling::node()[1]/self::comment()
+                      or following-sibling::node()[1]/self::processing-instruction()">
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:text>&#10;</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+</xsl:stylesheet>]]></programlisting>
+
+<para>Serializing the pretty-printed output and reparsing it
+<emphasis>should</emphasis> have the effect of normalizing the whitespace
+so that the document will print with reasonable line breaks and
+indentation. However,</para>
+
+<itemizedlist>
+<listitem><para>There's nothing about this process that will break very long
+runs of text into lines of reasonable length.</para>
+</listitem>
+<listitem><para>If the parser performs validation on the input, it may
+have the effect of removing insignificant whitespace.</para>
+</listitem>
+</itemizedlist>
+
+<para>Your milage may vary.</para>
+
+</refsection>
 </refentry>
