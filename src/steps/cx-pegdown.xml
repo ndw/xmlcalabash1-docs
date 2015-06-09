@@ -16,7 +16,7 @@
 
 <para>This step converts
 <link xlink:href="http://daringfireball.net/projects/markdown/">Markdown</link>
-documents into XML or HTML.</para>
+documents into XHTML.</para>
 
 <para>The <tag>cx:pegdown</tag> step defines a number
 of options. The list is intended to be comprehensive with respect to the
