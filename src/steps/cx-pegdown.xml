@@ -5,7 +5,7 @@
           xml:id="cx-pegdown">
    <refnamediv>
       <refname>cx:pegdown</refname>
-      <refpurpose>Convert Markdown text to XML</refpurpose>
+      <refpurpose>Convert Markdown text to XHTML</refpurpose>
    </refnamediv>
    <refsynopsisdiv>
       <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:pegdown'])"/>
