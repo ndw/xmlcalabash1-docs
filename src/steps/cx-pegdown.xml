@@ -1,0 +1,104 @@
+<refentry xmlns:p="http://www.w3.org/ns/xproc"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns="http://docbook.org/ns/docbook"
+          xml:id="cx-pegdown">
+   <refnamediv>
+      <refname>cx:pegdown</refname>
+      <refpurpose>Convert Markdown text to XML</refpurpose>
+   </refnamediv>
+   <refsynopsisdiv>
+      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:pegdown'])"/>
+   </refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
+
+<para>This step converts
+<link xlink:href="http://daringfireball.net/projects/markdown/">Markdown</link>
+documents into XML or HTML.</para>
+
+<para>The <tag>cx:pegdown</tag> step defines a number
+of options. The list is intended to be comprehensive with respect to the
+attributes and options that can be passed to the
+<application>PegDown</application> formatter. The names reflect the
+names used by the project, as far as I can tell. They are:
+<simplelist type="inline">
+<member>max-parsing-time</member>
+<member>smarts</member>
+<member>quotes</member>
+<member>abbreviations</member>
+<member>hardwraps</member>
+<member>autolinks</member>
+<member>tables</member>
+<member>definitions</member>
+<member>fenced-code-blocks</member>
+<member>wikilinks</member>
+<member>strikethrough</member>
+<member>anchorlinks</member>
+<member>suppress-html-blocks</member>
+<member>suppress-inline-html</member>
+<member>suppress-all-html</member>
+<member>plugins</member>
+<member>link-renderer</member>
+<member>verbatim-serializer</member>
+<member>to-html-serializer-plugins</member>
+</simplelist>
+</para>
+
+<para>The <option>max-parsing-time</option> is a number of milliseconds.
+Most of the rest of the options are booleans, defaulting to false.
+The last few options identify extension classes:</para>
+
+<variablelist>
+<varlistentry><term><option>plugins</option></term>
+<listitem><para>The fully qualified classname for a plugin class.
+</para></listitem>
+</varlistentry>
+<varlistentry><term><option>link-renderer</option></term>
+<listitem><para>The fully qualified classname for a link rendering class.
+</para></listitem>
+</varlistentry>
+<varlistentry><term><option>verbatim-serializer</option></term>
+<listitem><para>A sequence of name/classname pairs for verbatim serialization.
+</para></listitem>
+</varlistentry>
+<varlistentry><term><option>to-html-serializer-plugins</option></term>
+<listitem><para>A list of fully qualifieid classnames for HTML serialization.
+</para></listitem>
+</varlistentry>
+</variablelist>
+
+<para>For example, consider this Markdown file:</para>
+
+<programlisting><xi:include href="pegdown-example1.md" parse="text"
+/></programlisting>
+
+<para>Running this through <tag>cx:pegdown</tag> produces:</para>
+
+<programlisting role="markdown"
+><xi:include href="pegdown-example1.md" parse="text"
+/></programlisting>
+
+</refsection>
+
+<refsection>
+<title>Usage</title>
+
+<para>To use this step, you must include its declaration in your pipeline.
+You can copy the declaration above or import a library that defines
+this step, such as</para>
+
+<informalfigure>
+<programlisting>http://xmlcalabash.com/extension/steps/pegdown.xpl</programlisting>
+</informalfigure>
+
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-pegdown">xmlcalabash1-pegdown</link>
+module. The jar file from that project must be in the class path in order
+to use this step.</para>
+</refsection>
+</refsection>
+</refentry>

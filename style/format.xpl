@@ -9,6 +9,7 @@
 <p:input port="parameters" kind="parameter"/>
 
 <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
+<p:import href="http://xmlcalabash.com/extension/steps/pegdown.xpl"/>
 <p:import href="../build/docbook/xslt/base/pipelines/docbook.xpl"/>
 
 <cx:java-properties name="props" href="../gradle.properties"/>
@@ -84,6 +85,16 @@
 
   <p:viewport match="h:pre[contains(@class,'plantuml')]">
     <cx:plantuml html="true" format="png"/>
+  </p:viewport>
+
+  <p:viewport match="h:pre[contains(@class,'markdown')]">
+    <cx:pegdown/>
+    <cx:pretty-print/>
+    <p:wrap match="/" wrapper="pre"
+            wrapper-namespace="http://www.w3.org/1999/xhtml"/>
+    <p:add-attribute match="/h:pre" attribute-name="class"
+                     attribute-value="programlisting line-numbers"/>
+    <p:escape-markup/>
   </p:viewport>
 
   <p:store method="xhtml" indent="true">

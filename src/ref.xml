@@ -127,6 +127,7 @@
 <xi:include href="steps/cx-message.xml"/>
 <xi:include href="steps/cx-metadata-extractor.xml"/>
 <xi:include href="steps/cx-namespace-delete.xml"/>
+<xi:include href="steps/cx-pegdown.xml"/>
 <xi:include href="steps/cx-plantuml.xml"/>
 <xi:include href="steps/cx-pretty-print.xml"/>
 <xi:include href="steps/cx-rdfa.xml"/>

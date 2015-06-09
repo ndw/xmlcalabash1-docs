@@ -778,4 +778,29 @@
       <p:output port="result"/>
       <p:option name="href" e:type="xsd:anyURI"/>
    </p:declare-step>
+
+<p:declare-step type="cx:pegdown">
+   <p:input port="source"/>
+   <p:output port="result"/>
+   <p:option name="max-parsing-time" e:type="xsd:integer"/>
+   <p:option name="smarts" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="quotes" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="abbreviations" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="hardwraps" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="autolinks" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="tables" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="definitions" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="fenced-code-blocks" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="wikilinks" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="strikethrough" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="anchorlinks" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="suppress-html-blocks" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="suppress-inline-html" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="suppress-all-html" select="'false'" e:type="xsd:boolean"/>
+   <p:option name="plugins" e:type="xsd:string"/>
+   <p:option name="link-renderer" e:type="xsd:string"/>
+   <p:option name="verbatim-serializer" e:type="xsd:string"/>
+   <p:option name="to-html-serializer-plugins" e:type="xsd:string"/>
+</p:declare-step>
+
 </p:library>
