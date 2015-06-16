@@ -98,23 +98,23 @@ task formatBook(dependsOn: setupDocBook, type: JavaExec) {
 */
   args('-D',
        '-Xxpointer-on-text',
-       '-isource=src/ref.xml',
-       'style/format.xpl')
+       '-isource=src/main/xml/ref.xml',
+       'src/main/resources/style/format.xpl')
 }
 formatBook.onlyIf { !file("$buildDir/ref/index.html").exists() }
 
 task copyCSS(type: Copy) {
-  from 'css'
+  from 'src/main/resources/css'
   into 'build/ref/css'
 }
 
 task copyJS(type: Copy) {
-  from 'js'
+  from 'src/main/resources/js'
   into 'build/ref/js'
 }
 
 task copyImages(type: Copy) {
-  from 'img'
+  from 'src/main/resources/img'
   into 'build/ref/img'
 }
 

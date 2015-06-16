@@ -27,6 +27,7 @@ prefixes must be in-scope at the point where the
 
 <para>Consider this document:</para>
 
+<informalfigure>
 <programlisting><![CDATA[<doc xmlns:ns1="http://example.com/ns1"
      xmlns:ns2="http://example.com/ns2">
   <para ns1:attr="value">This document has
@@ -34,21 +35,26 @@ unspecified semantics with respect to
 <ns1:item>{ns1:foo}</ns1:item> and
 <ns2:item>{ns2:bar}</ns2:item>.</para>
 </doc>]]></programlisting>
+</informalfigure>
 
 <para>If the following step is used to remove the
 <quote><literal>ns1</literal></quote> prefix,</para>
 
+<informalfigure>
 <programlisting><![CDATA[<cx:namespace-delete xmlns:ns1="http://example.com/ns1"
                      prefixes="ns1"/>]]></programlisting>
+</informalfigure>
 
 <para>the resulting document will be:</para>
 
+<informalfigure>
 <programlisting><![CDATA[<doc xmlns:ns2="http://example.com/ns2">
   <para attr="value">This document has
 unspecified semantics with respect to
 <item>{ns1:foo}</item> and
 <ns2:item>{ns2:bar}</ns2:item>.</para>
 </doc>]]></programlisting>
+</informalfigure>
 
 <para>Observe that the namespace declaration has been stripped off both
 elements and attributes. If prefixes occur in places, such as attribute
@@ -66,8 +72,10 @@ same name on the element. This is not well-formed and the step would fail.
 <para>This problem can be addressed by first deleting the offending attributes,
 perhaps like so:</para>
 
+<informalfigure>
 <programlisting><![CDATA[<p:delete xmlns:ns1="http://example.com/ns1"
           match="*[@ns1:attr]/@attr"/>]]></programlisting>
+</informalfigure>
 </note>
 
 </refsection>

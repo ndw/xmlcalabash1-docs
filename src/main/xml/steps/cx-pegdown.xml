@@ -71,14 +71,18 @@ The last few options identify extension classes:</para>
 
 <para>For example, consider this Markdown file:</para>
 
+<informalfigure>
 <programlisting><xi:include href="pegdown-example1.md" parse="text"
 /></programlisting>
+</informalfigure>
 
 <para>Running this through <tag>cx:pegdown</tag> produces:</para>
 
+<informalfigure>
 <programlisting role="markdown"
 ><xi:include href="pegdown-example1.md" parse="text"
 /></programlisting>
+</informalfigure>
 
 </refsection>
 

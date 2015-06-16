@@ -10,9 +10,9 @@
 
 <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 <p:import href="http://xmlcalabash.com/extension/steps/pegdown.xpl"/>
-<p:import href="../build/docbook/xslt/base/pipelines/docbook.xpl"/>
+<p:import href="../../../../build/docbook/xslt/base/pipelines/docbook.xpl"/>
 
-<cx:java-properties name="props" href="../gradle.properties"/>
+<cx:java-properties name="props" href="../../../../gradle.properties"/>
 
 <p:template name="templ">
   <p:input port="template">
@@ -51,7 +51,8 @@
 </p:validate-with-relax-ng>
 -->
 
-<dbp:docbook name="format-docbook" format="html" style="style/refhtml.xsl"
+<dbp:docbook name="format-docbook" format="html"
+             style="src/main/resources/style/refhtml.xsl"
              return-secondary="true">
   <p:with-param name="base.dir" select="'build/ref/'"/>
   <p:with-param name="xmlcalabash.version"

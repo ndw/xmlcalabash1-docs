@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ext="http://docbook.org/extensions/xslt20"
                 xmlns:db="http://docbook.org/ns/docbook"
                 xmlns:f="http://docbook.org/xslt/ns/extension"
                 xmlns:t="http://docbook.org/xslt/ns/template"
                 xmlns:m="http://docbook.org/xslt/ns/mode"
                 xmlns:tmpl="http://docbook.org/xslt/titlepage-templates"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                exclude-result-prefixes="db f t m xs"
+                exclude-result-prefixes="db ext f t m xs"
                 version="2.0">
 
-<xsl:import href="../build/docbook/xslt/base/html/chunk.xsl"/>
+<xsl:import href="../../../../build/docbook/xslt/base/html/chunk.xsl"/>
 <xsl:import href="xproc.xsl"/>
 
 <xsl:param name="refentry.separator" select="0"/>
@@ -312,5 +313,52 @@
 <xsl:template match="processing-instruction('ver')">
   <xsl:value-of select="$xmlcalabash.version"/>
 </xsl:template>
+
+<xsl:function name="f:mediaobject-href" as="xs:string">
+  <xsl:param name="filename" as="xs:string"/>
+
+  <xsl:variable name="outdir" as="xs:string">
+    <xsl:choose>
+      <xsl:when test="function-available('ext:cwd') and $output.dir = ''">
+        <xsl:value-of use-when="function-available('ext:cwd')" select="ext:cwd()"/>
+        <xsl:value-of use-when="not(function-available('ext:cwd'))" select="$output.dir"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$output.dir"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <!--
+  <xsl:message>
+    <xsl:text>mediaobject-href: </xsl:text>
+    <xsl:value-of select="$filename"/>
+    <xsl:text>&#10;</xsl:text>
+    <xsl:text>against base uri: </xsl:text>
+    <xsl:value-of select="$outdir"/>
+  </xsl:message>
+  -->
+
+  <xsl:variable name="href" as="xs:string">
+    <xsl:choose>
+      <xsl:when test="$outdir != ''">
+        <xsl:value-of select="f:relative-uri($filename, $outdir)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$filename"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:choose>
+    <xsl:when test="starts-with($href, 'src/main/resources/')">
+      <xsl:value-of
+          select="substring-after($href,'src/main/resources/')"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$href"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:function>
 
 </xsl:stylesheet>

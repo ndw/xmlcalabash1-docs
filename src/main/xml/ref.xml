@@ -15,7 +15,7 @@
   <mediaobject>
     <alt>[Cover]</alt>
     <imageobject>
-      <imagedata fileref="../img/cover.png" align="left"/>
+      <imagedata fileref="../resources/img/cover.png" align="left"/>
     </imageobject>
   </mediaobject>
   <title>XML Calabash Reference</title>

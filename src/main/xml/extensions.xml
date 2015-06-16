@@ -99,7 +99,7 @@ over the dependencies between steps. Consider the following example:</para>
 
 <mediaobject>
 <imageobject>
-<imagedata fileref="../img/depends.png"/>
+<imagedata fileref="../resources/img/depends.png"/>
 </imageobject>
 </mediaobject>
 
