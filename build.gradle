@@ -18,7 +18,7 @@ buildscript {
 
 plugins {
   id "java"
-  id "de.undercouch.download" version "1.2"
+  id "de.undercouch.download" version "2.0.0"
 }
 
 repositories {
@@ -101,7 +101,35 @@ task formatBook(dependsOn: setupDocBook, type: JavaExec) {
        '-isource=src/main/xml/ref.xml',
        'src/main/resources/style/format.xpl')
 }
-formatBook.onlyIf { !file("$buildDir/ref/index.html").exists() }
+
+formatBook.onlyIf {
+  FileCollection src = fileTree(dir: 'src/main')
+  FileCollection ref = fileTree(dir: 'build/ref')
+
+  boolean built = file("$buildDir/ref/index.html").exists()
+  String srcName
+  long newestSrc = -1
+  String refName
+  long newestRef = -1
+
+  src.each {
+    File file ->
+      if (newestSrc < file.lastModified()) {
+        srcName = file.name
+        newestSrc = file.lastModified()
+      }
+  }
+
+  ref.each {
+    File file ->
+      if (newestRef < file.lastModified()) {
+        refName = file.name
+        newestRef = file.lastModified()
+      }
+  }
+
+  return !built || (newestSrc > newestRef)
+}
 
 task copyCSS(type: Copy) {
   from 'src/main/resources/css'
