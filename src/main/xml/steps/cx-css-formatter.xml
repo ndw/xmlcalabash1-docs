@@ -20,12 +20,43 @@
 <title>Description</title>
 
 <para>This method calls the underlying CSS formatter. Two formatters are supported,
-the <link xlink:href="http://www.antennahouse.com/">Antenna House</link> formatter
+<link xlink:href="http://www.antennahouse.com/">Antenna House</link>
 and <link xlink:href="http://www.princexml.com/">Prince</link>.</para>
 
 <para><citetitle>XML Calabash</citetitle> does not provide a license for either
 of these products. You must have the relevant classes on your classpath in order
 to use them. You may also need to purchase a license.</para>
+
+<note>
+<title>API Change in XML Calabash 1.1.7</title>
+<para>The signature for this step was changed in
+<citetitle>XML Calabash</citetitle> version 1.1.7. Previously, the
+CSS stylesheet(s) were specified as input documents on a port.
+Unfortunately:</para>
+<orderedlist>
+<listitem><para>The underlying implementations expect them as URIs,
+not documents.</para>
+</listitem>
+<listitem><para>Writing the documents out as temporary files to create
+URIs naturally changes the base URIs of the CSS stylesheets.</para>
+</listitem>
+<listitem><para>Changing the base URIs breaks any <literal>@import</literal>
+URIs.</para>
+</listitem>
+<listitem><para>CSS provides no mechanism for specifying a different
+base URI.
+</para>
+</listitem>
+</orderedlist>
+<para>Therefore, the new signature has a <option>css</option> option that
+accepts a space-delimited list of URIs. If you want to construct CSS
+dynamically in the pipeline, use <tag>p:store</tag> to write the CSS
+to the filesystem, make sure this step depends on that store step,
+and use the resulting store URI.</para>
+<para>For backwards compatibility reasons,
+<citetitle>XML Calabash</citetitle> will continue to accept the old
+signature for some time.</para>
+</note>
 
 <refsection>
 <title>Antenna House Formatter</title>
@@ -114,6 +145,27 @@ that prevents the formatter from producing error and warning messages.
 Your best bet until this bug is fixed is to specify a
 <parameter>log</parameter> parameter.</para>
 </refsection>
-
 </refsection>
+
+<refsection>
+<title>Implementation</title>
+<para>This step is implemented by the
+<link xlink:href="https://github.com/ndw/xmlcalabash1-print">xmlcalabash1-print</link>
+module. The jar file from that project must be in the class path in order
+to use this step.</para>
+
+<important>
+<title>Module Compatability Warning</title>
+<para>As a consequence of the signature change
+in <citetitle>XML Calabash</citetitle> version 1.1.7,
+described above, <citetitle>XML Calabash</citetitle> version 1.1.7
+can <emphasis>only</emphasis> be used with the
+<citetitle>XML Calabash Print</citetitle> module version 1.1.4 or later.
+(And conversely, earlier versions of
+<citetitle>XML Calabash</citetitle> can only be used with module version
+1.1.3 or earlier.)</para>
+<para>Apologies for the inconvenience.</para>
+</important>
+</refsection>
+
 </refentry>

@@ -596,10 +596,10 @@
 
     <p:declare-step type="cx:css-formatter">
       <p:input port="source" primary="true"/>
-      <p:input port="css" sequence="true"/>
       <p:input port="parameters" kind="parameter"/>
       <p:output port="result" primary="false"/>
       <p:option name="href" required="true" e:type="xsd:anyURI"/>
+      <p:option name="css" required="false" e:type="ListOfURIs"/>
       <p:option name="content-type" e:type="xsd:string"/>
    </p:declare-step>
 
