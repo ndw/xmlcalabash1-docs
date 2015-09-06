@@ -15,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cx-plantuml.html" title="cx:plantuml"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="XML Calabash Extension Steps" href="cx-steps.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="cx:rdfa" href="cx-rdfa.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.19)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.21)
                      </td>
                   </tr>
                </table>
@@ -36,8 +36,114 @@
                      </div>
                      
                      
-                     <p>TBD.</p>
                      
+                     <p>The <code class="tag-element">cx:pretty-print</code> step reformats an XML document by
+                        passing it through the following XSLT stylesheet, serializing the result,
+                        and then reparsing it<sup class="footnote"><span class="osq">[</span><a name="cx-pretty-print.3.2.2" href="#ftn.cx-pretty-print.3.2.2">1</a><span class="csq">]</span></sup>.
+                     </p>
+                     
+                     <pre class="programlisting line-numbers"><code>&lt;xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
+                xmlns:saxon='http://icl.com/saxon'
+                exclude-result-prefixes='saxon'
+                version='2.0'&gt;
+
+  &lt;xsl:output method='xml' indent='yes' saxon:indent-spaces='2'/&gt;
+
+  &lt;xsl:strip-space elements='*'/&gt;
+
+  &lt;xsl:template match='*'&gt;
+    &lt;xsl:copy&gt;
+      &lt;xsl:copy-of select='@*'/&gt;
+      &lt;xsl:apply-templates/&gt;
+    &lt;/xsl:copy&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match='comment()'&gt;
+    &lt;xsl:choose&gt;
+      &lt;xsl:when test="preceding-sibling::node()[1]/self::text()
+                      and contains(preceding-sibling::text()[1], '&amp;#10;')"&gt;
+      &lt;/xsl:when&gt;
+      &lt;xsl:otherwise&gt;
+        &lt;xsl:text&gt;&amp;#10;&lt;/xsl:text&gt;
+      &lt;/xsl:otherwise&gt;
+    &lt;/xsl:choose&gt;
+
+    &lt;xsl:copy/&gt;
+
+    &lt;xsl:choose&gt;
+      &lt;xsl:when test="following-sibling::node()[1]/self::text()
+                      and contains(following-sibling::text()[1], '&amp;#10;')"&gt;
+      &lt;/xsl:when&gt;
+      &lt;xsl:when test="following-sibling::node()[1]/self::comment()
+                      or following-sibling::node()[1]/self::processing-instruction()"&gt;
+      &lt;/xsl:when&gt;
+      &lt;xsl:otherwise&gt;
+        &lt;xsl:text&gt;&amp;#10;&lt;/xsl:text&gt;
+      &lt;/xsl:otherwise&gt;
+    &lt;/xsl:choose&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match='processing-instruction()'&gt;
+    &lt;xsl:choose&gt;
+      &lt;xsl:when test="preceding-sibling::node()[1]/self::text()
+                      and contains(preceding-sibling::text()[1], '&amp;#10;')"&gt;
+      &lt;/xsl:when&gt;
+      &lt;xsl:otherwise&gt;
+        &lt;xsl:text&gt;&amp;#10;&lt;/xsl:text&gt;
+      &lt;/xsl:otherwise&gt;
+    &lt;/xsl:choose&gt;
+
+    &lt;xsl:copy/&gt;
+
+    &lt;xsl:choose&gt;
+      &lt;xsl:when test="following-sibling::node()[1]/self::text()
+                      and contains(following-sibling::text()[1], '&amp;#10;')"&gt;
+      &lt;/xsl:when&gt;
+      &lt;xsl:when test="following-sibling::node()[1]/self::comment()
+                      or following-sibling::node()[1]/self::processing-instruction()"&gt;
+      &lt;/xsl:when&gt;
+      &lt;xsl:otherwise&gt;
+        &lt;xsl:text&gt;&amp;#10;&lt;/xsl:text&gt;
+      &lt;/xsl:otherwise&gt;
+    &lt;/xsl:choose&gt;
+  &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</code></pre>
+                     
+                     <p>Serializing the pretty-printed output and reparsing it
+                        <em>should</em> have the effect of normalizing the whitespace
+                        so that the document will print with reasonable line breaks and
+                        indentation. However,
+                     </p>
+                     
+                     
+                     <div class="itemizedlist">
+                        <ul>
+                           <li>
+                              <p>There's nothing about this process that will break very long
+                                 runs of text into lines of reasonable length.
+                              </p>
+                           </li>
+                           <li>
+                              <p>If the parser performs validation on the input, it may
+                                 have the effect of removing insignificant whitespace.
+                              </p>
+                           </li>
+                        </ul>
+                     </div>
+                     
+                     
+                     <p>Your milage may vary.</p>
+                     
+                     
+                  </div>
+                  <div class="footnotes">
+                     <hr width="100" align="left" class="footnotes-divider" />
+                     <div class="footnote">
+                        <p><sup><span class="osq">[</span><a href="#cx-pretty-print.3.2.2" name="ftn.cx-pretty-print.3.2.2">1</a><span class="csq">]</span></sup>Technically, the stylesheet used
+                           is <code class="filename">/etc/prettyprint.xsl</code> in the <em class="citetitle">XML
+                              Calabash</em> jar file.
+                        </p>
+                     </div>
                   </div>
                </article>
             </div>

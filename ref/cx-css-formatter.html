@@ -15,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cx-collection-manager.html" title="cx:collection-manager"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="XML Calabash Extension Steps" href="cx-steps.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="cx:delta-xml" href="cx-delta-xml.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.19)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.21)
                      </td>
                   </tr>
                </table>
@@ -28,7 +28,7 @@
                   </div>
                   <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="refsynopsisdiv">
                      <h2>Synopsis</h2>
-                     <p class="element-syntax element-syntax-declare-step-opt"><span class="decl"><code>&lt;p:declare-step</code> <code class="attr type-attr">type</code><code>="</code><code class="value type-value">cx:css-formatter</code><code>"</code> <code class="attr xmlns-attr">xmlns:cx</code><code>="</code><code class="value xmlns-value">http://xmlcalabash.com/ns/extensions</code><code>"</code><code>&gt;</code></span><br />     <span class="input"><code>&lt;p:input</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">source</code><code>"</code> <code class="attr primary-attr">primary</code><code>="</code><code class="value primary-value">true</code><code>"</code><code>/&gt;</code></span><br />     <span class="input"><code>&lt;p:input</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">css</code><code>"</code> <code class="attr sequence-attr">sequence</code><code>="</code><code class="value sequence-value">true</code><code>"</code><code>/&gt;</code></span><br />     <span class="input"><code>&lt;p:input</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">parameters</code><code>"</code> <code class="attr kind-attr">kind</code><code>="</code><code class="value kind-value">parameter</code><code>"</code><code>/&gt;</code></span><br />     <span class="input"><code>&lt;p:output</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">result</code><code>"</code> <code class="attr primary-attr">primary</code><code>="</code><code class="value primary-value">false</code><code>"</code><code>/&gt;</code></span><br />     <span class="opt-req"><code>&lt;p:option</code> <code class="attr name-attr">name</code><code>="</code><code class="value name-value">href</code><code>"</code> <code class="attr required-attr">required</code><code>="</code><code class="value required-value">true</code><code>"</code><code>/&gt;</code><code>                       </code><code class="comment">&lt;!-- </code><span class="opt-type">anyURI</span><code class="comment"> --&gt;</code></span><br />     <span class="opt-opt"><code>&lt;p:option</code> <code class="attr name-attr">name</code><code>="</code><code class="value name-value">content-type</code><code>"</code><code>/&gt;</code><code>                               </code><code class="comment">&lt;!-- </code><span class="opt-type">string</span><code class="comment"> --&gt;</code></span><br /><code>&lt;/p:declare-step&gt;</code></p>
+                     <p class="element-syntax element-syntax-declare-step-opt"><span class="decl"><code>&lt;p:declare-step</code> <code class="attr type-attr">type</code><code>="</code><code class="value type-value">cx:css-formatter</code><code>"</code> <code class="attr xmlns-attr">xmlns:cx</code><code>="</code><code class="value xmlns-value">http://xmlcalabash.com/ns/extensions</code><code>"</code><code>&gt;</code></span><br />     <span class="input"><code>&lt;p:input</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">source</code><code>"</code> <code class="attr primary-attr">primary</code><code>="</code><code class="value primary-value">true</code><code>"</code><code>/&gt;</code></span><br />     <span class="input"><code>&lt;p:input</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">parameters</code><code>"</code> <code class="attr kind-attr">kind</code><code>="</code><code class="value kind-value">parameter</code><code>"</code><code>/&gt;</code></span><br />     <span class="input"><code>&lt;p:output</code> <code class="attr port-attr">port</code><code>="</code><code class="value port-value">result</code><code>"</code> <code class="attr primary-attr">primary</code><code>="</code><code class="value primary-value">false</code><code>"</code><code>/&gt;</code></span><br />     <span class="opt-req"><code>&lt;p:option</code> <code class="attr name-attr">name</code><code>="</code><code class="value name-value">href</code><code>"</code> <code class="attr required-attr">required</code><code>="</code><code class="value required-value">true</code><code>"</code><code>/&gt;</code><code>                       </code><code class="comment">&lt;!-- </code><span class="opt-type">anyURI</span><code class="comment"> --&gt;</code></span><br />     <span class="opt-opt"><code>&lt;p:option</code> <code class="attr name-attr">name</code><code>="</code><code class="value name-value">css</code><code>"</code> <code class="attr required-attr">required</code><code>="</code><code class="value required-value">false</code><code>"</code><code>/&gt;</code><code>                       </code><code class="comment">&lt;!-- </code><span class="opt-type">ListOfURIs</span><code class="comment"> --&gt;</code></span><br />     <span class="opt-opt"><code>&lt;p:option</code> <code class="attr name-attr">name</code><code>="</code><code class="value name-value">content-type</code><code>"</code><code>/&gt;</code><code>                               </code><code class="comment">&lt;!-- </code><span class="opt-type">string</span><code class="comment"> --&gt;</code></span><br /><code>&lt;/p:declare-step&gt;</code></p>
                   </div>
                   <div class="refsection">
                      <div class="refsection-titlepage">
@@ -38,7 +38,7 @@
                      
                      
                      <p>This method calls the underlying CSS formatter. Two formatters are supported,
-                        the <a href="http://www.antennahouse.com/">Antenna House</a> formatter
+                        <a href="http://www.antennahouse.com/">Antenna House</a>
                         and <a href="http://www.princexml.com/">Prince</a>.
                      </p>
                      
@@ -47,6 +47,51 @@
                         of these products. You must have the relevant classes on your classpath in order
                         to use them. You may also need to purchase a license.
                      </p>
+                     
+                     
+                     <div class="note admonition">
+                        <h3>API Change in XML Calabash 1.1.7</h3>
+                        <p>The signature for this step was changed in
+                           <em class="citetitle">XML Calabash</em> version 1.1.7. Previously, the
+                           CSS stylesheet(s) were specified as input documents on a port.
+                           Unfortunately:
+                        </p>
+                        <div class="orderedlist">
+                           <ol style="list-style: decimal;">
+                              <li>
+                                 <p>The underlying implementations expect them as URIs,
+                                    not documents.
+                                 </p>
+                              </li>
+                              <li>
+                                 <p>Writing the documents out as temporary files to create
+                                    URIs naturally changes the base URIs of the CSS stylesheets.
+                                 </p>
+                              </li>
+                              <li>
+                                 <p>Changing the base URIs breaks any <code class="literal">@import</code>
+                                    URIs.
+                                 </p>
+                              </li>
+                              <li>
+                                 <p>CSS provides no mechanism for specifying a different
+                                    base URI.
+                                    
+                                 </p>
+                              </li>
+                           </ol>
+                        </div>
+                        <p>Therefore, the new signature has a <code class="option">css</code> option that
+                           accepts a space-delimited list of URIs. If you want to construct CSS
+                           dynamically in the pipeline, use <code class="tag-element">p:store</code> to write the CSS
+                           to the filesystem, make sure this step depends on that store step,
+                           and use the resulting store URI.
+                        </p>
+                        <p>For backwards compatibility reasons,
+                           <em class="citetitle">XML Calabash</em> will continue to accept the old
+                           signature for some time.
+                        </p>
+                     </div>
                      
                      
                      <div class="refsection">
@@ -242,6 +287,33 @@
                         
                      </div>
                      
+                  </div>
+                  <div class="refsection">
+                     <div class="refsection-titlepage">
+                        <h2>Implementation</h2>
+                     </div>
+                     
+                     
+                     <p>This step is implemented by the
+                        <a href="https://github.com/ndw/xmlcalabash1-print">xmlcalabash1-print</a>
+                        module. The jar file from that project must be in the class path in order
+                        to use this step.
+                     </p>
+                     
+                     
+                     <div class="important admonition">
+                        <h3>Module Compatability Warning</h3>
+                        <p>As a consequence of the signature change
+                           in <em class="citetitle">XML Calabash</em> version 1.1.7,
+                           described above, <em class="citetitle">XML Calabash</em> version 1.1.7
+                           can <em>only</em> be used with the
+                           <em class="citetitle">XML Calabash Print</em> module version 1.1.4 or later.
+                           (And conversely, earlier versions of
+                           <em class="citetitle">XML Calabash</em> can only be used with module version
+                           1.1.3 or earlier.)
+                        </p>
+                        <p>Apologies for the inconvenience.</p>
+                     </div>
                      
                   </div>
                </article>

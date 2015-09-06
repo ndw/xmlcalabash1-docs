@@ -74,11 +74,11 @@ span.linenumber-separator {
     padding-right: 5px;
 }
 
-div.address {
+.address {
     white-space: pre
 }
 
-div.literallayout {
+.literallayout {
     white-space: pre
 }
 
@@ -107,15 +107,15 @@ div.title {
     margin-top: 1em;
 }
 
-div.float-right {
+.float-right {
     float: right;
 }
 
-div.float-left {
+.float-left {
     float: left;
 }
 
-div.figure-wrapper {
+.figure-wrapper {
     padding: 0px;
     border-color: #CACACA;
     border-width: 1px;
@@ -129,46 +129,46 @@ figure {
     padding-bottom: 5px;
 }
 
-div.informalfigure-wrapper {
+.informalfigure-wrapper {
     padding: 0px;
     border-color: #CACACA;
     border-width: 1px;
     border-style: solid;
 }
 
-figure.informalfigure {
+.informalfigure {
     padding-left: 3px;
     padding-right: 3px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-div.table-wrapper {
+.table-wrapper {
     padding: 0px;
     border-color: #CACACA;
     border-width: 1px;
     border-style: solid;
 }
 
-div.table {
+.table {
     padding-left: 3px;
     padding-right: 3px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
-div.informaltable-wrapper {
+.informaltable-wrapper {
     padding: 0px;
     border-color: #CACACA;
     border-width: 1px;
     border-style: solid;
 }
 
-div.centerimg {
+.centerimg {
     text-align: center;
 }
 
-div.informaltable {
+.informaltable {
     padding-left: 3px;
     padding-right: 3px;
     padding-top: 5px;
@@ -270,7 +270,7 @@ em em em em em {
     font-style: italic;
 }
 
-div.remark {
+.remark {
     padding: 10px;
     border: solid #afafaf 1px;
     margin-left: 35px;
@@ -279,24 +279,24 @@ div.remark {
 }
 
 
-div.sidebar {
+.sidebar {
     border: solid #afafaf 1px;
     margin-left: 35px;
     margin-right: 70px;
     margin-bottom: 1ex;
 }
 
-div.sidebar
-div.title {
+.sidebar
+.title {
     background-color: #CACACA;
     padding: 3px;
 }
 
-div.sidebar-content {
+.sidebar-content {
     padding: 10px;
 }
 
-div.annotation {
+.annotation {
     border: solid #afafaf 1px;
     margin-left: 35px;
     margin-right: 70px;
@@ -312,4 +312,18 @@ div.title {
 
 div.annotation-content {
     padding: 10px;
+}
+
+.note {
+  background: url(../img/note.gif) no-repeat;
+  background-position-y: 10px;
+  min-height: 80px;
+  padding-left: 30px;
+  padding-bottom: 1em;
+  border-top: 4px solid #aaaaaa;
+  border-bottom: 4px solid #aaaaaa;
+}
+
+.note h3 {
+  display: none;
 }

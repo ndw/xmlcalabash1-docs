@@ -14,8 +14,8 @@
             <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="navheader">
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
-                     <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cx-metadata-extractor.html" title="cx:metadata-extractor"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="XML Calabash Extension Steps" href="cx-steps.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="cx:plantuml" href="cx-plantuml.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.19)
+                     <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cx-metadata-extractor.html" title="cx:metadata-extractor"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="XML Calabash Extension Steps" href="cx-steps.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="cx:pegdown" href="cx-pegdown.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.21)
                      </td>
                   </tr>
                </table>
@@ -36,7 +36,78 @@
                      </div>
                      
                      
-                     <p>TBD.</p>
+                     
+                     <p>This step <em>aggressively</em> removes all of the
+                        namespaces identified by the specified prefixes from the document. The
+                        prefixes must be in-scope at the point where the
+                        <code class="tag-element">cx:namespace-delete</code> element occurs.
+                     </p>
+                     
+                     
+                     <p>Consider this document:</p>
+                     
+                     
+                     <figure id="cx-namespace-delete.3.4" class="informalfigure-wrapper">
+                        <div class="informalfigure"><pre class="programlisting line-numbers"><code>&lt;doc xmlns:ns1="http://example.com/ns1"
+     xmlns:ns2="http://example.com/ns2"&gt;
+  &lt;para ns1:attr="value"&gt;This document has
+unspecified semantics with respect to
+&lt;ns1:item&gt;{ns1:foo}&lt;/ns1:item&gt; and
+&lt;ns2:item&gt;{ns2:bar}&lt;/ns2:item&gt;.&lt;/para&gt;
+&lt;/doc&gt;</code></pre></div>
+                     </figure>
+                     
+                     
+                     <p>If the following step is used to remove the
+                        “<span class="quote"><code class="literal">ns1</code></span>” prefix,
+                     </p>
+                     
+                     
+                     <figure id="cx-namespace-delete.3.6" class="informalfigure-wrapper">
+                        <div class="informalfigure"><pre class="programlisting line-numbers"><code>&lt;cx:namespace-delete xmlns:ns1="http://example.com/ns1"
+                     prefixes="ns1"/&gt;</code></pre></div>
+                     </figure>
+                     
+                     
+                     <p>the resulting document will be:</p>
+                     
+                     
+                     <figure id="cx-namespace-delete.3.8" class="informalfigure-wrapper">
+                        <div class="informalfigure"><pre class="programlisting line-numbers"><code>&lt;doc xmlns:ns2="http://example.com/ns2"&gt;
+  &lt;para attr="value"&gt;This document has
+unspecified semantics with respect to
+&lt;item&gt;{ns1:foo}&lt;/item&gt; and
+&lt;ns2:item&gt;{ns2:bar}&lt;/ns2:item&gt;.&lt;/para&gt;
+&lt;/doc&gt;</code></pre></div>
+                     </figure>
+                     
+                     
+                     <p>Observe that the namespace declaration has been stripped off both
+                        elements and attributes. If prefixes occur in places, such as attribute
+                        values or text content, not “visible” to the XML specification,
+                        they are not changed.
+                     </p>
+                     
+                     
+                     <div class="note admonition">
+                        <h3>Note</h3>
+                        <p>Removing namespace declarations from attributes can
+                           introduce well-formedness problems. For example, if the
+                           “<span class="quote"><code class="literal">para</code></span>” element in the example had
+                           an <code class="tag-attribute">attr</code> attribute in no namespace, deleting
+                           “<span class="quote"><code class="literal">ns1</code></span>” would leave two attributes with the
+                           same name on the element. This is not well-formed and the step would fail.
+                           
+                        </p>
+                        <p>This problem can be addressed by first deleting the offending attributes,
+                           perhaps like so:
+                        </p>
+                        <figure id="cx-namespace-delete.3.10.4" class="informalfigure-wrapper">
+                           <div class="informalfigure"><pre class="programlisting line-numbers"><code>&lt;p:delete xmlns:ns1="http://example.com/ns1"
+          match="*[@ns1:attr]/@attr"/&gt;</code></pre></div>
+                        </figure>
+                     </div>
+                     
                      
                   </div>
                </article>
@@ -48,12 +119,12 @@
                   <td width="40%" align="left"><a title="cx:metadata-extractor" href="cx-metadata-extractor.html"><img src="img/prev.png" alt="Prev" border="0" /></a> 
                   </td>
                   <td width="20%" align="center"><a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a></td>
-                  <td width="40%" align="right"> <a title="cx:plantuml" href="cx-plantuml.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
+                  <td width="40%" align="right"> <a title="cx:pegdown" href="cx-pegdown.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
                </tr>
                <tr>
                   <td width="40%" align="left">cx:metadata-extractor </td>
                   <td width="20%" align="center"><a title="XML Calabash Extension Steps" href="cx-steps.html"><img src="img/up.png" alt="Up" border="0" /></a></td>
-                  <td width="40%" align="right"> cx:plantuml</td>
+                  <td width="40%" align="right"> cx:pegdown</td>
                </tr>
             </table>
          </div>
