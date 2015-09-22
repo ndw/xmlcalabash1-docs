@@ -15,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cfg.step-error-listener.html" title="23 .  Step error listener"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  4 .  Configuration" href="configuration.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="25 .  Extension function" href="cfg.extension-function.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.21)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.22)
                      </td>
                   </tr>
                </table>
@@ -37,6 +37,10 @@
                            </colgroup>
                            <tbody>
                               <tr>
+                                 <td>Command line:</td>
+                                 <td><code class="literal">--serialize</code> <em class="replaceable"><code>port:</code></em><em class="replaceable"><code>option</code></em>=<em class="replaceable"><code>value</code></em></td>
+                              </tr>
+                              <tr>
                                  <td>Java system properties:</td>
                                  <td><span class="property">com.xmlcalabash.serial.<em class="replaceable"><code>option</code></em></span>=<em class="replaceable"><code>value</code></em></td>
                               </tr>
@@ -48,7 +52,7 @@
                         </table>
                      </div>
                   </figure>
-                  <p>The option names supported on both system properties and <code class="tag-element">cc:serialization</code> are:
+                  <p>The option names supported are:
                      <code class="literal">byte-order-mark</code>,
                      <code class="literal">doctype-public</code>,
                      <code class="literal">doctype-system</code>,
@@ -62,11 +66,17 @@
                      <code class="literal">standalone</code>,
                      <code class="literal">undeclare-prefixes</code>, and
                      <code class="literal">version</code>.
-                     In addition, the <code class="literal">cdata-section-elements</code> option is supported on
-                     <code class="tag-element">cc:serialization</code>. (It's only supported in the configuration file because the
-                     values are QNames.)
+                     In addition, the <code class="literal">cdata-section-elements</code> option is
+                     supported on <code class="tag-element">cc:serialization</code>. (It's only supported in the
+                     configuration file because the values are QNames.)
                   </p>
-                  <p>T.B.D.</p>
+                  <p>Values specified in system properties and in the configuration file
+                     are only used if the pipeline does not specify any serialization parameters
+                     itself.
+                  </p>
+                  <p>Values specified on the command line <em>override</em>
+                     values specified in any other place.
+                  </p>
                </section>
             </div>
          </div>
