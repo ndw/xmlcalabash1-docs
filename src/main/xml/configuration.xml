@@ -894,6 +894,10 @@ specified in the configuration file.</para>
 <tgroup cols="2" colsep="0" rowsep="0">
 <tbody>
 <row>
+  <entry>Command line:</entry>
+  <entry><literal>--serialize</literal> <replaceable>port:</replaceable><replaceable>option</replaceable>=<replaceable>value</replaceable></entry>
+</row>
+<row>
   <entry>Java system properties:</entry>
   <entry><property>com.xmlcalabash.serial.<replaceable>option</replaceable></property>=<replaceable>value</replaceable></entry>
 </row>
@@ -905,7 +909,7 @@ specified in the configuration file.</para>
 </tgroup>
 </informaltable>
 
-<para>The option names supported on both system properties and <tag>cc:serialization</tag> are:
+<para>The option names supported are:
 <literal>byte-order-mark</literal>,
 <literal>doctype-public</literal>,
 <literal>doctype-system</literal>,
@@ -919,11 +923,16 @@ specified in the configuration file.</para>
 <literal>standalone</literal>,
 <literal>undeclare-prefixes</literal>, and
 <literal>version</literal>.
-In addition, the <literal>cdata-section-elements</literal> option is supported on
-<tag>cc:serialization</tag>. (It's only supported in the configuration file because the
-values are QNames.)</para>
+In addition, the <literal>cdata-section-elements</literal> option is
+supported on <tag>cc:serialization</tag>. (It's only supported in the
+configuration file because the values are QNames.)</para>
 
-<para>T.B.D.</para>
+<para>Values specified in system properties and in the configuration file
+are only used if the pipeline does not specify any serialization parameters
+itself.</para>
+
+<para>Values specified on the command line <emphasis>override</emphasis>
+values specified in any other place.</para>
 </section>
 
 <section xml:id="cfg.extension-function">
