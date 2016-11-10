@@ -93,8 +93,14 @@ is enabled, “<literal>false</literal>” otherwise.
 <section xml:id="extattr">
 <title>Extension Attributes</title>
 
-<para><citetitle>XML Calabash</citetitle> supports an extension attribute
-<tag class="attribute">cx:depends-on</tag> to provide finer grained control
+<para><citetitle>XML Calabash</citetitle> supports several extension
+attributes.</para>
+
+<section xml:id="cx-depends-on">
+<title><tag class="attribute">cx:depends-on</tag></title>
+
+<para>The
+<tag class="attribute">cx:depends-on</tag> attribute provides finer grained control
 over the dependencies between steps. Consider the following example:</para>
 
 <mediaobject>
@@ -132,9 +138,61 @@ list of step names.</para>
 
 <para>It is an error if the use of <tag class="attribute">cx:depends</tag> introduces
 a circular dependency into the pipeline.</para>
+</section>
 
-<para>FIXME: Also document
-<tag class="attribute">cx:logstyle</tag>.</para>
+<section xml:id="cx-message">
+<title><tag class="attribute">cx:message</tag></title>
+
+<para>As of version 1.1.11, you can add a <tag class="attribute">cx:message</tag>
+attribute to any step. The message will be printed when the step begins
+running.</para>
+</section>
+
+<section xml:id="cx-logstyle">
+<title><tag class="attribute">cx:logstyle</tag></title>
+
+<para>The
+<tag class="attribute">cx:logstyle</tag> attribute can only be used on
+the <tag>p:log</tag> element. It controls how the logged document(s) will
+be written. There are four options:</para>
+
+<variablelist>
+<varlistentry>
+<term>plain</term>
+<listitem>
+<para>Document(s) will be written to the specified file, one after another
+with no separation. The resulting file will not be well-formed XML if more
+than one document is logged.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>wrapped</term>
+<listitem>
+<para>The specified file will contain a <tag>px:document-sequence</tag>.
+Each document written will be wrapped in a <tag>px:document</tag> element.
+The resulting file will be well-formed XML.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>directory</term>
+<listitem>
+<para>The specified location must be a directory. Each logged document
+will be written to its own file.
+</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>off</term>
+<listitem>
+<para>Does nothing. This is the equivalent of removing the <tag>p:log</tag>
+element.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</section>
 </section>
 
 <section xml:id="langext">
@@ -198,6 +256,14 @@ configuration option.</para>
 </section>
 <section xml:id="ext.xpointer-on-text">
 <title>XPointer on text</title>
+
+<note>
+<title>Note</title>
+<para>This extension is no longer required.
+<link xlink:href="https://tools.ietf.org/html/rfc5147">RFC 5147</link> fragment identifiers
+are directly supported on the <tag class="attribute">fragid</tag> property
+of XInclude, per the XInclude 1.1 Note.</para>
+</note>
 
 <para>If the XPointer on text extension is enabled, the <tag class="attribute">xpointer</tag>
 attribute on an XInclude element can be used when <literal>parse="text"</literal>. The XPointer

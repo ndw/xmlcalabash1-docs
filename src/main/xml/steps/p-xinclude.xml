@@ -50,5 +50,11 @@ may be buffered to support this reparsing. The default is 100Mb.</para>
 </listitem>
 </varlistentry>
 </variablelist>
+
+<para>As of <citetitle>XML Calabash</citetitle> version 1.1.12, the
+“<link xlink:href="https://norman.walsh.name/2016/09/29/search">search</link>”
+fragment identifier is also supported.</para>
+
 </refsection>
+
 </refentry>
