@@ -15,7 +15,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="extattr.html" title="2 .  Extension Attributes"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  5 .  Extensions" href="extensions.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="4 .  Extension functions" href="extfunc.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.22)
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.23)
                      </td>
                   </tr>
                </table>
@@ -123,6 +123,14 @@
                   <section id="ext.xpointer-on-text" class="section">
                      <div class="section-titlepage">
                         <h3>3.2. XPointer on text</h3>
+                     </div>
+                     <div class="note admonition">
+                        <h3>Note</h3>
+                        <p>This extension is no longer required.
+                           <a href="https://tools.ietf.org/html/rfc5147">RFC 5147</a> fragment identifiers
+                           are directly supported on the <code class="tag-attribute">fragid</code> property
+                           of XInclude, per the XInclude 1.1 Note.
+                        </p>
                      </div>
                      <p>If the XPointer on text extension is enabled, the <code class="tag-attribute">xpointer</code>
                         attribute on an XInclude element can be used when <code class="literal">parse="text"</code>. The XPointer
@@ -529,7 +537,7 @@
             </table>
          </div>
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="copyrightfooter">
-            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015 Norman Walsh.
+            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015, 2016 Norman Walsh.
             </p>
          </div>
       </div>
