@@ -7,11 +7,5 @@ before_install:
 install:
 - sudo apt-get install graphviz
 
-env:
-  global:
-  - secure: iYKkhT/vj2z4u4xE59XkFTQMsCsdOp6EsblzL/L9HGgwcyJOUO0gJVIcLNBEJ/DkZdlALQB6UIU/TjIlIqU1G7+7M6dPoWSkalta7rmVNjbCUgiDQ+1PA/U9/rXwQ/q5lGDKbonisuVwjLtQL+u96JzocAv9LDVn61bgPpOZcUc=
-  - secure: iPut2K6dmQ+JJ+9uAjwrfwgxRWyutFax0avuldb4qFxPZ6ySpDIgqCqQDOYXQDTfum/OcLQc0Vt4SttSAfwfY6GjXCCYT7FHb9InkckhM5WXrgUgMS6HDvpxWyirl/AN/mjjCReTZ8Ge3rZMYtCrROV1wuKhECKDjOcxvFNbNt0=
-  - secure: eXOfD8ttgUNWnb63Z9jjANBVKQrH2hmxIWW2M0XAhEuEBBfJGhuJKM1USy1CBYPfNIaKevrIr2TWBdHeNQ3x4+nB8wBWIv2zc4s0rvNytggHnveMBWG01S9dIQ0fKUZtTJdbVPjNkYmEnfDWEFlxGNS/7oEuSNAhbMRsxTOrldY=
-  - secure: UWl3EHeoPV6wtuxo1+roTwuJ+ZnAiaxuWJajl3z6woEa7kQXQrjo9OkOSSrWi9bf5s8kcWm8QKe8ntq1MbFmKS2XqkOaHokHxpAafPTLbphIGcHzb9qQaC3bKOkhz1TxmM3Amr5YH195N/ZUkwNOyvkEFwBMitHBD2XSuOSXnAM=
 after_success:
 - .travis/publish-docs.sh
