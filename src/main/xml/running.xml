@@ -218,6 +218,7 @@ class path and other arguments.</para>
       <arg choice="plain">--debug</arg>
     </group>
   </arg>
+  <arg choice="opt">--show-messages</arg>
   <arg>
     <group choice="req">
       <arg choice="plain">-v</arg>

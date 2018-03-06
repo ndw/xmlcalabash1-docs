@@ -222,6 +222,34 @@ is enabled, then PSVIs are passed between steps.</para>
 <para>If debugging is enabled, errors will produce Java stack traces.</para>
 </section>
 
+<section xml:id="cfg.showMessages">
+<title>Debug</title>
+
+<para>There are three ways to enable showing messages:</para>
+
+<informaltable frame="none" role="cfgprop">
+<tgroup cols="2" colsep="0" rowsep="0">
+<tbody>
+<row>
+  <entry>Command line (long):</entry>
+  <entry><literal>--show-messages</literal>[=<replaceable>boolean</replaceable>]</entry>
+</row>
+<row>
+  <entry>Java system property:</entry>
+  <entry><property>com.xmlcalabash.show-messages</property>=<replaceable>boolean</replaceable></entry>
+</row>
+<row>
+  <entry>XML configuration:</entry>
+  <entry><tag class="starttag">cc:show-messages</tag><replaceable>boolean</replaceable><tag class="endtag">cc:show-messagedg</tag></entry>
+</row>
+</tbody>
+</tgroup>
+</informaltable>
+
+<para>If show messages is enabled, XSL messages and validation errors will be
+printed on standard error output.</para>
+</section>
+
 <section xml:id="cfg.safe-mode">
 <title>Safe mode</title>
 
