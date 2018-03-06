@@ -78,7 +78,7 @@
   </xsl:choose>
 </xsl:function>
 
-<xsl:template name="t:user-header-content">
+<xsl:template match="*" mode="m:user-header-content">
   <xsl:param name="node" select="."/>
   <xsl:param name="next" select="()"/>
   <xsl:param name="prev" select="()"/>
@@ -142,7 +142,7 @@
   </div>
 </xsl:template>
 
-<xsl:template name="t:user-footer-content">
+<xsl:template match="*" mode="m:user-footer-content">
   <xsl:param name="node" select="."/>
   <xsl:param name="next" select="()"/>
   <xsl:param name="prev" select="()"/>
