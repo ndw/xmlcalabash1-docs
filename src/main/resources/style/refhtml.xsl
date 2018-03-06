@@ -11,7 +11,8 @@
                 exclude-result-prefixes="db ext f t m xs"
                 version="2.0">
 
-<xsl:import href="../../../../build/docbook/xslt/base/html/chunk.xsl"/>
+<xsl:import href="https://cdn.docbook.org/release/latest/xslt/base/html/chunk.xsl"/>
+
 <xsl:import href="xproc.xsl"/>
 
 <xsl:param name="refentry.separator" select="0"/>

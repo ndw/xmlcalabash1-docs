@@ -10,7 +10,7 @@
 
 <p:import href="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/>
 <p:import href="http://xmlcalabash.com/extension/steps/pegdown.xpl"/>
-<p:import href="../../../../build/docbook/xslt/base/pipelines/docbook.xpl"/>
+<p:import href="https://cdn.docbook.org/release/latest/xslt/base/pipelines/docbook.xpl"/>
 
 <cx:java-properties name="props" href="../../../../gradle.properties"/>
 

@@ -1,106 +1,63 @@
 buildscript {
   repositories {
+    maven { url uri('/tmp/repo') }
+    mavenLocal()
     mavenCentral()
     maven { url "http://maven.restlet.org" }
-    maven { url "http://developer.marklogic.com/maven2" }
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
 
   dependencies {
     classpath fileTree(dir: 'lib').include("*.jar")
-    classpath 'com.xmlcalabash:xmlcalabash:1.1.4-96'
-    classpath 'com.xmlcalabash:xmlcalabash1-ditaa:1.1.3'
-    classpath 'com.xmlcalabash:xmlcalabash1-mathml-to-svg:1.1.3'
-    classpath 'com.xmlcalabash:xmlcalabash1-plantuml:1.1.3'
-    classpath 'net.sf.saxon:Saxon-HE:9.6.0-4'
+    classpath group: 'org.docbook', name: 'docbook-xsl-java-saxon', version: '1.2.0-96'
+    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.2.2'
+    classpath group: 'org.docbook', name: 'docbook-schemas', version: '5.1-1'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-ditaa', version: '1.1.3'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.3.3'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-ditaa', version: '1.1.3'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-plantuml', version: '1.1.3'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-mathml-to-svg', version: '1.1.3'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-pegdown', version: '1.1.1'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.1.19-98'
+    classpath group: 'org.xmlresolver', name: 'xmlresolver', version: '0.13.1'
   }
 }
 
 plugins {
   id "java"
-  id "de.undercouch.download" version "2.0.0"
 }
+
+apply plugin: 'org.docbook.task'
+apply plugin: 'com.xmlcalabash.task'
+
+import org.docbook.DocBookTask
+import com.xmlcalabash.XMLCalabashTask
 
 repositories {
+  maven { url uri('/tmp/repo') }
+  mavenLocal()
   mavenCentral()
   maven { url "http://maven.restlet.org" }
-  maven { url "http://developer.marklogic.com/maven2" }
-  maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-}
-
-configurations.all {
-  resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-    if (details.requested.name == 'slf4j-log4j12') {
-      details.useTarget "org.apache.logging.log4j:log4j-slf4j-impl:2.1"
-    }
-  }
 }
 
 dependencies {
   compile fileTree(dir: 'lib').include("*.jar")
   compile (
-    [group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.1.4-96'],
-    [group: 'com.xmlcalabash', name: 'xmlcalabash1-ditaa', version: '1.1.3'],
-    [group: 'com.xmlcalabash', name: 'xmlcalabash1-plantuml', version: '1.1.3'],
-    [group: 'com.xmlcalabash', name: 'xmlcalabash1-mathml-to-svg', version: '1.1.3'],
-    [group: 'com.xmlcalabash', name: 'xmlcalabash1-pegdown', version: '1.1.1'],
-    [group: 'net.sf.saxon', name: 'Saxon-HE', version: '9.6.0-4'],
-    [group: 'org.docbook', name: 'docbook-xsl-java-saxon', version: '1.2.0-96'],
+    [group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.1.19-98'],
+    [group: 'net.sf.saxon', name: 'Saxon-HE', version: '9.8.0-8']
   )
 }
 
-import de.undercouch.gradle.tasks.download.Download
-// import com.xmlcalabash.drivers.Main
-
-project.ext.docbookXslt = "docbook-xslt2-$docbookXsltVersion"
-
-task downloadDocBook(type: Download) {
-  src docbookXsltBaseUri + '/release/' + docbookXsltVersion + '/' + docbookXslt + '.zip'
-  dest new File(buildDir, docbookXslt + '.zip')
+task formatBook(type: DocBookTask) {
+  input("source", "src/main/xml/ref.xml")
+  pipeline("src/main/resources/style/format.xpl")
 }
-downloadDocBook.onlyIf { !file("$buildDir/${docbookXslt}.zip").exists() }
-
-task setupDocBook(dependsOn: downloadDocBook, type: Copy) {
-  from zipTree(downloadDocBook.dest)
-  into { "build" }
-  doLast {
-    copy {
-      from "build/$docbookXslt"
-      into 'build/docbook'
-    }
-  }
-}
-setupDocBook.onlyIf { !file("$buildDir/docbook").exists() }
 
 /*
-class CalabashFormatBookTask extends DefaultTask {
-  @TaskAction
-  def calabashAction() {
-    def args = [
-        '-D',
-        '-Xxpointer-on-text',
-        '-isource=src/ref.xml',
-        'style/format.xpl'
-    ]
-
-    Main.main(args as String[])
-  }
-}
-
-task formatBook(dependsOn: setupDocBook, type: CalabashFormatBookTask) {
-*/
-
-task formatBook(dependsOn: setupDocBook, type: JavaExec) {
-  classpath = configurations.compile
-  main = 'com.xmlcalabash.drivers.Main'
-/*
-  jvmArgs = ['-Dlog4j.configurationFile=/home/ndw/java/log4j2.xml']
-*/
   args('-D',
        '-Xxpointer-on-text',
        '-isource=src/main/xml/ref.xml',
        'src/main/resources/style/format.xpl')
-}
+*/
 
 formatBook.onlyIf {
   FileCollection src = fileTree(dir: 'src/main')
@@ -156,6 +113,6 @@ task zipDist(dependsOn: makeReference, type: Zip) {
   archiveName 'xmlcalabash-ref-' + version + ".zip"
 }
 
-task dist(dependsOn: zipDist) << {
+task dist(dependsOn: zipDist) {
   // nop
 }
