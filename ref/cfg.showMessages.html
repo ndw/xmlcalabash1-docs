@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <title>21. Option</title>
+      <title>6. Debug</title>
       <meta charset="utf-8" />
       <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.2.2" />
       <link href="css/prism.css" rel="stylesheet" type="text/css" />
@@ -14,20 +14,20 @@
             <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="navheader">
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
-                     <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cfg.pipeline.html" title="20 .  Pipeline"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  4 .  Configuration" href="configuration.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="22 .  Profile File" href="cfg.profile-file.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
+                     <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cfg.debug.html" title="5 .  Debug"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  4 .  Configuration" href="configuration.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="7 .  Safe mode" href="cfg.safe-mode.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
                      <td align="right"><i>XML Calabash Reference</i> (Version 0.25)
                      </td>
                   </tr>
                </table>
             </div>
             <div class="body">
-               <section id="cfg.option" class="section">
+               <section id="cfg.showMessages" class="section">
                   <div class="section-titlepage">
-                     <h2>21. Option</h2>
+                     <h2>6. Debug</h2>
                   </div>
                   <div class="content">
-                     <p>There are two ways to specify option values in the configuration:</p>
-                     <figure id="cfg.option.3" class="informaltable-wrapper cfgprop">
+                     <p>There are three ways to enable showing messages:</p>
+                     <figure id="cfg.showMessages.3" class="informaltable-wrapper cfgprop">
                         <div class="informaltable cfgprop">
                            <table border="0" style="border-collapse: collapse;">
                               <colgroup>
@@ -36,29 +36,25 @@
                               </colgroup>
                               <tbody>
                                  <tr>
-                                    <td>Command line:</td>
-                                    <td><em class="replaceable"><code>name</code></em>=<em class="replaceable"><code>value</code></em></td>
+                                    <td>Command line (long):</td>
+                                    <td><code class="literal">--show-messages</code>[=<em class="replaceable"><code>boolean</code></em>]
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>Java system property:</td>
+                                    <td><span class="property">com.xmlcalabash.show-messages</span>=<em class="replaceable"><code>boolean</code></em></td>
                                  </tr>
                                  <tr>
                                     <td>XML configuration:</td>
-                                    <td><code class="tag-emptytag">&lt;cc:with-option
-                                          name="<em class="replaceable"><code>optname</code></em>"
-                                          value="<em class="replaceable"><code>string</code></em>"/&gt;</code></td>
-                                 </tr>
-                                 <tr>
-                                    <td>Ant task:</td>
-                                    <td><code class="tag-starttag">&lt;calabash&gt;</code>
-                                       <code class="tag-emptytag">&lt;option
-                                          name="<em class="replaceable"><code>optname</code></em>"
-                                          value="<em class="replaceable"><code>string</code></em>"
-                                          /&gt;</code>
-                                       <code class="tag-endtag">&lt;/calabash&gt;</code></td>
+                                    <td><code class="tag-starttag">&lt;cc:show-messages&gt;</code><em class="replaceable"><code>boolean</code></em><code class="tag-endtag">&lt;/cc:show-messagedg&gt;</code></td>
                                  </tr>
                               </tbody>
                            </table>
                         </div>
                      </figure>
-                     <p>T.B.D.</p>
+                     <p>If show messages is enabled, XSL messages and validation errors will be
+                        printed on standard error output.
+                     </p>
                   </div>
                </section>
             </div>
@@ -66,15 +62,15 @@
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="navfooter">
             <table width="100%" summary="Navigation table">
                <tr>
-                  <td width="40%" align="left"><a title="20 .  Pipeline" href="cfg.pipeline.html"><img src="img/prev.png" alt="Prev" border="0" /></a> 
+                  <td width="40%" align="left"><a title="5 .  Debug" href="cfg.debug.html"><img src="img/prev.png" alt="Prev" border="0" /></a> 
                   </td>
                   <td width="20%" align="center"><a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a></td>
-                  <td width="40%" align="right"> <a title="22 .  Profile File" href="cfg.profile-file.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
+                  <td width="40%" align="right"> <a title="7 .  Safe mode" href="cfg.safe-mode.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
                </tr>
                <tr>
-                  <td width="40%" align="left">20 .  Pipeline </td>
+                  <td width="40%" align="left">5 .  Debug </td>
                   <td width="20%" align="center"><a title="Chapter  4 .  Configuration" href="configuration.html"><img src="img/up.png" alt="Up" border="0" /></a></td>
-                  <td width="40%" align="right"> 22 .  Profile File</td>
+                  <td width="40%" align="right"> 7 .  Safe mode</td>
                </tr>
             </table>
          </div>
