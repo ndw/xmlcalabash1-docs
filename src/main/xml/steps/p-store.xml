@@ -8,15 +8,29 @@
           xmlns:xi="http://www.w3.org/2001/XInclude"
           xmlns:pos="http://exproc.org/proposed/steps/os"
           xml:id="p-store">
-   <refnamediv>
-      <refname>p:store</refname>
-      <refpurpose>The standard p:store step</refpurpose>
-   </refnamediv>
-   <refsynopsisdiv>
-      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='p:store'])"/>
-   </refsynopsisdiv>
-   <refsection>
-      <title>Description</title>
-      <para>TBD.</para>
-   </refsection>
+<refnamediv>
+  <refname>p:store</refname>
+  <refpurpose>The standard p:store step</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+  <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='p:store'])"/>
+</refsynopsisdiv>
+
+<refsection>
+  <title>Description</title>
+  <para>The <tag>p:store</tag> step stores the resource that appears on the
+<literal role="port">source</literal> port into the location identified by the
+<tag class="attribute">href</tag> attribute. The remaining standard
+options are serialization parameters for XML documents.</para>
+
+<para>The <tag>p:store</tag> step takes a <tag class="attribute">cx:decode</tag>
+option. If the decode option is true and the document passed in is
+base64 encoded, then the document will be decoded before it is stored. In this
+way, <tag>p:store</tag> can store binary documents.</para>
+
+<para>The decode option may also be passed as an attribute on the document
+element of the input document.</para>
+
+</refsection>
+
 </refentry>

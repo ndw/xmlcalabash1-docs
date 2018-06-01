@@ -8,15 +8,24 @@
           xmlns:xi="http://www.w3.org/2001/XInclude"
           xmlns:pos="http://exproc.org/proposed/steps/os"
           xml:id="p-hash">
-   <refnamediv>
-      <refname>p:hash</refname>
-      <refpurpose>The standard p:hash step</refpurpose>
-   </refnamediv>
-   <refsynopsisdiv>
-      <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='p:hash'])"/>
-   </refsynopsisdiv>
-   <refsection>
-      <title>Description</title>
-      <para>TBD.</para>
-   </refsection>
+<refnamediv>
+  <refname>p:hash</refname>
+  <refpurpose>The standard p:hash step</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+  <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='p:hash'])"/>
+</refsynopsisdiv>
+
+<refsection>
+  <title>Description</title>
+  <para>The <tag>p:hash</tag> step performs the standard hash functions.</para>
+
+  <para><citetitle>XML Calabash</citetitle> supports an additional algorithm:
+  <literal>cx:hmac</literal> which computes an RFC 2104-complaint HMAC signature.
+  The signing key must be passed as a parameter named <tag>cx:accessKey</tag>.
+  </para>
+
+</refsection>
+
+
 </refentry>

@@ -1,0 +1,55 @@
+<refentry xmlns:p="http://www.w3.org/ns/xproc"
+          xmlns:e="http://www.w3.org/1999/XSL/Spec/ElementSyntax"
+          xmlns:pxp="http://exproc.org/proposed/steps"
+          xmlns:pxf="http://exproc.org/proposed/steps/file"
+          xmlns:ml="http://xmlcalabash.com/ns/extensions/marklogic"
+          xmlns:cxu="http://xmlcalabash.com/ns/extensions/xmlunit"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:pos="http://exproc.org/proposed/steps/os"
+          xml:id="cx-hash-document">
+<refnamediv>
+  <refname>cx:hash-document</refname>
+  <refpurpose>Compute the hash of a document</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+  <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:hash-document'])"/>
+</refsynopsisdiv>
+<refsection>
+
+<title>Description</title>
+
+<para>The <tag>p:hash-document</tag> step is, operationally, a bit
+like a combination of the <tag>p:store</tag> and <tag>p:hash</tag>
+steps. It begins by serializing the document that appears on the
+<literal role="port">source</literal> port using the serialization
+parameters specified. Like <tag>p:store</tag>, it accepts an extension
+option to decode binary documents.</para>
+
+<para>Next, a hash is computed for the serialized document. The hash
+options accepted are the same as those for <tag>p:hash</tag>.</para>
+
+<note>
+<para>Both the <tag>p:store</tag> and <tag>p:hash</tag> steps have a
+<tag class="attribute">version</tag> option. In <tag>p:hash-document</tag>,
+the <tag class="attribute">version</tag> option is used exclusively
+for serialization. To specify the version of the hashing algorithm,
+you <emphasis>must</emphasis> use the <tag class="attribute">hash-version</tag>
+option.</para>
+</note>
+
+<warning>
+<para>If an XML (or JSON) document is passed to
+<tag>p:hash-document</tag>, the step <emphasis>does not</emphasis> produce a
+canonical serialization before computing the hash. This step is
+therefore not reliable for hashes of XML documents.
+(Canonicalization will be added in the
+future.)
+</para>
+</warning>
+
+<para>The computed hash is returned in a <tag>c:result</tag> element
+on the <literal role="port">output</literal> port.</para>
+
+</refsection>
+</refentry>

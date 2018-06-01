@@ -216,6 +216,7 @@
       <p:option name="standalone" select="'omit'" e:type="true|false|omit"/>
       <p:option name="undeclare-prefixes" e:type="xsd:boolean"/>
       <p:option name="version" select="'1.0'" e:type="xsd:string"/>
+      <p:option name="cx:decode" select="'false'" e:type="xsd:boolean"/>
    </p:declare-step>
 
     <p:declare-step type="p:string-replace">
@@ -477,6 +478,31 @@
      <p:option name="scale" e:type="xsd:float"/>
      <p:option name="html" select="false()" e:type="xsd:boolean"/>
    </p:declare-step>
+
+<p:declare-step type="cx:hash-document">
+   <p:input port="source"/>
+   <p:output port="result"/>
+   <p:input port="parameters" kind="parameter"/>
+
+   <p:option name="algorithm" required="true"/>
+   <p:option name="hash-version"/>
+
+   <p:option name="byte-order-mark"/>
+   <p:option name="cdata-section-elements" select="''"/>
+   <p:option name="doctype-public"/>
+   <p:option name="doctype-system"/>
+   <p:option name="encoding"/>
+   <p:option name="escape-uri-attributes" select="'false'"/>
+   <p:option name="include-content-type" select="'true'"/>
+   <p:option name="indent" select="'false'"/>
+   <p:option name="media-type"/>
+   <p:option name="method" select="'xml'"/>
+   <p:option name="normalization-form" select="'none'"/>
+   <p:option name="omit-xml-declaration" select="'true'"/>
+   <p:option name="standalone" select="'omit'"/>
+   <p:option name="undeclare-prefixes"/>
+   <p:option name="version" select="'1.0'"/>
+</p:declare-step>
 
    <p:declare-step type="cx:java-properties">
      <p:output port="result"/>

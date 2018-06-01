@@ -125,6 +125,7 @@
 <xi:include href="steps/cx-ditaa.xml"/>
 <xi:include href="steps/cx-eval.xml"/>
 <xi:include href="steps/cx-get-cookies.xml"/>
+<xi:include href="steps/cx-hash-document.xml"/>
 <xi:include href="steps/cx-java-properties.xml"/>
 <xi:include href="steps/cx-mathml-to-svg.xml"/>
 <xi:include href="steps/cx-message.xml"/>
