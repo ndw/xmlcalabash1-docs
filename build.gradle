@@ -32,6 +32,8 @@ apply plugin: 'com.xmlcalabash.task'
 import org.docbook.DocBookTask
 import com.xmlcalabash.XMLCalabashTask
 
+defaultTasks 'makeReference'
+
 repositories {
   maven { url uri('/tmp/repo') }
   mavenLocal()
