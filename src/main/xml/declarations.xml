@@ -828,4 +828,9 @@
    <p:option name="to-html-serializer-plugins" e:type="xsd:string"/>
 </p:declare-step>
 
+<p:declare-step type="cx:commonmark">
+   <p:output port="result"/>
+   <p:option name="href" required="true" e:type="xsd:anyURI"/>
+</p:declare-step>
+
 </p:library>

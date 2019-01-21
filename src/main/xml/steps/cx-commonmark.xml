@@ -1,0 +1,29 @@
+<refentry xmlns:p="http://www.w3.org/ns/xproc"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns="http://docbook.org/ns/docbook"
+          xml:id="cx-commonmark">
+<refnamediv>
+  <refname>cx:commonmark</refname>
+  <refpurpose>Transform a “CommonMark” flavored Markdown document into XHTML</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+  <xi:include href="../declarations.xml" xpointer="xpath(/*/*[@type='cx:commonmark'])"/>
+</refsynopsisdiv>
+
+<refsection>
+<title>Description</title>
+
+<para>This step converts a
+<link xlink:href="https://commonmark.org/">CommonMark</link> flavored
+<link xlink:href="https://en.wikipedia.org/wiki/Markdown">Markdown</link>
+document into XHTML. It relies on the
+<link xlink:href="https://github.com/atlassian/commonmark-java">commonmark-java</link>
+library to perform the underlying parsing.
+</para>
+
+<para>The underlying parser returns a string containing the unparsed HTML characters.
+This step wraps that string in a <tag>body</tag> element in the XHTML namespace,
+parses that string as XML, and returns the resulting document.</para>
+</refsection>
+</refentry>
