@@ -9,7 +9,7 @@ buildscript {
   dependencies {
     classpath fileTree(dir: 'lib').include("*.jar")
     classpath group: 'org.docbook', name: 'docbook-xsl-java-saxon', version: '1.2.0-96'
-    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.2.2'
+    classpath group: 'org.docbook', name: 'docbook-xslt2', version: '2.3.10'
     classpath group: 'org.docbook', name: 'docbook-schemas', version: '5.1-1'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-ditaa', version: '1.1.3'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-gradle', version: '1.3.3'
@@ -17,7 +17,7 @@ buildscript {
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-plantuml', version: '1.1.3'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-mathml-to-svg', version: '1.1.3'
     classpath group: 'com.xmlcalabash', name: 'xmlcalabash1-pegdown', version: '1.1.1'
-    classpath group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.1.19-98'
+    classpath group: 'com.xmlcalabash', name: 'xmlcalabash', version: xmlCalabashVersion
     classpath group: 'org.xmlresolver', name: 'xmlresolver', version: '0.13.1'
   }
 }
@@ -41,11 +41,17 @@ repositories {
   maven { url "http://maven.restlet.org" }
 }
 
+configurations.all {
+  resolutionStrategy {
+    force 'xml-apis:xml-apis:1.4.01'
+  }
+}
+
 dependencies {
   compile fileTree(dir: 'lib').include("*.jar")
   compile (
-    [group: 'com.xmlcalabash', name: 'xmlcalabash', version: '1.1.19-98'],
-    [group: 'net.sf.saxon', name: 'Saxon-HE', version: '9.8.0-8']
+    [group: 'com.xmlcalabash', name: 'xmlcalabash', version: xmlCalabashVersion],
+    [group: 'net.sf.saxon', name: 'Saxon-HE', version: saxonVersion]
   )
 }
 
