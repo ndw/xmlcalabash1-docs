@@ -1,7 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>cx:pegdown</title><meta charset="utf-8" />
-      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.3.10" /><link href="css/prism.css" rel="stylesheet" type="text/css" /><link href="css/db-prism.css" rel="stylesheet" type="text/css" /><link rel="stylesheet" type="text/css" href="css/default.css" /><link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script></head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>cx:pegdown</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.5.0" />
+      <link href="css/default.css" rel="stylesheet" type="text/css" />
+      <link href="css/db-prism.css" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script></head>
    <body>
       <div class="page">
          <div class="content">
@@ -9,8 +14,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="cx-namespace-delete.html" title="cx:namespace-delete"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="XML Calabash Extension Steps" href="cx-steps.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="cx:plantuml" href="cx-plantuml.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.27)
-                     </td>
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.28)</td>
                   </tr>
                </table>
             </div>
@@ -35,8 +39,7 @@
                            
                            <p>This step converts
                               <a href="http://daringfireball.net/projects/markdown/">Markdown</a>
-                              documents into XHTML.
-                           </p>
+                              documents into XHTML.</p>
                            
                            
                            <p>The <code class="tag-element">cx:pegdown</code> step defines a number
@@ -45,14 +48,12 @@
                               <span class="application">PegDown</span> formatter. The names reflect the
                               names used by the project, as far as I can tell. They are:
                               <span class="simplelist"><span class="member">max-parsing-time</span>, <span class="member">smarts</span>, <span class="member">quotes</span>, <span class="member">abbreviations</span>, <span class="member">hardwraps</span>, <span class="member">autolinks</span>, <span class="member">tables</span>, <span class="member">definitions</span>, <span class="member">fenced-code-blocks</span>, <span class="member">wikilinks</span>, <span class="member">strikethrough</span>, <span class="member">anchorlinks</span>, <span class="member">suppress-html-blocks</span>, <span class="member">suppress-inline-html</span>, <span class="member">suppress-all-html</span>, <span class="member">plugins</span>, <span class="member">link-renderer</span>, <span class="member">verbatim-serializer</span>, <span class="member">to-html-serializer-plugins</span></span>
-                              
-                           </p>
+                              </p>
                            
                            
                            <p>The <code class="option">max-parsing-time</code> is a number of milliseconds.
                               Most of the rest of the options are booleans, defaulting to false.
-                              The last few options identify extension classes:
-                           </p>
+                              The last few options identify extension classes:</p>
                            
                            
                            <div class="variablelist">
@@ -60,26 +61,22 @@
                                  <dt><span class="term"><code class="option">plugins</code></span></dt>
                                  <dd>
                                     <p>The fully qualified classname for a plugin class.
-                                       
-                                    </p>
+                                       </p>
                                  </dd>
                                  <dt><span class="term"><code class="option">link-renderer</code></span></dt>
                                  <dd>
                                     <p>The fully qualified classname for a link rendering class.
-                                       
-                                    </p>
+                                       </p>
                                  </dd>
                                  <dt><span class="term"><code class="option">verbatim-serializer</code></span></dt>
                                  <dd>
                                     <p>A sequence of name/classname pairs for verbatim serialization.
-                                       
-                                    </p>
+                                       </p>
                                  </dd>
                                  <dt><span class="term"><code class="option">to-html-serializer-plugins</code></span></dt>
                                  <dd>
                                     <p>A list of fully qualifieid classnames for HTML serialization.
-                                       
-                                    </p>
+                                       </p>
                                  </dd>
                               </dl>
                            </div>
@@ -89,7 +86,8 @@
                            
                            
                            <figure id="cx-pegdown.3.7" class="informalfigure-wrapper">
-                              <div class="informalfigure"><pre class="programlisting language-none line-numbers"><code># XML Calabash pegdown Step
+                              <div class="informalfigure">
+                                 <pre class="programlisting language-none line-numbers"><code># XML Calabash pegdown Step
 
 This repository contains an [XML Calabash](http://github.com/ndw/xmlcalabash1)
 1.1 extension steps that supports the
@@ -112,16 +110,17 @@ dependencies that must also be downloaded. You'll need them too, which
 happens naturally if you're including the Maven dependency in some
 other Maven project. If you just grab the `jar` from Maven and don't
 get the other dependencies, you're likely to find that the step
-doesn't work because of some missing dependencies.</code></pre></div>
+doesn't work because of some missing dependencies.</code></pre>
+                              </div>
                            </figure>
                            
                            
-                           <p>Running this through <code class="tag-element">cx:pegdown</code> produces:
-                           </p>
+                           <p>Running this through <code class="tag-element">cx:pegdown</code> produces:</p>
                            
                            
                            <figure id="cx-pegdown.3.9" class="informalfigure-wrapper">
-                              <div class="informalfigure"><pre class="programlisting line-numbers">&lt;html&gt;
+                              <div class="informalfigure">
+                                 <pre class="programlisting line-numbers">&lt;html&gt;
    &lt;head/&gt;
    &lt;body&gt;
       &lt;h1&gt;XML Calabash pegdown Step&lt;/h1&gt;
@@ -131,11 +130,11 @@ doesn't work because of some missing dependencies.</code></pre></div>
       &lt;p&gt;For standalone installation, get the most recent release from the project &lt;a href="http://github.com/ndw/xmlcalabash1-pegdown/releases"&gt;releases&lt;/a&gt; page. The release distributed there includes relevant dependencies. Unpack it somewhere on your system and add the included, top-level &lt;code&gt;jar&lt;/code&gt; file to your class path.&lt;/p&gt;
       &lt;p&gt;If you're using Maven, you can also get it from there. Note, however, that the Maven distribution includes a POM file that identifies other dependencies that must also be downloaded. You'll need them too, which happens naturally if you're including the Maven dependency in some other Maven project. If you just grab the &lt;code&gt;jar&lt;/code&gt; from Maven and don't get the other dependencies, you're likely to find that the step doesn't work because of some missing dependencies.&lt;/p&gt;
    &lt;/body&gt;
-&lt;/html&gt;</pre></div>
+&lt;/html&gt;</pre>
+                              </div>
                            </figure>
                            
-                           
-                        </div>
+                           </div>
                      </div>
                      <div class="refsection">
                         <div class="refsection-titlepage">
@@ -147,12 +146,13 @@ doesn't work because of some missing dependencies.</code></pre></div>
                            
                            <p>To use this step, you must include its declaration in your pipeline.
                               You can copy the declaration above or import a library that defines
-                              this step, such as
-                           </p>
+                              this step, such as</p>
                            
                            
                            <figure id="cx-pegdown.4.3" class="informalfigure-wrapper">
-                              <div class="informalfigure"><pre class="programlisting language-none line-numbers"><code>http://xmlcalabash.com/extension/steps/pegdown.xpl</code></pre></div>
+                              <div class="informalfigure">
+                                 <pre class="programlisting language-none line-numbers"><code>http://xmlcalabash.com/extension/steps/pegdown.xpl</code></pre>
+                              </div>
                            </figure>
                            
                            
@@ -166,13 +166,10 @@ doesn't work because of some missing dependencies.</code></pre></div>
                                  <p>This step is implemented by the
                                     <a href="https://github.com/ndw/xmlcalabash1-pegdown">xmlcalabash1-pegdown</a>
                                     module. The jar file from that project must be in the class path in order
-                                    to use this step.
-                                 </p>
-                                 
-                              </div>
+                                    to use this step.</p>
+                                 </div>
                            </div>
-                           
-                        </div>
+                           </div>
                      </div>
                   </div>
                </article>
@@ -181,8 +178,7 @@ doesn't work because of some missing dependencies.</code></pre></div>
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="navfooter">
             <table width="100%" summary="Navigation table">
                <tr>
-                  <td width="40%" align="left"><a title="cx:namespace-delete" href="cx-namespace-delete.html"><img src="img/prev.png" alt="Prev" border="0" /></a> 
-                  </td>
+                  <td width="40%" align="left"><a title="cx:namespace-delete" href="cx-namespace-delete.html"><img src="img/prev.png" alt="Prev" border="0" /></a> </td>
                   <td width="20%" align="center"><a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a></td>
                   <td width="40%" align="right"> <a title="cx:plantuml" href="cx-plantuml.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
                </tr>
@@ -194,8 +190,7 @@ doesn't work because of some missing dependencies.</code></pre></div>
             </table>
          </div>
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="copyrightfooter">
-            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Norman Walsh.
-            </p>
+            <p><a href="dbcpyright.html">Copyright</a> © 2011–2020 Norman Walsh.</p>
          </div>
       </div>
    </body>

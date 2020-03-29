@@ -1,7 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>4. Parameters specified as nested elements</title><meta charset="utf-8" />
-      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.3.10" /><link href="css/prism.css" rel="stylesheet" type="text/css" /><link href="css/db-prism.css" rel="stylesheet" type="text/css" /><link rel="stylesheet" type="text/css" href="css/default.css" /><link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script></head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>4. Parameters specified as nested elements</title>
+      <meta charset="utf-8" />
+      <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.5.0" />
+      <link href="css/default.css" rel="stylesheet" type="text/css" />
+      <link href="css/db-prism.css" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="css/xproc.css" type="text/css" /><script type="text/javascript" src="js/dbmodnizr.js"></script></head>
    <body>
       <div class="page">
          <div class="content">
@@ -9,8 +14,7 @@
                <table border="0" cellpadding="0" cellspacing="0" width="100%" summary="Navigation table">
                   <tr>
                      <td align="left"> <a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a> <a href="antparam.html" title="3 .  Parameters"><img src="img/prev.png" alt="Prev" border="0" /></a> <a title="Chapter  3 .  Calabash Ant Task" href="anttask.html"><img src="img/up.png" alt="Up" border="0" /></a> <a title="5 .  Examples" href="antexamples.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
-                     <td align="right"><i>XML Calabash Reference</i> (Version 0.27)
-                     </td>
+                     <td align="right"><i>XML Calabash Reference</i> (Version 0.28)</td>
                   </tr>
                </table>
             </div>
@@ -28,8 +32,7 @@
                            <p>Specification of resources to apply to an input port. May specify
                               additional or alternative inputs to be applied to the
                               <code class="tag-attribute">inPort</code> port or may be fixed or mapped
-                              resources to be applied to other ports.
-                           </p>
+                              resources to be applied to other ports.</p>
                            <section id="ant.input.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.1.1. Parameters</h4>
@@ -46,8 +49,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -57,10 +59,8 @@
                                                 <td>port name</td>
                                                 
                                                 <td>No; the primary non-parameter input
-                                                   port will be used
-                                                </td>
-                                                
-                                             </tr>
+                                                   port will be used</td>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>type</td>
@@ -68,8 +68,7 @@
                                                 <td>input type, either <code class="literal">XML</code> or <code class="literal">DATA</code></td>
                                                 
                                                 <td>No; default is <code class="literal">XML</code></td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>contentType</td>
@@ -78,15 +77,12 @@
                                                    ends in <code class="literal">+xml</code>, starts with <code class="literal">text/</code>
                                                    or has a charset of <code class="literal">utf-8</code> specified, the input
                                                    is treated as text, otherwise the input gets base64 encoded
-                                                   automatically before it is given to the pipeline
-                                                </td>
+                                                   automatically before it is given to the pipeline</td>
                                                 
                                                 <td>No; default is guessed from the resource content, as fallback from the
                                                    resource name and as second fallback <code class="literal">application/octet-stream</code>
-                                                   is used
-                                                </td>
-                                                
-                                             </tr>
+                                                   is used</td>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>if</td>
@@ -95,8 +91,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -105,8 +100,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -119,8 +113,7 @@
                               </div>
                               <div class="content">
                                  <p>Either <a href="http://ant.apache.org/manual/Types/resources.html">Ant resources</a> <em>or</em> a
-                                    mapper may be specified, but not both.
-                                 </p>
+                                    mapper may be specified, but not both.</p>
                                  <section id="ant.input.4.3" class="section">
                                     <div class="section-titlepage">
                                        <h5>4.1.2.1. any <a href="http://ant.apache.org/manual/Types/resources.html">Ant resource</a></h5>
@@ -129,15 +122,18 @@
                                        <p>Use <a href="http://ant.apache.org/manual/Types/resources.html">Ant resources</a> to specify
                                           fixed resources that should be applied to this
                                           port. Any readable resource can be used, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;input&gt;
     &lt;string&gt;&lt;![CDATA[
         &lt;foo/&gt;
     ]]&gt;&lt;/string&gt;
 &lt;/input&gt;</code></pre>
                                           or
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;input&gt;
     &lt;url url="http://www.w3.org"/&gt;
-&lt;/input&gt;</code></pre></p>
+&lt;/input&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                                  <section id="ant.input.4.4" class="section">
@@ -148,10 +144,8 @@
                                        <p>You can define resources to be used based on the
                                           resource(s) specified for the <code class="tag-attribute">inPort</code> port or on the
                                           current resource from the implicit and / or explicit
-                                          input fileset.
-                                       </p>
-                                       <p>You cannot use a mapper on the <code class="tag-attribute">inPort</code> port.
-                                       </p>
+                                          input fileset.</p>
+                                       <p>You cannot use a mapper on the <code class="tag-attribute">inPort</code> port.</p>
                                     </div>
                                  </section>
                               </div>
@@ -163,8 +157,7 @@
                            <h3>4.2. pipeline</h3>
                         </div>
                         <div class="content">
-                           <p>Pipeline resource. Can be used instead of <code class="tag-attribute">pipeline</code> attribute.
-                           </p>
+                           <p>Pipeline resource. Can be used instead of <code class="tag-attribute">pipeline</code> attribute.</p>
                            <section id="ant.pipeline.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.2.1. Parameters</h4>
@@ -181,8 +174,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -193,8 +185,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -203,8 +194,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -224,6 +214,7 @@
                                        <p>Any <a href="http://ant.apache.org/manual/Types/resources.html">Ant resource</a> can be used, but only
                                           one single readable resource may be contained
                                           in it, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;pipeline&gt;
     &lt;string&gt;&lt;![CDATA[
         &lt;p:declare-step xmlns:p="http://www.w3.org/ns/xproc" version="1.0"&gt;
@@ -234,9 +225,11 @@
     ]]&gt;&lt;/string&gt;
 &lt;/pipeline&gt;</code></pre>
                                           or
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;pipeline&gt;
     &lt;url url="http://www.domain.org/pipeline.xpl"/&gt;
-&lt;/pipeline&gt;</code></pre></p>
+&lt;/pipeline&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                               </div>
@@ -252,8 +245,7 @@
                               output port. May be used as an alternative to <code class="tag-attribute">out</code> to specify to where to
                               write the output from the <code class="tag-attribute">outPort</code>
                               port or may be fixed or mapped resources to be applied to other
-                              ports.
-                           </p>
+                              ports.</p>
                            <section id="ant.output.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.3.1. Parameters</h4>
@@ -270,8 +262,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -281,8 +272,7 @@
                                                 <td>port name</td>
                                                 
                                                 <td>No; the primary output port will be used</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>if</td>
@@ -291,8 +281,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -301,8 +290,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -315,8 +303,7 @@
                               </div>
                               <div class="content">
                                  <p>Either <a href="http://ant.apache.org/manual/Types/resources.html">Ant resources</a>
-                                    <em>or</em> a mapper may be specified, but not both.
-                                 </p>
+                                    <em>or</em> a mapper may be specified, but not both.</p>
                                  <section id="ant.output.4.3" class="section">
                                     <div class="section-titlepage">
                                        <h5>4.3.2.1. any <a href="http://ant.apache.org/manual/Types/resources.html">Ant resource</a></h5>
@@ -325,11 +312,13 @@
                                        <p>Use <a href="http://ant.apache.org/manual/Types/resources.html">Ant resources</a> to specify fixed
                                           resources that should be applied to this
                                           port. Any writable <a href="http://ant.apache.org/manual/Types/resources.html">Ant resource</a> can be used, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;output&gt;
     &lt;bzip2resource&gt;
         &lt;file file="result.xml.bz2"/&gt;
     &lt;/bzip2resource&gt;
-&lt;/output&gt;</code></pre></p>
+&lt;/output&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                                  <section id="ant.output.4.4" class="section">
@@ -338,8 +327,7 @@
                                     </div>
                                     <div class="content">
                                        <p>You can define resources to which to write based
-                                          on the resource(s) specified for the <code class="tag-attribute">inPort</code> port.
-                                       </p>
+                                          on the resource(s) specified for the <code class="tag-attribute">inPort</code> port.</p>
                                     </div>
                                  </section>
                               </div>
@@ -353,8 +341,7 @@
                         <div class="content">
                            <p>Use readable <a href="http://ant.apache.org/manual/Types/resources.html">Ant resources</a> to specify fixed resources that
                               should be processed consecutively in a sequence of Calabash
-                              runs.
-                           </p>
+                              runs.</p>
                         </div>
                      </section>
                      <section id="antparamnest.6" class="section">
@@ -365,8 +352,7 @@
                            <p>You can define resources to which to write based on the
                               resource(s) specified for the implicit fileset (based on <code class="tag-attribute">includes</code>, etc.) and / or on the
                               explicit fileset formed from resource collections that are
-                              children of <code class="tag-element">calabash</code>.
-                           </p>
+                              children of <code class="tag-element">calabash</code>.</p>
                         </div>
                      </section>
                      <section id="antparamnest.7" class="section">
@@ -376,8 +362,7 @@
                         <div class="content">
                            <p>Use nested <code class="tag-element">namespace</code> elements to define
                               mappings between prefixes and namespace URIs for any prefixes
-                              that are used in <code class="tag-element">option</code> or <code class="tag-element">parameter</code> elements.
-                           </p>
+                              that are used in <code class="tag-element">option</code> or <code class="tag-element">parameter</code> elements.</p>
                            <section id="antparamnest.7.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.6.1. Parameters</h4>
@@ -394,8 +379,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -405,8 +389,7 @@
                                                 <td>Prefix to which to map the URI</td>
                                                 
                                                 <td>Yes</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>uri</td>
@@ -414,8 +397,7 @@
                                                 <td>Namespace uri</td>
                                                 
                                                 <td>Yes</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>if</td>
@@ -424,8 +406,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -434,8 +415,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -466,8 +446,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -481,12 +460,10 @@
                                                    QNames have their prefix matched against
                                                    bindings specified in <code class="tag-element">namespace</code> elements. QNames may also be
                                                    specified in Clark notation, i. e.
-                                                   <code class="literal">{uri}name</code>.
-                                                </td>
+                                                   <code class="literal">{uri}name</code>.</td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>value</td>
@@ -494,8 +471,7 @@
                                                 <td>Option string value</td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>if</td>
@@ -504,8 +480,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -514,8 +489,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -546,8 +520,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -555,15 +528,12 @@
                                                 <td>port</td>
                                                 
                                                 <td>Port to which to apply the
-                                                   parameter.
-                                                </td>
+                                                   parameter.</td>
                                                 
                                                 <td>No; default is only available parameter port, if there
                                                    are no or more than one parameter ports, an error
-                                                   is raised
-                                                </td>
-                                                
-                                             </tr>
+                                                   is raised</td>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>name</td>
@@ -575,12 +545,10 @@
                                                    QNames have their prefix matched
                                                    against bindings specified in <code class="tag-element">namespace</code> elements. QNames may also be
                                                    specified in Clark notation, e.g.,
-                                                   <code class="literal">{uri}name</code>.
-                                                </td>
+                                                   <code class="literal">{uri}name</code>.</td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>value</td>
@@ -588,8 +556,7 @@
                                                 <td>Parameter string value</td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>if</td>
@@ -598,8 +565,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -608,8 +574,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -639,8 +604,7 @@
                            <h3>4.11. profile</h3>
                         </div>
                         <div class="content">
-                           <p>Profile resource. Can be used instead of <code class="tag-attribute">profileFile</code> attribute.
-                           </p>
+                           <p>Profile resource. Can be used instead of <code class="tag-attribute">profileFile</code> attribute.</p>
                            <section id="antparamnest.12.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.11.1. Parameters</h4>
@@ -657,8 +621,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -669,8 +632,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -679,8 +641,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -700,15 +661,18 @@
                                        <p>Any <a href="http://ant.apache.org/manual/Types/resources.html">Ant resource</a> can be used, but only
                                           one single writable resource may be contained
                                           in it, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;profile&gt;
     &lt;bzip2resource&gt;
         &lt;file file="profile.xml.bz2"/&gt;
     &lt;/bzip2resource&gt;
 &lt;/profile&gt;</code></pre>
                                           or
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;profile&gt;
     &lt;stderr/&gt;
-&lt;/profile&gt;</code></pre></p>
+&lt;/profile&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                               </div>
@@ -720,8 +684,7 @@
                            <h3>4.12. saxonConfig</h3>
                         </div>
                         <div class="content">
-                           <p>Saxon config resource. Can be used instead of <code class="tag-attribute">saxonConfigFile</code> attribute.
-                           </p>
+                           <p>Saxon config resource. Can be used instead of <code class="tag-attribute">saxonConfigFile</code> attribute.</p>
                            <section id="antparamnest.13.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.12.1. Parameters</h4>
@@ -738,8 +701,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -750,8 +712,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -760,8 +721,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -781,23 +741,27 @@
                                        <p>Any <a href="http://ant.apache.org/manual/Types/resources.html">Ant resource</a> can be used, but only
                                           one single readable resource may be contained
                                           in it, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;saxonConfig&gt;
     &lt;bzip2resource&gt;
         &lt;file file="saxon-config.xml.bz2"/&gt;
     &lt;/bzip2resource&gt;
 &lt;/saxonConfig&gt;</code></pre>
                                           or
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;saxonConfig&gt;
     &lt;stdin/&gt;
 &lt;/saxonConfig&gt;</code></pre>
                                           or
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;saxonConfig&gt;
     &lt;string&gt;&lt;![CDATA[
         &lt;configuration xmlns="http://saxon.sf.net/ns/configuration"&gt;
             &lt;global optimizationLevel="10"/&gt;
         &lt;/configuration&gt;
     ]]&gt;&lt;/string&gt;
-&lt;/saxonConfig&gt;</code></pre></p>
+&lt;/saxonConfig&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                               </div>
@@ -809,8 +773,7 @@
                            <h3>4.13. config</h3>
                         </div>
                         <div class="content">
-                           <p>Config resource. Can be used instead of <code class="tag-attribute">configFile</code> attribute.
-                           </p>
+                           <p>Config resource. Can be used instead of <code class="tag-attribute">configFile</code> attribute.</p>
                            <section id="antparamnest.14.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.13.1. Parameters</h4>
@@ -827,8 +790,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -839,8 +801,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -849,8 +810,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -870,23 +830,27 @@
                                        <p>Any <a href="http://ant.apache.org/manual/Types/resources.html">Ant resource</a> can be used, but only
                                           one single readable resource may be contained
                                           in it, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;config&gt;
     &lt;bzip2resource&gt;
         &lt;file file="config.xml.bz2"/&gt;
     &lt;/bzip2resource&gt;
 &lt;/config&gt;</code></pre>
                                           or
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;config&gt;
     &lt;stdinout/&gt;
 &lt;/config&gt;</code></pre>
                                           or
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;config&gt;
     &lt;string&gt;&lt;![CDATA[
         &lt;xproc-config xmlns="http://xmlcalabash.com/ns/configuration"&gt;
             &lt;html-parser value="tagsoup" /&gt;
         &lt;/xproc-config&gt;
     ]]&gt;&lt;/string&gt;
-&lt;/config&gt;</code></pre></p>
+&lt;/config&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                               </div>
@@ -899,8 +863,7 @@
                         </div>
                         <div class="content">
                            <p>Library resources. The steps in the libraries loaded are only available in <code class="tag-emptytag">&lt;step/&gt;</code> tags.
-                              If no steps are specified, the first step of the first loaded library will be used.
-                           </p>
+                              If no steps are specified, the first step of the first loaded library will be used.</p>
                            <section id="ant.library.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.14.1. Parameters</h4>
@@ -917,8 +880,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -929,8 +891,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -939,8 +900,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -958,9 +918,11 @@
                                     </div>
                                     <div class="content">
                                        <p>Any readable <a href="http://ant.apache.org/manual/Types/resources.html">Ant resource</a> can be used, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;library&gt;
     &lt;url url="http://xmlcalabash.com/extension/steps/library-1.0.xpl"/&gt;
-&lt;/library&gt;</code></pre></p>
+&lt;/library&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                               </div>
@@ -973,8 +935,7 @@
                         </div>
                         <div class="content">
                            <p>The steps to be used to form an implicit pipeline.
-                              If no steps are specified, the first step of the first loaded library will be used.
-                           </p>
+                              If no steps are specified, the first step of the first loaded library will be used.</p>
                            <section id="ant.step.3" class="section">
                               <div class="section-titlepage">
                                  <h4>4.15.1. Parameters</h4>
@@ -991,8 +952,7 @@
                                                 <th>Description</th>
                                                 
                                                 <th>Required</th>
-                                                
-                                             </tr>
+                                                </tr>
                                           </thead>
                                           <tbody>
                                              <tr>
@@ -1003,12 +963,10 @@
                                                    QNames have their prefix matched
                                                    against bindings specified in <code class="tag-element">namespace</code> elements. QNames may also be
                                                    specified in Clark notation, e.g.,
-                                                   <code class="literal">{uri}name</code>.
-                                                </td>
+                                                   <code class="literal">{uri}name</code>.</td>
                                                 
                                                 <td>Yes</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>if</td>
@@ -1017,8 +975,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                              <tr>
                                                 
                                                 <td>unless</td>
@@ -1027,8 +984,7 @@
                                                    <code class="uri">http://ant.apache.org/manual/properties.html#if+unless</code></td>
                                                 
                                                 <td>No</td>
-                                                
-                                             </tr>
+                                                </tr>
                                           </tbody>
                                        </table>
                                     </div>
@@ -1047,11 +1003,13 @@
                                     <div class="content">
                                        <p>Input elements as documented in <a href="antparamnest.html#ant.input" title="input">Section 4.1, “input”</a>, with the exception that no nested mapper is supported, but only resource collections,
                                           e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;step name="p:identity"&gt;
     &lt;input port="source"&gt;
         &lt;string&gt;&lt;![CDATA[&lt;foo/&gt;]]&gt;&lt;/string&gt;
     &lt;/input&gt;
-&lt;/step&gt;</code></pre></p>
+&lt;/step&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                                  <section id="ant.step.4.3" class="section">
@@ -1060,9 +1018,11 @@
                                     </div>
                                     <div class="content">
                                        <p>Parameter elements as documented in <a href="antparamnest.html#ant.parameter" title="parameter">Section 4.8, “parameter”</a>, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;step name="p:template"&gt;
     &lt;parameter name="foo" value="bar" /&gt;
-&lt;/step&gt;</code></pre></p>
+&lt;/step&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                                  <section id="ant.step.4.4" class="section">
@@ -1071,9 +1031,11 @@
                                     </div>
                                     <div class="content">
                                        <p>Option elements as documented in <a href="antparamnest.html#ant.option" title="option">Section 4.7, “option”</a>, e. g.
+                                          
                                           <pre class="programlisting language-none line-numbers"><code>&lt;step name="p:count"&gt;
     &lt;option name="limit" value="1" /&gt;
-&lt;/step&gt;</code></pre></p>
+&lt;/step&gt;</code></pre>
+                                       </p>
                                     </div>
                                  </section>
                               </div>
@@ -1087,8 +1049,7 @@
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="navfooter">
             <table width="100%" summary="Navigation table">
                <tr>
-                  <td width="40%" align="left"><a title="3 .  Parameters" href="antparam.html"><img src="img/prev.png" alt="Prev" border="0" /></a> 
-                  </td>
+                  <td width="40%" align="left"><a title="3 .  Parameters" href="antparam.html"><img src="img/prev.png" alt="Prev" border="0" /></a> </td>
                   <td width="20%" align="center"><a title="XML Calabash Reference" href="index.html"><img src="img/home.png" alt="Home" border="0" /></a></td>
                   <td width="40%" align="right"> <a title="5 .  Examples" href="antexamples.html"><img src="img/next.png" alt="Next" border="0" /></a></td>
                </tr>
@@ -1100,8 +1061,7 @@
             </table>
          </div>
          <div xmlns:tmpl="http://docbook.org/xslt/titlepage-templates" class="copyrightfooter">
-            <p><a href="dbcpyright.html">Copyright</a> © 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Norman Walsh.
-            </p>
+            <p><a href="dbcpyright.html">Copyright</a> © 2011–2020 Norman Walsh.</p>
          </div>
       </div>
    </body>
