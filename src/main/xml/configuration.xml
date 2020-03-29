@@ -105,8 +105,50 @@ if you are using “home edition”.</para>
 <section xml:id="cfg.implementation">
 <title>Implementation classes</title>
 
-<para>In order to run an atomic step (implemented in the JVM), the processor
-must know what class provides its implementation. The preferred way to
+<para>In order to run an atomic step (implemented in the JVM), the
+processor must know what class provides its implementation. Prior to
+<citetitle>XML Calabash</citetitle> 1.2.0, the preferred mechanism was to use
+annotations.</para>
+
+<para>However, it turns out in practice that access to annotations can
+be challenging. They depend (I infer) on the security settings of the
+class loader in effect and are sometimes unavailable. The preferred mechanism is
+now a properties file.</para>
+
+<section xml:id="impl-prop">
+<title>Implementation class property file</title>
+
+<para>Add a Java property file named “<filename>com.xmlcalabash.properties</filename>” to
+the jar file that includes the class which implements the step. The property file can
+declare namespaces and step implementations. For example:</para>
+
+<programlisting>cx = namespace http://xmlcalabash.com/ns/extensions
+px = namespace http://example.com/ns/xproc
+
+com.xmlcalabash.extensions.StepA = step cx:step-a
+com.xmlcalabash.extensions.StepB = step cx:step-c
+com.xmlcalabash.extensions.StepC = step cx:step-c,px:step-c-legacy</programlisting>
+
+<para>Namespaces prefixes are declared by using the prefix as the key in the property file
+with the value “<literal>namespace</literal> <replaceable>URI</replaceable>”.</para>
+
+<para>Steps are declared by using the implementation class name as the
+key with the value “<literal>step</literal>
+<replaceable>QName</replaceable>” where
+<replaceable>QName</replaceable> is the step type. If the class
+implements multiple step types, use a comma separated list of step QNames.
+</para>
+
+<para>For backwards compatibility, annotations take preference over property values.
+Also, any parsing errors in the property file(s) are reported as log messages at the
+<literal>DEBUG</literal> level.</para>
+
+</section>
+
+<section xml:id="impl-anno">
+<title>Implementation class annotations</title>
+
+<para>The preferred way to
 identify implementation classes is with the
 <interfacename>XMLCalabash</interfacename> annotation:</para>
 
@@ -130,7 +172,11 @@ notation.” If there are multiple steps that share an implementation the
 <methodname>type</methodname> annotation may be a space-separated list
 of tokens.</para>
 
-<para>If for some reason it isn't possible to use the annotation, the
+</section>
+<section xml:id="impl-cfg">
+<title>Implementation classes in the configuration file</title>
+
+<para>If for some reason it isn't possible to use a property file or an annotation, the
 <tag class="element">cc:implementation</tag> element in the XML Configuration
 file can be used instead:</para>
 
@@ -149,6 +195,7 @@ file can be used instead:</para>
 list of QNames. The <tag class="attribute">class-name</tag> must be a fully
 qualified class name, such as <literal>com.xmlcalabash.library.Identity</literal>.
 </para>
+</section>
 </section>
 
 <section xml:id="cfg.schema-aware">
