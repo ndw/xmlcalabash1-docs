@@ -11,7 +11,7 @@
                 exclude-result-prefixes="db ext f t m xs"
                 version="2.0">
 
-<xsl:import href="https://cdn.docbook.org/release/latest/xslt/base/html/chunk.xsl"/>
+<xsl:import href="https://cdn.docbook.org/release/xsl20/current/xslt/base/html/chunk.xsl"/>
 
 <xsl:import href="xproc.xsl"/>
 

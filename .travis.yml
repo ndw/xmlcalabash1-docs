@@ -1,5 +1,5 @@
 language: java
-script: gradle dist
+script: "./gradlew dist"
 
 before_install:
 - sudo apt-get update
