@@ -14,9 +14,10 @@ Calabash</citetitle> from Apache Ant using the
 <para>Setting up is as for any other custom Antlib.
        You need a <tag class="emptytag">typedef</tag> and a namespace declaration.
        After that the custom Task and Types are available in the defined namespace.
-       If you put the calabash.jar to your Ant classpath, e. g. by placing it inside
-       <literal>${ant.home}/lib</literal>, you can even save the
-       <tag class="emptytag">typedef</tag> declaration ant the namespace definition
+       If you add the calabash.jar and the other jars required by Calabash to your 
+       Ant classpath, e. g. by placing them inside <literal>${ant.home}/lib</literal> 
+       or <literal>~/.ant/lib</literal>, you can even omit the
+       <tag class="emptytag">typedef</tag> declaration: the namespace definition
        is enough to invoke the secret magic that automatically loads the Antlib as
        soon as it is used in the build file.</para>
 
